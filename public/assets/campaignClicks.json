@@ -1,0 +1,79 @@
+[
+  {
+    "campaign": "Email Blast",
+    "date": "2025-10-01",
+    "clicks": 120,
+    "impressions": 4000,
+    "cost": 0
+  },
+  {
+    "campaign": "Email Blast",
+    "date": "2025-10-02",
+    "clicks": 95,
+    "impressions": 3800,
+    "cost": 0
+  },
+  {
+    "campaign": "Email Blast",
+    "date": "2025-10-03",
+    "clicks": 140,
+    "impressions": 4200,
+    "cost": 0
+  },
+  {
+    "campaign": "Ad Campaign",
+    "date": "2025-10-01",
+    "clicks": 310,
+    "impressions": 20000,
+    "cost": 450
+  },
+  {
+    "campaign": "Ad Campaign",
+    "date": "2025-10-02",
+    "clicks": 270,
+    "impressions": 19000,
+    "cost": 410
+  },
+  {
+    "campaign": "Ad Campaign",
+    "date": "2025-10-03",
+    "clicks": 330,
+    "impressions": 20500,
+    "cost": 470
+  },
+  {
+    "campaign": "Social Push",
+    "date": "2025-10-01",
+    "clicks": 85,
+    "impressions": 6000,
+    "cost": 120
+  },
+  {
+    "campaign": "Social Push",
+    "date": "2025-10-02",
+    "clicks": 90,
+    "impressions": 6100,
+    "cost": 130
+  },
+  {
+    "campaign": "Social Push",
+    "date": "2025-10-03",
+    "clicks": 78,
+    "impressions": 5800,
+    "cost": 115
+  },
+  {
+    "campaign": "Affiliate",
+    "date": "2025-10-01",
+    "clicks": 42,
+    "impressions": 2200,
+    "cost": 60
+  },
+  {
+    "campaign": "Affiliate",
+    "date": "2025-10-02",
+    "clicks": 50,
+    "impressions": 2300,
+    "cost": 70
+  }
+]

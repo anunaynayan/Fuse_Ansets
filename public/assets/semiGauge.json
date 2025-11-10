@@ -1,0 +1,7 @@
+{
+  "id": "battery",
+  "label": "Battery Health",
+  "value": 87,
+  "minLabel": "Empty",
+  "maxLabel": "Full"
+}

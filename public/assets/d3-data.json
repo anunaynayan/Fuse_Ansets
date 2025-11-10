@@ -1,0 +1,25 @@
+{
+  "timeSeries": [
+    { "time": "10:00", "activeUsers": 120, "requests": 500, "errors": 5 },
+    { "time": "10:05", "activeUsers": 150, "requests": 600, "errors": 8 },
+    { "time": "10:10", "activeUsers": 200, "requests": 700, "errors": 3 },
+    { "time": "10:15", "activeUsers": 250, "requests": 900, "errors": 10 },
+    { "time": "10:20", "activeUsers": 300, "requests": 1200, "errors": 15 }
+  ],
+  "locations": [
+    { "region": "US", "users": 500 },
+    { "region": "EU", "users": 300 },
+    { "region": "IN", "users": 200 },
+    { "region": "CN", "users": 150 }
+  ],
+  "servers": [
+    { "server": "Server 1", "requests": 400, "errors": 5 },
+    { "server": "Server 2", "requests": 500, "errors": 8 },
+    { "server": "Server 3", "requests": 350, "errors": 2 }
+  ],
+  "resources": [
+    { "server": "Server 1", "cpu": 60, "memory": 70 },
+    { "server": "Server 2", "cpu": 50, "memory": 65 },
+    { "server": "Server 3", "cpu": 75, "memory": 80 }
+  ]
+}

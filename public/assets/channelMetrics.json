@@ -1,0 +1,72 @@
+[
+  {
+    "channel": "Email",
+    "metric": "CTR",
+    "value": 12,
+    "impressions": 12000,
+    "conversions": 150
+  },
+  {
+    "channel": "Email",
+    "metric": "Open Rate",
+    "value": 35,
+    "impressions": 12000,
+    "conversions": 420
+  },
+  {
+    "channel": "Email",
+    "metric": "Bounce Rate",
+    "value": 5,
+    "impressions": 12000,
+    "conversions": 60
+  },
+  {
+    "channel": "Social Media",
+    "metric": "CTR",
+    "value": 9,
+    "impressions": 8000,
+    "conversions": 72
+  },
+  {
+    "channel": "Social Media",
+    "metric": "Open Rate",
+    "value": 28,
+    "impressions": 8000,
+    "conversions": 224
+  },
+  {
+    "channel": "Social Media",
+    "metric": "Bounce Rate",
+    "value": 7,
+    "impressions": 8000,
+    "conversions": 56
+  },
+  {
+    "channel": "Paid Search",
+    "metric": "CTR",
+    "value": 4.5,
+    "impressions": 20000,
+    "conversions": 900
+  },
+  {
+    "channel": "Paid Search",
+    "metric": "CPC",
+    "value": 1.25,
+    "impressions": 20000,
+    "conversions": 900
+  },
+  {
+    "channel": "Organic",
+    "metric": "CTR",
+    "value": 6.8,
+    "impressions": 15000,
+    "conversions": 1020
+  },
+  {
+    "channel": "Referral",
+    "metric": "CTR",
+    "value": 3.2,
+    "impressions": 4000,
+    "conversions": 128
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "id": "throughput",
+  "label": "Throughput",
+  "value": 42,
+  "thresholds": [
+    { "name": "Low", "min": 0, "max": 33 },
+    { "name": "Normal", "min": 34, "max": 66 },
+    { "name": "High", "min": 67, "max": 100 }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "metrics": {
+    "totalVisitors": { "value": 24567, "change": 12.5 },
+    "pageViews": { "value": 89432, "change": 8.2 },
+    "conversionRate": { "value": 3.24, "change": -0.5 },
+    "bounceRate": { "value": 42.3, "change": -2.1 }
+  },
+  "trafficOverview": [
+    { "month": "Jan", "visitors": 3200 },
+    { "month": "Feb", "visitors": 2800 },
+    { "month": "Mar", "visitors": 4100 },
+    { "month": "Apr", "visitors": 3700 },
+    { "month": "May", "visitors": 4900 },
+    { "month": "Jun", "visitors": 5300 }
+  ],
+  "trafficSources": [
+    { "label": "Organic", "value": 45 },
+    { "label": "Direct", "value": 30 },
+    { "label": "Social", "value": 15 },
+    { "label": "Referral", "value": 10 }
+  ],
+  "recentActivity": [
+    { "message": "New visitor from Google Analytics", "time": "2 minutes ago" },
+    { "message": "User clicked on campaign ad", "time": "5 minutes ago" },
+    {
+      "message": "Referral traffic from partner site",
+      "time": "12 minutes ago"
+    },
+    { "message": "Social media visitor from Twitter", "time": "20 minutes ago" }
+  ]
+}

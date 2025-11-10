@@ -1,0 +1,27 @@
+[
+  {
+    "timestamp": "2025-09-25T10:00:00Z",
+    "users": 10,
+    "responseTime": 250
+  },
+  {
+    "timestamp": "2025-09-25T11:00:00Z",
+    "users": 5,
+    "responseTime": 300
+  },
+  {
+    "timestamp": "2025-09-25T12:00:00Z",
+    "users": 30,
+    "responseTime": 220
+  },
+  {
+    "timestamp": "2025-09-25T13:00:00Z",
+    "users": 22,
+    "responseTime": 400
+  },
+  {
+    "timestamp": "2025-09-25T14:00:00Z",
+    "users": 25,
+    "responseTime": 350
+  }
+]
