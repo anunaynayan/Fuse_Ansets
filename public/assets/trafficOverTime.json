@@ -1,0 +1,8 @@
+[
+  { "name": "Jan", "visits": 12000, "signups": 800 },
+  { "name": "Feb", "visits": 15000, "signups": 900 },
+  { "name": "Mar", "visits": 17000, "signups": 1100 },
+  { "name": "Apr", "visits": 16000, "signups": 950 },
+  { "name": "May", "visits": 20000, "signups": 1300 },
+  { "name": "Jun", "visits": 22000, "signups": 1500 }
+]

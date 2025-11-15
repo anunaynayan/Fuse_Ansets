@@ -50,6 +50,27 @@ const navigationConfig: FuseNavItemType[] = [
             url: "/ansassets/charts/D3charts",
             end: true,
           },
+          {
+            id: "barcharts",
+            title: "Bar Chart",
+            type: "item",
+            url: "/ansassets/charts/barchart",
+            end: true,
+          },
+          {
+            id: "linecharts",
+            title: "Line Chart",
+            type: "item",
+            url: "/ansassets/charts/linechart",
+            end: true,
+          },
+          {
+            id: "columncharts",
+            title: "Columnn Chart",
+            type: "item",
+            url: "/ansassets/charts/columnchart",
+            end: true,
+          },
         ],
       },
       {

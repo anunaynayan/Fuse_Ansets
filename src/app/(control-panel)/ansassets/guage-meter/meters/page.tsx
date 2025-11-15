@@ -3,6 +3,9 @@ import SimpleGauge from "./components/GaugeSimple";
 import RingGauge from "./components/GaugeRing";
 import SemiGauge from "./components/GaugeSemicircle";
 import { Container } from "@mui/material";
+import CircularGauge from "./components/CircularGauge";
+import SemiCircularGauge from "./components/SemiCircularGauge";
+import LinearGauge from "./components/LinearGauge";
 
 export default function Page() {
   return (
@@ -13,6 +16,9 @@ export default function Page() {
           <SimpleGauge />
           <RingGauge />
           <SemiGauge />
+          <CircularGauge value={0.73} label="Performance"/>
+          <SemiCircularGauge  value={0.55} label="CPU Usage" />
+          <LinearGauge value={68} label="Memory Usage"/>
         </div>
       </Container>
     </main>

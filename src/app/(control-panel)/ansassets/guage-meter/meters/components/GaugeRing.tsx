@@ -7,7 +7,7 @@ import { Card, CardContent, Typography } from "@mui/material";
 type RingData = {
   id: string;
   label: string;
-  value: number; // 0-100
+  value: number;
   thresholds?: { name: string; min: number; max: number }[];
 };
 

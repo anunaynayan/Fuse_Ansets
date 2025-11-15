@@ -1,0 +1,8 @@
+[
+  { "name": "Home", "value": 12500 },
+  { "name": "Features", "value": 8400 },
+  { "name": "Blog", "value": 4300 },
+  { "name": "Pricing", "value": 2900 },
+  { "name": "Docs", "value": 6700 },
+  { "name": "About", "value": 1800 }
+]

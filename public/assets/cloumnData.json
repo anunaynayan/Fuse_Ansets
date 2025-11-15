@@ -1,0 +1,20 @@
+[
+  {
+    "category": "Jan",
+    "home": 1200,
+    "blog": 900,
+    "pricing": 400
+  },
+  {
+    "category": "Feb",
+    "home": 1500,
+    "blog": 950,
+    "pricing": 500
+  },
+  {
+    "category": "Mar",
+    "home": 1800,
+    "blog": 1100,
+    "pricing": 650
+  }
+]
