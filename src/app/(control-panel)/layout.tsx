@@ -3,9 +3,9 @@ import AuthGuardRedirect from '@auth/AuthGuardRedirect';
 
 function Layout({ children }) {
 	return (
-		<AuthGuardRedirect auth={['admin']}>
+		// <AuthGuardRedirect auth={['admin']}>
 			<MainLayout>{children}</MainLayout>
-		</AuthGuardRedirect>
+		// </AuthGuardRedirect>
 	);
 }
 
