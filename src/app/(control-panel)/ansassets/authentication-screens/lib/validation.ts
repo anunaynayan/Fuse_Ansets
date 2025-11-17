@@ -64,11 +64,7 @@ export const registerSchema = z
   .refine((d) => d.password === d.passwordConfirm, {
     message: "Passwords do not match",
     path: ["passwordConfirm"],
-  })
-  .transform((d) => ({
-    ...d,
-    name: `${d.firstName} ${d.lastName}`.trim(),
-  }));
+  });
 
 export type RegisterForm = z.infer<typeof registerSchema>;
 

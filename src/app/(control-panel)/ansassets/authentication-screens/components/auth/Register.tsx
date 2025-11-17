@@ -34,7 +34,6 @@ export default function Register({
     console.log("[REGISTER]", {
       firstName: data.firstName,
       lastName: data.lastName,
-      name: data.name,
       email: data.email,
       mobile: data.mobile,
     });

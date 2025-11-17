@@ -14,7 +14,7 @@ export default function DocsLayout({
       <div className="max-w-6xl mx-auto bg-white dark:bg-neutral-900 shadow-md rounded-xl p-8">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-            Metric Cards Documentation
+            Metric Cards Component Library
           </h1>
 
           {/* Use Button as Link directly (focus + semantics) */}

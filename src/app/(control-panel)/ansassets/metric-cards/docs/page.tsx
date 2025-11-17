@@ -6,8 +6,6 @@ import CodeBlock from "./CodeBlock";
 import SimpleMetricCard from "../cards/components/SimpleMetricCard";
 import GlassMetricCard from "../cards/components/GlassMetricCard";
 import DropdownMetricCard from "../cards/components/DropdownMetricCard";
-import MetricsHeader from "../cards/components/MetricsHeader";
-
 import { Box, Typography } from "@mui/material";
 
 export default function MetricCardsDocs() {
@@ -23,13 +21,6 @@ export default function MetricCardsDocs() {
 
   return (
     <DocsLayout>
-      <Typography
-        variant="h3"
-        className="font-bold mb-6 text-gray-900 dark:text-gray-100"
-      >
-        Metric Cards Component Library
-      </Typography>
-
       <Typography className="text-gray-700 dark:text-gray-100 mb-10 leading-relaxed">
         A set of responsive, reusable, and customizable metric cards designed
         for dashboards. They display KPIs such as revenue, orders, active users,
@@ -262,9 +253,7 @@ export default function GlassMetricCard({ metric }: { metric: Metric }) {
         />
       </section>
 
-      {/* ===========================================================
-        DROPDOWN METRIC CARD
-      =========================================================== */}
+      {/* DROPDOWN METRIC CARD */}
       <section id="dropdown-card" className="mb-16">
         <Typography
           variant="h4"
