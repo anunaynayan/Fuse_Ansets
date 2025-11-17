@@ -10,7 +10,9 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  LabelList,
 } from "recharts";
+import { CustomBar } from "./CustomBar";
 
 type Series = {
   name: string;
@@ -37,6 +39,7 @@ export default function ColumnChartComponent({
   stacked = false,
 }: Props) {
   const [data, setData] = useState<any[]>([]);
+  const [hovered, setHovered] = useState<string | null>(null);
 
   useEffect(() => {
     fetch(dataUrl)
@@ -45,7 +48,7 @@ export default function ColumnChartComponent({
   }, [dataUrl]);
 
   return (
-    <div className="w-full p-4 border rounded-lg bg-white dark:bg-gray-900 shadow-sm">
+    <div className="w-full p-4 rounded-lg bg-white dark:bg-gray-900 ">
       {title && (
         <h2 className="text-2xl font-semibold mb-4 dark:text-gray-200">
           {title}
@@ -60,13 +63,10 @@ export default function ColumnChartComponent({
             <XAxis dataKey="category" />
             <YAxis />
 
-            <Tooltip
-              contentStyle={{ background: "#fff", borderRadius: 5 }}
-            />
-
+            <Tooltip contentStyle={{ background: "#fff", borderRadius: 5 }} />
             <Legend />
 
-            {/* Gradient definitions */}
+            {/* Gradients */}
             <defs>
               {series.map((s) => (
                 <linearGradient
@@ -77,8 +77,8 @@ export default function ColumnChartComponent({
                   x2="0"
                   y2="1"
                 >
-                  <stop offset="0%" stopColor={s.color} stopOpacity={0.85} />
-                  <stop offset="100%" stopColor={s.color} stopOpacity={0.35} />
+                  <stop offset="0%" stopColor={s.color} stopOpacity={0.9} />
+                  <stop offset="100%" stopColor={s.color} stopOpacity={0.4} />
                 </linearGradient>
               ))}
             </defs>
@@ -92,9 +92,21 @@ export default function ColumnChartComponent({
                 stackId={stacked ? "stack" : undefined}
                 fill={`url(#grad-${s.dataKey})`}
                 barSize={barSize}
-                animationDuration={800}
                 radius={[6, 6, 0, 0]}
-              />
+                animationDuration={900}
+                shape={<CustomBar radius={[6, 6, 0, 0]} />}
+              >
+                <LabelList
+                  dataKey={s.dataKey}
+                  position="top"
+                  offset={10}
+                  style={{
+                    fill: "#444",
+                    fontWeight: 600,
+                    fontSize: 12,
+                  }}
+                />
+              </Bar>
             ))}
           </BarChart>
         </ResponsiveContainer>

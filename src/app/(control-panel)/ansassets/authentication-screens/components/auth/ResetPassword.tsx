@@ -70,7 +70,14 @@ export default function ResetPassword() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3, delay: 0.15 }}
           >
-            <TextField
+            <InputField
+                          label="New Password"
+                          // icon={User}
+                          type="password"
+                          {...register("password", { required: "Password is required" })}
+                          error={errors.token?.message}
+                        />
+            {/* <TextField
               label="New Password"
               {...register("password")}
               error={!!errors.password}
@@ -83,7 +90,7 @@ export default function ResetPassword() {
                   borderRadius: "12px",
                 },
               }}
-            />
+            /> */}
           </motion.div>
 
           <motion.div
@@ -91,7 +98,14 @@ export default function ResetPassword() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.3, delay: 0.2 }}
           >
-            <TextField
+            <InputField
+                          label="Confirm New Password"
+                          // icon={User}
+                          type="password"
+                          {...register("passwordConfirm", { required: "Password is required" })}
+                          error={errors.token?.message}
+                        />
+            {/* <TextField
               label="Confirm New Password"
               {...register("passwordConfirm")}
               error={!!errors.passwordConfirm}
@@ -104,7 +118,7 @@ export default function ResetPassword() {
                   borderRadius: "12px",
                 },
               }}
-            />
+            /> */}
           </motion.div>
 
           <motion.div
