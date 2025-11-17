@@ -141,6 +141,36 @@ const navigationConfig: FuseNavItemType[] = [
           },
         ],
       },
+
+   {
+  id: "ansassets-accordians-root",
+  title: "Accordians",
+  type: "collapse",
+  url: "/ansassets",
+  children: [
+    {
+               id:"ansassets-accordians-accordian",
+               title:"Accordion Com",
+               type:"item",
+               url:"/ansassets/accordians/accordian",
+               end:true,
+             },
+    
+   
+    {
+      id: "ansassets-accordians-docs",
+      title: "View Docs",
+      type: "item",
+      url: "/ansassets/accordians/docs",
+      end: true,
+    }
+  ]
+}
+
+
+
+
+
     ],
   },
 ];
