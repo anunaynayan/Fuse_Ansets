@@ -1,13 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import {
-  PieChart,
-  Pie,
-  Tooltip,
-  Cell,
-  ResponsiveContainer,
-} from "recharts";
+import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer } from "recharts";
 
 type DonutChartProps = {
   title: string;
@@ -89,10 +83,16 @@ export default function DonutChartComponent({
             paddingAngle={3}
             onMouseEnter={(_, i) => setActiveIndex(i)}
             onMouseLeave={() => setActiveIndex(null)}
-            activeIndex={activeIndex}
             activeShape={(props: any) => {
-              const { cx, cy, innerRadius, outerRadius, startAngle, endAngle, fill } =
-                props;
+              const {
+                cx,
+                cy,
+                innerRadius,
+                outerRadius,
+                startAngle,
+                endAngle,
+                fill,
+              } = props;
 
               return (
                 <g>
@@ -113,7 +113,12 @@ export default function DonutChartComponent({
               <Cell
                 key={index}
                 fill={colors[index % colors.length]}
-                style={{ cursor: "pointer" }}
+                stroke="none"
+                style={{
+                  transform: activeIndex === index ? "scale(1.05)" : "scale(1)",
+                  transformOrigin: "center",
+                  transition: "transform 0.3s",
+                }}
               />
             ))}
           </Pie>
