@@ -28,6 +28,7 @@ type Props = {
   barSize?: number;
   showGrid?: boolean;
   stacked?: boolean;
+  showLabels: boolean; 
 };
 
 export default function ColumnChartComponent({
