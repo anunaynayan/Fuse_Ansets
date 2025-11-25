@@ -71,6 +71,20 @@ const navigationConfig: FuseNavItemType[] = [
             url: "/ansassets/charts/columnchart",
             end: true,
           },
+          {
+            id: "piechart",
+            title: "Pie Chart",
+            type: "item",
+            url: "/ansassets/charts/piechart",
+            end: true,
+          },
+          {
+            id: "donutchart",
+            title: "Donut Chart",
+            type: "item",
+            url: "/ansassets/charts/donutchart",
+            end: true,
+          },
         ],
       },
       {

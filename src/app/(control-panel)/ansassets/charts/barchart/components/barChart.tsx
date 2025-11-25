@@ -34,7 +34,7 @@ export default function BarChartComponent({
   orientation = "vertical",
   barColor = "#1976d2",
   barSize = 40,
-  showLabels = true,
+  showLabels = false,
   dataUrl = "/data/barData.json",
 }: BarChartComponentProps) {
   const [data, setData] = useState<ChartData[] | null>(null);
@@ -57,7 +57,7 @@ export default function BarChartComponent({
     );
 
   return (
-    <Card sx={{ p: 2 }}>
+    <div className="p-2">
       <Typography variant="h6" gutterBottom>
         {title}
       </Typography>
@@ -87,6 +87,6 @@ export default function BarChartComponent({
           </Bar>
         </BarChart>
       </ResponsiveContainer>
-    </Card>
+    </div>
   );
 }

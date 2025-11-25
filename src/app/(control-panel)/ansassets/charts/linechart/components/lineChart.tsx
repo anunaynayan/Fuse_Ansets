@@ -60,7 +60,7 @@ export default function LineChartComponent({
     );
 
   return (
-    <Card sx={{ p: 3 }}>
+    <div className="p-3">
       <Typography variant="h6" gutterBottom>
         {title}
       </Typography>
@@ -114,6 +114,6 @@ export default function LineChartComponent({
           ))}
         </LineChart>
       </ResponsiveContainer>
-    </Card>
+    </div>
   );
 }

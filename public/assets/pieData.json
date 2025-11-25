@@ -1,0 +1,7 @@
+[
+  { "name": "Direct", "value": 4200 },
+  { "name": "Organic Search", "value": 6800 },
+  { "name": "Social", "value": 2300 },
+  { "name": "Referral", "value": 1500 },
+  { "name": "Email", "value": 900 }
+]
