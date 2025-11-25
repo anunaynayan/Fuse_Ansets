@@ -1,0 +1,31 @@
+[
+  {
+    "label": "Dashboard",
+    "path": "/",
+    "icon": "Dashboard"
+  },
+  {
+    "label": "Components",
+    "icon": "Widgets",
+    "children": [
+      { "label": "Buttons", "path": "/components/buttons" },
+      { "label": "Cards", "path": "/components/cards" },
+      {
+        "label": "Advanced",
+        "children": [
+          { "label": "Animation", "path": "/components/animation" },
+          { "label": "Charts", "path": "/components/charts" }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "Settings",
+    "icon": "Settings",
+    "children": [
+      { "label": "Profile", "path": "/settings/profile","icon":"person"},
+      { "label": "Account", "path": "/settings/account" ,"icon":"account_circle"}
+    ]
+  }
+  
+]

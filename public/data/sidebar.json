@@ -1,0 +1,39 @@
+[
+  {
+    "title": "Dashboard",
+    "path": "/dashboard",
+    "icon": "Dashboard"
+  },
+  {
+    "title": "Users",
+    "icon": "Person",
+    "children": [
+      {
+        "title": "All Users",
+        "path": "/users",
+        "icon": "Group"
+      },
+      {
+        "title": "Add User",
+        "path": "/users/add",
+        "icon": "PersonAdd"
+      }
+    ]
+  },
+  {
+    "title": "Settings",
+    "icon": "Settings",
+    "children": [
+      {
+        "title": "Profile",
+        "path": "/settings/profile",
+        "icon": "AccountCircle"
+      },
+      {
+        "title": "Security",
+        "path": "/settings/security",
+        "icon": "Security"
+      }
+    ]
+  }
+]

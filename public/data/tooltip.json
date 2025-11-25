@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Nidhi Maurya",
+    "role": "Frontend Developer",
+    "location": "gurgaon",
+    "experience": "1 Years",
+    "skills": ["React", "Next.js", "TypeScript"]
+  },
+  {
+    "id": 2,
+    "name": "Aarav Sharma",
+    "role": "Full Stack Developer",
+    "location": "Delhi",
+    "experience": "3 Years",
+    "skills": ["Node.js", "MongoDB", "Express"]
+  },
+  {
+    "id": 3,
+    "name": "Priya Singh",
+    "role": "UI/UX Designer",
+    "location": "Mumbai",
+    "experience": "4 Years",
+    "skills": ["Figma", "Illustrator", "Prototyping"]
+  },
+  {
+    "id": 4,
+    "name": "Rohan Verma",
+    "role": "Backend Engineer",
+    "location": "Bangalore",
+    "experience": "5 Years",
+    "skills": ["Java", "Spring Boot", "Microservices"]
+  },
+  {
+    "id": 5,
+    "name": "Sara Khan",
+    "role": "Product Manager",
+    "location": "Pune",
+    "experience": "6 Years",
+    "skills": ["Agile", "Scrum", "Roadmaps"]
+  },
+  {
+    "id": 6,
+    "name": "Vikram Patel",
+    "role": "DevOps Engineer",
+    "location": "Hyderabad",
+    "experience": "4 Years",
+    "skills": ["AWS", "Docker", "Kubernetes"]
+  }
+]
