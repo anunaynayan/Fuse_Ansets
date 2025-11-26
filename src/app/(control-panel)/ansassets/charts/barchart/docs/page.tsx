@@ -1,7 +1,7 @@
 "use client";
 
-import DocsLayout from "@/app/(control-panel)/ansassets/documetation/DocsLayout";
-import CodeBlock from "@/app/(control-panel)/ansassets/documetation/CodeBlock";
+import DocsLayout from "@/components/documetation/DocsLayout";
+import CodeBlock from "@/components/documetation/CodeBlock";
 import BarChartComponent from "@/app/(control-panel)/ansassets/charts/barchart/components/barChart";
 import Playground from "./Playground";
 

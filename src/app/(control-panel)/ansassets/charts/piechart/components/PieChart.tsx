@@ -56,8 +56,7 @@ export default function PieChartComponent({
               data={data}
               dataKey={dataKey}
               nameKey={nameKey}
-              innerRadius={60}
-              outerRadius={110}
+              outerRadius={120}
               paddingAngle={3}
               onMouseEnter={onPieEnter}
               onMouseLeave={onPieLeave}

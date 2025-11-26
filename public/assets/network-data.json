@@ -1,0 +1,28 @@
+{
+  "nodes": [
+    { "id": 1, "label": "Node A", "group": 1, "image": "/avatars/a.png", "time": "2025-11-01" },
+    { "id": 2, "label": "Node B", "group": 1, "image": "/avatars/b.png", "time": "2025-11-02" },
+    { "id": 3, "label": "Node C", "group": 2, "image": "/avatars/c.png", "time": "2025-11-03" },
+    { "id": 4, "label": "Node D", "group": 2, "image": "/avatars/d.png", "time": "2025-11-04" },
+    { "id": 5, "label": "Node E", "group": 2, "image": "/avatars/a.png", "time": "2025-11-05" },
+    { "id": 6, "label": "Node F", "group": 2, "image": "/avatars/b.png", "time": "2025-11-06" },
+    { "id": 8, "label": "Node H", "group": 3, "image": "/avatars/c.png", "time": "2025-11-08" },
+    { "id": 11, "label": "Node K", "group": 3, "image": "/avatars/d.png", "time": "2025-11-11" },
+    { "id": 12, "label": "Node L", "group": 4, "image": "/avatars/a.png", "time": "2025-11-12" },
+    { "id": 15, "label": "Node O", "group": 4, "image": "/avatars/b.png", "time": "2025-11-15" },
+    { "id": 16, "label": "Node P", "group": 4, "image": "/avatars/c.png", "time": "2025-11-16" }
+  ],
+  "links": [
+    { "from": 1, "to": 2, "weight": 3 },
+    { "from": 2, "to": 3, "weight": 2 },
+    { "from": 3, "to": 4, "weight": 1 },
+    { "from": 4, "to": 5, "weight": 4 },
+   { "from": 5, "to": 6, "weight": 3 },
+    { "from": 6, "to": 8, "weight": 2 },
+    { "from": 8, "to": 11, "weight": 4 },
+    { "from": 11, "to": 12, "weight": 5 },
+    { "from": 12, "to": 15, "weight": 6 },
+    { "from": 15, "to": 16, "weight": 7 },
+    { "from": 16, "to": 5, "weight": 1 }
+  ]
+}

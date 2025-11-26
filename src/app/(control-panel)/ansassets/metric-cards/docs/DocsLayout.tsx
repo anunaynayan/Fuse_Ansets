@@ -20,7 +20,7 @@ export default function DocsLayout({
           {/* Use Button as Link directly (focus + semantics) */}
           <Button
             component={Link}
-            href="../../../ansassets/metric-cards/cards"
+            href="/ansassets/metric-cards/cards"
             startIcon={<ArrowBack />}
             variant="outlined"
           >

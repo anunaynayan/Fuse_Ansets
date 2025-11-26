@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
 				config.module.rules.push({
 					test: /\.(json|js|ts|tsx|jsx)$/,
 					resourceQuery: /raw/,
-					use: 'raw-loader'
+					use: 'raw-loader',
 				});
 			}
 

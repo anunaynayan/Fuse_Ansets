@@ -1,7 +1,7 @@
 "use client";
 
-import DocsLayout from "./DocsLayout";
-import CodeBlock from "./CodeBlock";
+import DocsLayout from "@/components/documetation/DocsLayout";
+import CodeBlock from "@/components/documetation/CodeBlock";
 
 import SimpleMetricCard from "../cards/components/SimpleMetricCard";
 import GlassMetricCard from "../cards/components/GlassMetricCard";
