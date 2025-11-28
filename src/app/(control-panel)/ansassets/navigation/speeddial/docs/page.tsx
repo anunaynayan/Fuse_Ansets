@@ -1,19 +1,33 @@
 "use client";
 
+import CodeBlock from "@/components/documetation/CodeBlock";
+import DocsLayout from "@/components/documetation/DocsLayout";
 import { Box, Typography } from "@mui/material";
-import CodeBlock from "./codeblock";
-import DocsLayout from "./docslayout";
-import BreadcrumbDemo from "../breadcrumb/page";
+import CustomSpeedDial from "../speeddial/speeddail";
+import EditIcon from "@mui/icons-material/Edit";
 
-export default function FloatingToolbarDocs() {
+export default function SpeedDialDocs() {
+
+const actions: ActionItem[] = [
+    {
+      icon: <EditIcon />,
+      name: "Edit",
+      onClick: () => alert("Edit clicked"),
+      color: "#f59e0b", // amber-500
+    }
+
+  ];
   return (
-    <DocsLayout>
+    <DocsLayout
+
+     title="Speed Dial Documentation"
+      backLink="/ansassets/navigation/speeddial/speeddial"
+      backText="Back to SpeedDail" 
+    >
       <Typography className="text-gray-700 dark:text-gray-100 mb-10 leading-relaxed">
-        BreadcrumbNav is a professional, customizable, and SEO‑enhanced
-        breadcrumb navigation component built using Material UI (MUI) for
-        React/Next.js applications. It provides users with a clear understanding
-        of their current location within the application hierarchy by displaying
-        a structured navigation path.
+       SpeedDial is a reusable floating action menu built with Material UI (MUI).
+It provides a primary FAB button that expands into multiple quick-action buttons.
+Suitable for dashboards, editors, forms, and mobile-friendly UI where quick actions are required
       </Typography>
 
       {/* ------------------------ DEPENDENCIES ------------------------ */}
@@ -66,8 +80,17 @@ export default function FloatingToolbarDocs() {
           Preview
         </Typography>
 
-        <Box className="mb-4 max-w-sm mx-auto">
-          <BreadcrumbDemo />
+        <Box className="mb-4 max-w-sm mx-auto"
+        sx={{ position: "relative" }}
+        
+        >
+          <CustomSpeedDial
+            actions={actions}
+            position={{ bottom: 24, right: 24 }}
+            mainIcon={<EditIcon />}
+            direction="right"
+            fabColor="secondary"
+          />
         </Box>
 
         <Typography
@@ -78,24 +101,27 @@ export default function FloatingToolbarDocs() {
         </Typography>
 
         <CodeBlock
-          filename="Install Command"
-          language="bash"
-          code={`
-           
-                   import BreadcrumbNav from "@/components/BreadcrumbNav";
-            
-                  export default function App() {
-                return (
-               <BreadcrumbNav
-                 items={[
-                { label: "Home", href: "/" },
-                { label: "Dashboard", href: "/dashboard" },
-                { label: "Projects", href: "/dashboard/projects" },
-                { label: "Current Project" },
-                                         ]}
-                                            />
-                                        );
-                                      }
+          filename="example.tsx"
+          language="tsx"
+          code={`    import CustomSpeedDial, { ActionItem } from "../speeddial/speeddail";
+                     export default function App(){
+                      return(                     
+                        <CustomSpeedDial
+                              actions={actions}
+                              position={{ bottom: 24, right: 24 }}
+                              mainIcon={<EditIcon />}
+                              direction="right"
+                              fabColor="secondary"
+                            />   
+                      
+                      
+                      
+                      )
+                     
+                     
+                     }
+
+                   
             `}
         />
         {/* --------------Props Sections-------------- */}
@@ -125,87 +151,180 @@ export default function FloatingToolbarDocs() {
               </tr>
             </thead>
 
-            <tbody className="text-gray-700 dark:text-gray-200">
-              {/* items */}
-              <tr>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  items
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  CrumbItem[]
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  required
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  Array of breadcrumb items containing label and optional href.
-                </td>
-              </tr>
+           <tbody className="text-gray-700 dark:text-gray-200">
 
-              {/* separator */}
-              <tr>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  separator
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  ReactNode
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  {"<NavigateNextIcon />"}
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  Custom separator element between breadcrumb items.
-                </td>
-              </tr>
+  {/* actions */}
+  <tr>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      actions
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      ActionItem[]
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      required
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      List of action items. Each contains icon, name, onClick and optional color.
+    </td>
+  </tr>
 
-              {/* truncate */}
-              <tr>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  truncate
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  boolean
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  true
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  Truncates long breadcrumb labels on small screens.
-                </td>
-              </tr>
+  {/* position */}
+  <tr>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      position
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      {`{ bottom?: number; right?: number; left?: number; top?: number }`}
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      {`{ bottom: 20, right: 20 }`}
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      Controls the placement of the SpeedDial on the screen.
+    </td>
+  </tr>
 
-              {/* schema */}
-              <tr>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  schema
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  boolean
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  true
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  Enables Schema.org BreadcrumbList for SEO.
-                </td>
-              </tr>
+  {/* mainIcon */}
+  <tr>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      mainIcon
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      ReactNode
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      {"<AddIcon />"}
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      Main FAB icon that toggles the SpeedDial.
+    </td>
+  </tr>
 
-              {/* activeColor */}
-              <tr>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  activeColor
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  string
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  #e63946
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  Highlight color applied to the active breadcrumb item.
-                </td>
-              </tr>
-            </tbody>
+  {/* direction */}
+  <tr>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      direction
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      {"'up' | 'down' | 'left' | 'right'"}
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      up
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      Direction in which action items expand.
+    </td>
+  </tr>
+
+  {/* fabColor */}
+  <tr>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      fabColor
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      {"'primary' | 'secondary' | 'default'"}
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      primary
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      MUI color for the main FAB button.
+    </td>
+  </tr>
+
+  {/* sx */}
+  <tr>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      sx
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      SxProps&lt;Theme&gt;
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      —
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      Overrides and custom styling for the SpeedDial component.
+    </td>
+  </tr>
+
+  {/* ---- ActionItem Props Section ---- */}
+  <tr className="bg-gray-50 dark:bg-gray-900">
+    <td
+      colSpan={4}
+      className="py-3 px-4 font-semibold border-b border-gray-300 dark:border-gray-700"
+    >
+      ActionItem Properties
+    </td>
+  </tr>
+
+  {/* icon */}
+  <tr>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      icon
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      ReactNode
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      required
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      Icon displayed for the action button.
+    </td>
+  </tr>
+
+  {/* name */}
+  <tr>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      name
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      string
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      required
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      Tooltip title displayed for the action.
+    </td>
+  </tr>
+
+  {/* onClick */}
+  <tr>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      onClick
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      () =&gt; void
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      required
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      Callback executed when the action is clicked.
+    </td>
+  </tr>
+
+  {/* color */}
+  <tr>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      color
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      string
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      optional
+    </td>
+    <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+      Optional background color for each action button.
+    </td>
+  </tr>
+
+</tbody>
+
           </table>
         </Box>
 
@@ -223,133 +342,83 @@ export default function FloatingToolbarDocs() {
           language="tsx"
           code= { `
                      
-                "use client";
-           
-              import React from "react";
-               import {
-             Breadcrumbs,
-             Link,
-             Typography,
-             Box,
-             useMediaQuery,
-             useTheme,
-           } from "@mui/material";
-           import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-           import { usePathname } from "next/navigation";
-           
-           export interface CrumbItem {
-             label: string;
-             href?: string;
-           }
-           
-           interface BreadcrumbNavProps {
-             items: CrumbItem[];
-             separator?: React.ReactNode;
-             truncate?: boolean;
-             schema?: boolean;
-              activeColor?: string; 
-           }
-           
-           export default function BreadcrumbNav({
-             items,
-             separator = <NavigateNextIcon fontSize="small" />,
-             truncate = true,
-             schema = true,
-             activeColor = "#e63946",
-           }: BreadcrumbNavProps) {
-             const theme = useTheme();
-             const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
-             const currentPath = usePathname();
-           
-             // SEO Schema (JSON-LD)
-             const schemaData = schema
-               ? {
-                   "@context": "https://schema.org",
-                   "@type": "BreadcrumbList",
-                   itemListElement: items.map((item, index) => ({
-                     "@type": "ListItem",
-                     position: index + 1,
-                     name: item.label,
-                     item: item.href || undefined,
-                   })),
-                 }
-               : null;
-           
-             return (
-               <>
-                 {schema && (
-                   <script type="application/ld+json">
-                     {JSON.stringify(schemaData)}
-                   </script>
-                 )}
-           
-                 <Box
-                   sx={{
-                     width: "100%",
-                     overflowX: "auto",
-                     whiteSpace: "nowrap",
-                     py: 1,
-                   }}
-                 >
-                   <Breadcrumbs
-                     aria-label="breadcrumb navigation"
-                     separator={separator}
-                   >
-                     {items.map((item, index) => {
-                       const isLast = index === items.length - 1;
-                       const isActive=item.href=== currentPath;
-           
-                       const label = truncate
-                         ? item.label.length > 18 && isSmall
-                           ? item.label.slice(0, 15) + "..."
-                           : item.label
-                         : item.label;
-           
-                       if (!isLast && item.href) {
-                         return (
-                           <Link
-                             key={index}
-                             underline="hover"
-                             color="inherit"
-                             href={item.href}
-                             sx={{
-                               fontSize: isSmall ? "0.85rem" : "1rem",
-                               maxWidth: 150,
-                               overflow: "hidden",
-                               color: isActive ? activeColor : "inherit",
-                               textOverflow: "ellipsis",
-                               fontWeight: isActive ?"700":"400",
-                             }}
-                           >
-                             {label}
-                           </Link>
-                         );
-                       }
-           
-                       return (
-                         <Typography
-                           key={index}
-                           color="text.primary"
-                           sx={{
-                              color: activeColor, 
-                             fontSize: isSmall ? "0.9rem" : "1rem",
-                             maxWidth: 180,
-                             overflow: "hidden",
-                             textOverflow: "ellipsis",               
-                             fontWeight: isActive ? "700" : "500",
-                           }}
-                         >
-                           {label}
-                         </Typography>
-                       );
-                     })}
-                   </Breadcrumbs>
-                 </Box>
-               </>
-             );
-           }
-           
-            
+                
+
+
+
+
+
+
+
+"use client";
+import React from "react";
+import { SpeedDial, SpeedDialAction, SpeedDialProps, Fab } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import { SxProps, Theme } from "@mui/system";
+
+ type ActionItem = {
+  icon: React.ReactNode; 
+  name: string;
+  onClick: () => void;
+  color?: string; // optional: custom color for each action
+};
+
+interface CustomSpeedDialProps {
+  actions: ActionItem[];
+  position?: {
+    bottom?: number;
+    right?: number;
+    left?: number;
+    top?: number;
+  };
+  mainIcon?: React.ReactNode;
+  direction?: "up" | "down" | "left" | "right";
+  fabColor?: "primary" | "secondary" | "default";
+  sx?: SxProps<Theme>;
+}
+
+
+const CustomSpeedDial: React.FC<CustomSpeedDialProps> = ({
+  actions,
+  position = { bottom: 20, right: 20},
+  mainIcon = <AddIcon />,
+  direction = "up",
+  fabColor = "primary",
+  sx,
+}) => {
+  return (
+    <SpeedDial
+      ariaLabel="Custom SpeedDial"
+      sx={{
+        position: "absolute",
+        ...position,
+        ...sx,
+        zIndex: 1300, // ensures it stays on top
+      }}
+      icon={mainIcon}
+      direction={direction}
+      FabProps={{ color: fabColor }}
+    >
+      {actions.map((action, index) => (
+        <SpeedDialAction
+          key={index}
+          icon={action.icon}
+          tooltipTitle={action.name}
+          onClick={action.onClick}
+          sx={{
+            bgcolor: action.color || "transparent",
+            "&:hover": {
+              bgcolor: action.color ? action.color + "80" : undefined,
+            },
+          }}
+        />
+      ))}
+    </SpeedDial>
+  );
+};
+
+export default CustomSpeedDial;
+
           `}
         />
       </section>

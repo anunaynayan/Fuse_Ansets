@@ -62,48 +62,7 @@ export default function App() {
         </Button>
       </Stack>
 
-      {/* Custom Options */}
-      {/* <Typography variant="h5" fontWeight={600} mt={4}>
-        Custom Options
-      </Typography>
-
-      <Stack direction="row" spacing={2} flexWrap="wrap" justifyContent="center">
-        <Button
-          variant="outlined"
-          onClick={() =>
-            Toast.success("Top Right!", { position: "top-right" })
-          }
-        >
-          Top Right
-        </Button>
-
-      <Button
-          variant="outlined"
-          onClick={() =>
-            Toast.error("Top Left!", { position: "top-left" })
-          }
-        >
-          Top Left
-        </Button>
-
-        <Button
-          variant="outlined"
-          onClick={() =>
-            Toast.info("Bottom Left!", { position: "bottom-left" })
-          }
-        >
-          Bottom Left
-        </Button>
-
-        <Button
-          variant="outlined"
-          onClick={() =>
-            Toast.warning("Long Duration (5s)", { duration: 5000 })
-          }
-        >
-          5 Sec Duration
-        </Button>
-      </Stack> */}
+      
     </Box>
   );
 }

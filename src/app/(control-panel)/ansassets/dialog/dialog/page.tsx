@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button, TextField } from "@mui/material";
 import { Dialog } from "./dialog";
 
-export default function App() {
+export default function DialogApp() {
   // --- Dialog Controls ---
   const [openEdit, setOpenEdit] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);

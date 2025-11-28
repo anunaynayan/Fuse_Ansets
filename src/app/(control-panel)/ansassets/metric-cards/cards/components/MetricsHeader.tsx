@@ -44,6 +44,11 @@ export default function MetricsHeader({
             Dropdown
           </Button>
         </ButtonGroup>
+        <Link href="/ansassets/metric-cards/docs" passHref>
+        <Button variant="contained" color="secondary">
+          Documentation
+        </Button>
+      </Link>
       </div>
     </div>
   );

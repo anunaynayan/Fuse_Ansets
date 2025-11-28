@@ -1,13 +1,19 @@
 "use client";
 
 import { Box, Typography } from "@mui/material";
-import CodeBlock from "./codeblock";
-import DocsLayout from "./docslayout";
+
 import DatePicker from "../datepicker/datepicker";
+import DocsLayout from "@/components/documetation/DocsLayout";
+import CodeBlock from "@/components/documetation/CodeBlock";
 
 export default function DrawerDocs() {
   return (
-    <DocsLayout>
+    <DocsLayout
+    title="Date Picker Documentation"
+    backLink="/ansassets/date-picker/datepicker"
+    backText="Back to Date Picker"
+    
+    >
       <Typography className="text-gray-700 dark:text-gray-100 mb-10 leading-relaxed">
         The DatePicker component is a fully customizable, MUI-based date
         selection component featuring:
@@ -92,9 +98,9 @@ export default function DrawerDocs() {
 
         <CodeBlock
           filename="App.tsx"
-          language="bash"
+          language="tsx"
           code={`
-                                  "use client";
+                "use client";
         import DatePicker from "./datepicker";
      export default function App() {
      return (
@@ -112,15 +118,207 @@ export default function DrawerDocs() {
         />
       </section>
 
-{/* Props Section */}
+      {/* Props Section */}
 
+      <section id="props" className="mb-16">
+        <Typography
+          variant="h4"
+          className="font-semibold mb-4 text-gray-900 dark:text-gray-100"
+        >
+          Props
+        </Typography>
 
-
-
-
-
-
-
+        <Box className="overflow-x-auto mb-8">
+          <table className="min-w-full table-auto border border-gray-300 dark:border-gray-700">
+            <thead className="bg-gray-100 dark:bg-gray-800">
+              <tr>
+                <th className="px-4 py-2 border-b border-gray-300 dark:border-gray-700 text-left">
+                  Name
+                </th>
+                <th className="px-4 py-2 border-b border-gray-300 dark:border-gray-700 text-left">
+                  Type
+                </th>
+                <th className="px-4 py-2 border-b border-gray-300 dark:border-gray-700 text-left">
+                  Default
+                </th>
+                <th className="px-4 py-2 border-b border-gray-300 dark:border-gray-700 text-left">
+                  Description
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  label
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  string
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  "Select Date"
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  Label displayed above the input field.
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  size
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  "small" | "medium"
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  "small"
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  Size of the input and label.
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  value
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  Date | null
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  null
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  Currently selected date (can be controlled externally).
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  onChange
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  (date: Date | null){" "}
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  undefined
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  Callback fired when date is selected or cleared.
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  sx
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  object
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  {}
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  Custom styles applied to the root container.
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  minDate
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  Date
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  undefined
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  Minimum selectable date; earlier dates are disabled.
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  maxDate
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  Date
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  undefined
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  Maximum selectable date; later dates are disabled.
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  disabled
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  boolean
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  false
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  Disables input and calendar popover.
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  error
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  boolean
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  false
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  Displays input in error state.
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  helperText
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  string
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  ""
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  Text shown below input (e.g., for validation messages).
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  format
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  (date: Date){" "}
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  undefined
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  Custom function to format the displayed date.
+                </td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  showClear
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  boolean
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  true
+                </td>
+                <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+                  Whether to show the clear (✕) button to remove selected date.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </Box>
+      </section>
 
       {/* ------------------------ Complete Code Sections  ------------------------ */}
       <section id="" className="mb-16">
@@ -135,7 +333,7 @@ export default function DrawerDocs() {
         <CodeBlock
           filename="DatePicker.tsx"
           language="tsx"
-          code={`/* eslint-disable prettier/prettier */
+          code={`
 "use client";
 
 import * as React from "react";

@@ -13,19 +13,11 @@ i18n.addResourceBundle('ar', 'navigation', ar);
  */
 const navigationConfig: FuseNavItemType[] = [
   {
-    id: "example-component",
-    title: "Example",
-    translate: "EXAMPLE",
-    type: "item",
-    icon: "lucide:star",
-    url: "example",
-  },
-  {
     id: "apps-ansassets",
     title: "Ansets",
     type: "collapse",
     icon: "lucide:graduation-cap",
-    url: "ansassets",
+    // url: "ansassets",
     badge: {
       title: "NEW",
     },
@@ -85,20 +77,41 @@ const navigationConfig: FuseNavItemType[] = [
             url: "/ansassets/charts/donutchart",
             end: true,
           },
+          {
+            id: "areachart",
+            title: "Area Chart",
+            type: "item",
+            url: "/ansassets/charts/areachart",
+            end: true,
+          },
+          {
+            id: "funnelchart",
+            title: "Funnel Chart",
+            type: "item",
+            url: "/ansassets/charts/funnelchart",
+            end: true,
+          },
+           {
+            id: "networkgraph",
+            title: "Network Graph",
+            type: "item",
+            url: "/ansassets/charts/networkgraph",
+            end: true,
+          },
         ],
       },
-      {
-        id: "ansassets-tables",
-        title: "Tables",
-        type: "item",
-        url: "/ansassets/tables",
-      },
-      {
-        id: "ansassets-forms",
-        title: "Forms",
-        type: "item",
-        url: "/ansassets/forms",
-      },
+      // {
+      //   id: "ansassets-tables",
+      //   title: "Tables",
+      //   type: "item",
+      //   url: "/ansassets/tables",
+      // },
+      // {
+      //   id: "ansassets-forms",
+      //   title: "Forms",
+      //   type: "item",
+      //   url: "/ansassets/forms",
+      // },
       {
         id: "ansassets-authscreens",
         title: "Auth Screens",
@@ -114,46 +127,14 @@ const navigationConfig: FuseNavItemType[] = [
       {
         id: "ansassets-metriccards",
         title: "Metric Cards",
-        type: "collapse",
+        type: "item",
         url: "/ansassets/metric-cards/cards",
-        children: [
-          {
-            id: "metric-cards",
-            title: "Cards",
-            type: "item",
-            url: "/ansassets/metric-cards/cards",
-            end: true,
-          },
-          {
-            id: "docs",
-            title: "View Docs",
-            type: "item",
-            url: "/ansassets/metric-cards/docs",
-            end: true,
-          },
-        ],
       },
       {
         id: "ansassets-guageMeter",
         title: "Guage Meters",
-        type: "collapse",
+        type: "item",
         url: "/ansassets/guage-meter/meters",
-        children: [
-          {
-            id: "meters",
-            title: "Meters",
-            type: "item",
-            url: "/ansassets/guage-meter/meters",
-            end: true,
-          },
-          {
-            id: "docs",
-            title: "View Docs",
-            type: "item",
-            url: "/ansassets/metric-cards/docs",
-            end: true,
-          },
-        ],
       },
 
    {

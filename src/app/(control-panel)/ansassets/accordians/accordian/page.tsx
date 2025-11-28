@@ -7,7 +7,7 @@ import Accordion from "./accordian";
 
 
 
-const Page = () => {
+export default function  App  ()  {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
  
@@ -29,4 +29,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+

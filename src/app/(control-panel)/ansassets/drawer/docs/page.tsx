@@ -1,16 +1,23 @@
 "use client";
 
 import { Box, Typography } from "@mui/material";
-import CodeBlock from "./codeblock";
-import DocsLayout from "./docslayout";
-import DrawerComponent, { DrawerItem } from "../drawer/drawer";
-import { useState } from "react";
+import CodeBlock from "@/components/documetation/CodeBlock";
+import DocsLayout from "@/components/documetation/DocsLayout";
+import DrawerPage from "../drawer/page";
+
 
 export default function DrawerDocs() {
-  const [menuItems, setMenuItems] = useState<DrawerItem[]>([]);
+
+  
+  
 
   return (
-    <DocsLayout>
+    <DocsLayout
+        title="Drawer Documentation"
+        backLink="/ansassets/drawer/drawer"
+        backText="Back to Drawer"
+    
+    >
       <Typography className="text-gray-700 dark:text-gray-100 mb-10 leading-relaxed">
         Drawer is a component that provides a way to navigate through different
         sections of a website or application.
@@ -59,31 +66,139 @@ export default function DrawerDocs() {
         />
       </section>
 
-      {/* ------------------------ DRAWER SECTION ------------------------ */}
+      {/* ------------------------ Preview SECTION ------------------------ */}
       <section id="drawer" className="mb-16">
         <Typography
           variant="h4"
           className="font-semibold mb-4 text-gray-900 dark:text-gray-100"
         >
-          Drawer
+          Preview
         </Typography>
 
-        <Typography className="text-gray-600 dark:text-gray-100 mb-4">
-          Drawers are versatile components that can be used for navigation menus,
-          settings panels, or displaying additional content areas.
-        </Typography>
+        
 
-        <Box className="mb-4 max-w-sm mx-auto">
-          {/* Example Drawer (commented):  
-          <DrawerComponent title="Main Menu" anchor="left" items={menuItems} /> 
-          */}
+        <Box className=" h-80  ">
+              <DrawerPage/>
         </Box>
 
-        {/* FIXED — PROPERLY CLOSED TEMPLATE STRING */}
+        
+      </section>
+
+        
+        {/* ------------------------ Uses SECTION ------------------------ */}
+      
+      <section id="uses" className="mb-16">
+ <Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
+         Uses Example
+        </Typography> 
+
+        <CodeBlock
+          filename="App.tsx"
+          language="tsx"
+          code={`
+            
+                import Drawer from "@/components/drawer";               
+                export default function App() {
+                  return (                   
+                      <CustomDrawer
+                        title="Main Menu"
+                        anchor="left"
+                        items={menuItems}
+                      />
+                    
+                  );
+                }
+            
+            `}
+        />
+
+        </section>
+
+{/* ------------------------ Props Section ------------------------ */}
+
+      <section id="props" className="mb-16">
+        <Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
+          Props
+        </Typography>
+
+<Box className="overflow-x-auto mb-8">
+  <table className="min-w-full table-auto border border-gray-300 dark:border-gray-700">
+    <thead className="bg-gray-100 dark:bg-gray-800">
+      <tr>
+        <th className="px-4 py-2 border-b border-gray-300 dark:border-gray-700 text-left">Name</th>
+        <th className="px-4 py-2 border-b border-gray-300 dark:border-gray-700 text-left">Type</th>
+        <th className="px-4 py-2 border-b border-gray-300 dark:border-gray-700 text-left">Default</th>
+        <th className="px-4 py-2 border-b border-gray-300 dark:border-gray-700 text-left">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {/* CustomDrawer Props */}
+      <tr>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">title</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">string</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">"Menu"</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">The header title displayed on the drawer.</td>
+      </tr>
+      <tr>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">anchor</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">"top" | "bottom" | "left" | "right"</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">"bottom"</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">Specifies which side of the screen the drawer opens from.</td>
+      </tr>
+      <tr>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">items</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">DrawerItem[]</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">[]</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">Array of menu items to display inside the drawer.</td>
+      </tr>
+
+      {/* DrawerItem Props */}
+      <tr>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">label</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">string</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">—</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">Text label for the menu item (required).</td>
+      </tr>
+      <tr>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">path</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">string</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">undefined</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">Optional path for navigation using Next.js router.</td>
+      </tr>
+      <tr>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">icon</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">string</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">undefined</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">Name of MUI icon to display next to the label.</td>
+      </tr>
+      <tr>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">children</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">DrawerItem[]</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">undefined</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">Nested submenu items (optional).</td>
+      </tr>
+    </tbody>
+  </table>
+</Box>
+
+
+
+
+        </section>
+
+
+
+{/* ------------------------ Complete Code SECTION ------------------------ */}
+      <section id="completecode" className="mb-16" > 
+        <Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
+          Complete Componnet  Code
+          </Typography>
+
+         {/* FIXED — PROPERLY CLOSED TEMPLATE STRING */}
         <CodeBlock
           filename="Drawer.tsx"
           language="tsx"
-          code={`/* eslint-disable prettier/prettier */
+          code={`
 "use client";
 
 import * as React from "react";
@@ -285,64 +400,8 @@ const DrawerComponent: React.FC<DrawerProps> = ({
 export default DrawerComponent;
 `}
         />
-      </section>
 
-
-{/* LEFT DRAWER  */}
-<section id="drawerleft" className="mb-16">
-        <Typography
-          variant="h4"
-          className="font-semibold mb-4 text-gray-900 dark:text-gray-100"
-        >
-          Drawer Left
-        </Typography>
-
-        <Typography className="text-gray-600 dark:text-gray-100 mb-4">
-          The Left Drawer Component is a slide-in navigation panel that appears from the left side of the screen. It is commonly used to display menus, categories, or additional navigation options while keeping the main interface clean. Users can open or close the drawer using an icon or gesture, making it ideal for responsive layouts and mobile-friendly designs.
-        </Typography>
-
-        <Box className="mb-4 max-w-sm mx-auto">   
-          <DrawerComponent title="Main Menu" anchor="left" items={menuItems} /> 
-         
-        </Box>
-
-        {/* FIXED — PROPERLY CLOSED TEMPLATE STRING */}
-        <CodeBlock
-          filename="App.tsx"
-          language="tsx"
-          code={`
-
-
-            import React, { useEffect, useState } from "react";
-            import axios from "axios";
-            import DrawerComponent, { DrawerItem } from "./drawer";
-                      
-            export default function Page() {
-              const [menuItems, setMenuItems] = useState<DrawerItem[]>([]);
-            
-              useEffect(() => {
-                axios.get("your api or local json")
-                .then((res) => setMenuItems(res.data));
-              }, []);
-            
-              return (
-                <div>          
-              <DrawerComponent title="Main Menu" anchor="bottom" items={menuItems} />          
-                </div>
-              );
-            }
-            
-`}
-        />
-      </section>
-
-
-
-
-
-
-
-
+          </section>
 
 
 

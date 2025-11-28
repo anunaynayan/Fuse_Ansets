@@ -20,6 +20,7 @@ import {
   useMediaQuery,
   Typography,
   ListItemIcon,
+  BoxProps,
 } from "@mui/material";
 import { motion } from "framer-motion";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -28,7 +29,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import * as Icons from "@mui/icons-material";
 
-const MotionDiv = motion(Box);
+const MotionDiv = motion<BoxProps>(Box);
 
 const Appbar = ({ headerData }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -40,6 +41,7 @@ const Appbar = ({ headerData }) => {
   const searchRef = useRef(null);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
 
   // Create dropdown state map
   
@@ -86,7 +88,7 @@ const Appbar = ({ headerData }) => {
 
   return (
     <>
-      {/* HEADER BAR */}
+      
       <AppBar
         position="sticky"
         sx={{
@@ -100,7 +102,7 @@ const Appbar = ({ headerData }) => {
           {/* Logo */}
           <Box display="flex" alignItems="center" gap={1}>
             <MotionDiv
-              component="img"
+                    component="img"
               src={headerData.logo}
               alt="logo"
               sx={{ width: 44, height: 44, borderRadius: "8px" }}
@@ -111,7 +113,6 @@ const Appbar = ({ headerData }) => {
             </Typography>
           </Box>
 
-          {/* Search */}
           {!isMobile && (
             <Box
               sx={{
@@ -136,7 +137,7 @@ const Appbar = ({ headerData }) => {
             </Box>
           )}
 
-          {/* Desktop Menu */}
+          
           {!isMobile ? (
             <Box display="flex" alignItems="center" gap={3}>
               {headerData.menuItems?.map((item) => {
@@ -224,7 +225,7 @@ const Appbar = ({ headerData }) => {
         </Toolbar>
       </AppBar>
 
-      {/* MOBILE DRAWER */}
+      
       <Drawer anchor="left" open={mobileOpen} onClose={toggleDrawer} PaperProps={{ sx: { width: 300 } }}>
         <List sx={{ mt: 1 }}>
           {headerData.menuItems?.map((item) => {

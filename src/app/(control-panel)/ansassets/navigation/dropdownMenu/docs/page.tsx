@@ -1,19 +1,21 @@
 "use client";
 
+import DocsLayout from "@/components/documetation/DocsLayout";
+import CodeBlock from "@/components/documetation/CodeBlock";
 import { Box, Typography } from "@mui/material";
-import CodeBlock from "./codeblock";
-import DocsLayout from "./docslayout";
-import BreadcrumbDemo from "../breadcrumb/page";
+import DropDownDemoApp from "../dropDown/page";
 
-export default function FloatingToolbarDocs() {
+
+
+export default function DropDownMenuDocs() {
   return (
-    <DocsLayout>
+    <DocsLayout
+       title="DropDown Menu Documentation"
+        backLink="/ansassets/navigation/dropdownMenu/dropdownmenu"
+        backText="Back to DropDown Menu"
+    >
       <Typography className="text-gray-700 dark:text-gray-100 mb-10 leading-relaxed">
-        BreadcrumbNav is a professional, customizable, and SEO‑enhanced
-        breadcrumb navigation component built using Material UI (MUI) for
-        React/Next.js applications. It provides users with a clear understanding
-        of their current location within the application hierarchy by displaying
-        a structured navigation path.
+        A Dropdown Menu is a UI component used to display a list of selectable options when the user clicks or hovers over a trigger element (such as a button, icon, or text). It helps organize multiple actions or navigation items without taking too much space on the screen.
       </Typography>
 
       {/* ------------------------ DEPENDENCIES ------------------------ */}
@@ -66,8 +68,8 @@ export default function FloatingToolbarDocs() {
           Preview
         </Typography>
 
-        <Box className="mb-4 max-w-sm mx-auto">
-          <BreadcrumbDemo />
+        <Box className="h-48">
+          <DropDownDemoApp/>
         </Box>
 
         <Typography
@@ -81,21 +83,25 @@ export default function FloatingToolbarDocs() {
           filename="Install Command"
           language="bash"
           code={`
-           
-            import BreadcrumbNav from "@/components/BreadcrumbNav";
+           import DropdownMenu from "./DropdownMenu";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+
+export default function App() {
+  const items = [
+    { label: "Edit", onClick: () => console.log("Edit") },
+    { label: "Delete", onClick: () => console.log("Delete") }
+  ];
+
+  return (
+    <DropdownMenu
+      trigger={<MoreVertIcon />}
+      items={items}
+    />
+  );
+}
+
             
-            export default function App() {
-              return (
-               <BreadcrumbNav
-                 items={[
-                { label: "Home", href: "/" },
-                { label: "Dashboard", href: "/dashboard" },
-                { label: "Projects", href: "/dashboard/projects" },
-                { label: "Current Project" },
-                                         ]}
-                                            />
-                                        );
-                                      }
+
             `}
         />
         {/* --------------Props Sections-------------- */}
@@ -107,107 +113,75 @@ export default function FloatingToolbarDocs() {
         </Typography>
 
         <Box className="overflow-auto">
-          <table className="min-w-full border border-gray-300 dark:border-gray-700 text-left">
-            <thead>
-              <tr className="bg-gray-100 dark:bg-gray-800">
-                <th className="py-3 px-4 border-b border-gray-300 dark:border-gray-700 font-semibold">
-                  Name
-                </th>
-                <th className="py-3 px-4 border-b border-gray-300 dark:border-gray-700 font-semibold">
-                  Type
-                </th>
-                <th className="py-3 px-4 border-b border-gray-300 dark:border-gray-700 font-semibold">
-                  Default
-                </th>
-                <th className="py-3 px-4 border-b border-gray-300 dark:border-gray-700 font-semibold">
-                  Description
-                </th>
-              </tr>
-            </thead>
+  <table className="min-w-full border border-gray-300 dark:border-gray-700 text-left">
+    <thead>
+      <tr className="bg-gray-100 dark:bg-gray-800">
+        <th className="py-3 px-4 border-b border-gray-300 dark:border-gray-700 font-semibold">
+          Name
+        </th>
+        <th className="py-3 px-4 border-b border-gray-300 dark:border-gray-700 font-semibold">
+          Type
+        </th>
+        <th className="py-3 px-4 border-b border-gray-300 dark:border-gray-700 font-semibold">
+          Default
+        </th>
+        <th className="py-3 px-4 border-b border-gray-300 dark:border-gray-700 font-semibold">
+          Description
+        </th>
+      </tr>
+    </thead>
 
-            <tbody className="text-gray-700 dark:text-gray-200">
-              {/* items */}
-              <tr>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  items
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  CrumbItem[]
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  required
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  Array of breadcrumb items containing label and optional href.
-                </td>
-              </tr>
+    <tbody className="text-gray-700 dark:text-gray-200">
+      {/* trigger */}
+      <tr>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          trigger
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          ReactNode
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          required
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          Element that opens the dropdown when clicked.
+        </td>
+      </tr>
 
-              {/* separator */}
-              <tr>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  separator
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  ReactNode
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  {"<NavigateNextIcon />"}
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  Custom separator element between breadcrumb items.
-                </td>
-              </tr>
+      {/* items */}
+      <tr>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          items
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          MenuItemType[]
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          required
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          Array of dropdown menu items supporting label, icon, divider, disabled, onClick, and nested children.
+        </td>
+      </tr>
 
-              {/* truncate */}
-              <tr>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  truncate
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  boolean
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  true
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  Truncates long breadcrumb labels on small screens.
-                </td>
-              </tr>
-
-              {/* schema */}
-              <tr>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  schema
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  boolean
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  true
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  Enables Schema.org BreadcrumbList for SEO.
-                </td>
-              </tr>
-
-              {/* activeColor */}
-              <tr>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  activeColor
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  string
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  #e63946
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  Highlight color applied to the active breadcrumb item.
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </Box>
+      {/* size */}
+      <tr>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          size
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          "normal" | "dense"
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          "normal"
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          Controls spacing inside menu items. "dense" shows compact menu.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</Box>
 
         {/* -Complete code section */}
 
@@ -224,132 +198,162 @@ export default function FloatingToolbarDocs() {
           code= { `
           
            
+           
            "use client";
            
-           import React from "react";
+           import React, { useState } from "react";
            import {
-             Breadcrumbs,
-             Link,
-             Typography,
-             Box,
-             useMediaQuery,
-             useTheme,
+             Menu,
+             MenuItem,
+             MenuList,
+             Divider,
+             ListItemIcon,
+             ListItemText,
            } from "@mui/material";
-           import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-           import { usePathname } from "next/navigation";
+           import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
            
-           export interface CrumbItem {
+            export interface MenuItemType {
              label: string;
-             href?: string;
+             icon?: React.ReactNode;
+             onClick?: () => void;
+             divider?: boolean;
+             disabled?: boolean;
+             children?: MenuItemType[];
            }
            
-           interface BreadcrumbNavProps {
-             items: CrumbItem[];
-             separator?: React.ReactNode;
-             truncate?: boolean;
-             schema?: boolean;
-              activeColor?: string; 
+           interface DropdownMenuProps {
+             trigger: React.ReactNode;
+             items: MenuItemType[];
+             size?: "normal" | "dense";
            }
            
-           export default function BreadcrumbNav({
+           export default function DropdownMenu({
+             trigger,
              items,
-             separator = <NavigateNextIcon fontSize="small" />,
-             truncate = true,
-             schema = true,
-             activeColor = "#e63946",
-           }: BreadcrumbNavProps) {
-             const theme = useTheme();
-             const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
-             const currentPath = usePathname();
+             size = "normal",
+           }: DropdownMenuProps) {
+             const [menus, setMenus] = useState<
+               { anchorEl: HTMLElement; items: MenuItemType[]; level: number }[]
+             >([]);
            
-             // SEO Schema (JSON-LD)
-             const schemaData = schema
-               ? {
-                   "@context": "https://schema.org",
-                   "@type": "BreadcrumbList",
-                   itemListElement: items.map((item, index) => ({
-                     "@type": "ListItem",
-                     position: index + 1,
-                     name: item.label,
-                     item: item.href || undefined,
-                   })),
-                 }
-               : null;
+             const openMenu = (anchor: HTMLElement, newItems: MenuItemType[], level: number) => {
+               setMenus((prev) => [...prev.slice(0, level), { anchorEl: anchor, items: newItems, level }]);
+             };
+           
+             const closeAll = () => setMenus([]);
+           
+             const closeLevel = (level: number) => {
+               setMenus((prev) => prev.slice(0, level));
+             };
            
              return (
-               <>
-                 {schema && (
-                   <script type="application/ld+json">
-                     {JSON.stringify(schemaData)}
-                   </script>
-                 )}
-           
-                 <Box
-                   sx={{
-                     width: "100%",
-                     overflowX: "auto",
-                     whiteSpace: "nowrap",
-                     py: 1,
-                   }}
+               <div className="inline-block">
+                 <span
+                   onClick={(e) =>
+                     openMenu(e.currentTarget as HTMLElement, items, 0)
+                   }
+                   style={{ cursor: "pointer" }}
                  >
-                   <Breadcrumbs
-                     aria-label="breadcrumb navigation"
-                     separator={separator}
+                   {trigger}
+                 </span>
+           
+                 {menus.map((level, index) => (
+                   <Menu
+                     key={index}
+                     open
+                     anchorEl={level.anchorEl}
+                     onClose={closeAll}
+                     anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                     transformOrigin={{ vertical: "top", horizontal: "left" }}
+                     MenuListProps={{
+                       dense: size === "dense",
+           
+                       onKeyDown: (e: any) => {
+                         const list = level.items.filter((item) => !item.divider && !item.disabled);
+                         const currentIndex = list.findIndex((it, i) => {
+                           const element = e.currentTarget.children[i];
+                           return element === document.activeElement;
+                         });
+           
+                         // Custom keyboard navigation
+                         switch (e.key) {
+                           case "ArrowDown":
+                             e.preventDefault();
+                             const next = (currentIndex + 1) % list.length;
+                             e.currentTarget.children[next]?.focus();
+                             break;
+           
+                           case "ArrowUp":
+                             e.preventDefault();
+                             const prev = (currentIndex - 1 + list.length) % list.length;
+                             e.currentTarget.children[prev]?.focus();
+                             break;
+           
+                           case "ArrowRight":
+                             e.preventDefault();
+                             const activeItem = list[currentIndex];
+                             if (activeItem?.children) {
+                               const target = e.currentTarget.children[currentIndex];
+                               openMenu(target, activeItem.children, index + 1);
+                             }
+                             break;
+           
+                           case "ArrowLeft":
+                             e.preventDefault();
+                             if (index > 0) closeLevel(index);
+                             break;
+           
+                           case "Escape":
+                             e.preventDefault();
+                             if (index === 0) closeAll();
+                             else closeLevel(index);
+                             break;
+                         }
+                       },
+                       sx: {
+                         "& .MuiMenuItem-root": {
+                           outline: "none !important",
+                         },
+                       },
+                     }}
                    >
-                     {items.map((item, index) => {
-                       const isLast = index === items.length - 1;
-                       const isActive=item.href=== currentPath;
-           
-                       const label = truncate
-                         ? item.label.length > 18 && isSmall
-                           ? item.label.slice(0, 15) + "..."
-                           : item.label
-                         : item.label;
-           
-                       if (!isLast && item.href) {
-                         return (
-                           <Link
-                             key={index}
-                             underline="hover"
-                             color="inherit"
-                             href={item.href}
-                             sx={{
-                               fontSize: isSmall ? "0.85rem" : "1rem",
-                               maxWidth: 150,
-                               overflow: "hidden",
-                               color: isActive ? activeColor : "inherit",
-                               textOverflow: "ellipsis",
-                               fontWeight: isActive ?"700":"400",
+                     <MenuList>
+                       {level.items.map((item, i) =>
+                         item.divider ? (
+                           <Divider key={i} />
+                         ) : (
+                           <MenuItem
+                             key={i}
+                             disabled={item.disabled}
+                             onClick={(e) => {
+                               if (item.children) {
+                                 openMenu(e.currentTarget as HTMLElement, item.children, index + 1);
+                               } else {
+                                 item.onClick?.();
+                                 closeAll();
+                               }
                              }}
                            >
-                             {label}
-                           </Link>
-                         );
-                       }
+                             {item.icon && (
+                               <ListItemIcon sx={{ minWidth: 32 }}>
+                                 {item.icon}
+                               </ListItemIcon>
+                             )}
            
-                       return (
-                         <Typography
-                           key={index}
-                           color="text.primary"
-                           sx={{
-                              color: activeColor, 
-                             fontSize: isSmall ? "0.9rem" : "1rem",
-                             maxWidth: 180,
-                             overflow: "hidden",
-                             textOverflow: "ellipsis",               
-                             fontWeight: isActive ? "700" : "500",
-                           }}
-                         >
-                           {label}
-                         </Typography>
-                       );
-                     })}
-                   </Breadcrumbs>
-                 </Box>
-               </>
+                             <ListItemText>{item.label}</ListItemText>
+           
+                             {item.children && <KeyboardArrowRight fontSize="small" />}
+                           </MenuItem>
+                         )
+                       )}
+                     </MenuList>
+                   </Menu>
+                 ))}
+               </div>
              );
            }
            
+          
             
           `}
         />

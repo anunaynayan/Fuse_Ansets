@@ -1,13 +1,14 @@
 "use client";
 
 import { Box, Typography } from "@mui/material";
-import CodeBlock from "./codeblock";
-import DocsLayout from "./docslayout";
+
 import Accordion from "../accordian/accordian";
+import CodeBlock from "@/components/documetation/CodeBlock";
+import DocsLayout from "@/components/documetation/DocsLayout";
 
 
 export default function AccordiansDocs() {
-  // ⭐ STORED ACCORDION DATA (ISI PAGE ME)
+  
   const accordionData = [
     {
       id: 1,
@@ -27,10 +28,15 @@ export default function AccordiansDocs() {
   ];
 
   return (
-    <DocsLayout>
+    <DocsLayout
+    title="Accordian Documentation  "
+      backLink="/ansassets/accordians/accordian"
+      backText="Back to Accordians"
+    
+    >
       <Typography className="text-gray-700 dark:text-gray-100 mb-10 leading-relaxed">
-        Accordions are interactive UI components that allow users to expand and
-        collapse sections of content.
+        <strong>Accordion</strong> is a reusable UI component built using <strong>Material-UI</strong> and <strong>Framer Motion</strong> that allows users to expand and collapse panels to show or hide content.
+        It supports a <strong>loading skeleton state</strong>, <strong>smooth animation</strong>, and manages expansion via internal state.
       </Typography>
 
       {/* DEPENDENCIES */}
@@ -75,24 +81,148 @@ export default function AccordiansDocs() {
         />
       </section>
 
-      {/* ACCORDIONS */}
-      <section id="accordions" className="mb-16">
-        <Typography
+      {/* Preview Section */}
+
+      <section id="preview" className="mb-16">
+ 
+         <Typography
           variant="h4"
-          className="font-semibold mb-4 text-gray-900 dark:text-gray-100"
+          className="font-semibold mb-4 text-gray-800 dark:text-gray-100"
         >
-          Accordions
+          Preview 
         </Typography>
 
-        <Typography className="text-gray-600 dark:text-gray-100 mb-4">
-          A collapsible UI component to organize structured content.
-        </Typography>
-
-        {/* DEMO — USING STORED DATA */}
-
-        <Box className="mb-4 max-w-sm mx-auto">
+<Box className="mb-4 max-w-sm mx-auto">
           <Accordion data={accordionData} />
         </Box>
+
+      </section>
+
+
+      {/* Example Uses Section */}
+      <section id="example-uses" className="mb-16">
+ 
+         <Typography
+          variant="h4"
+          className="font-semibold mb-4 text-gray-800 dark:text-gray-100"
+        >
+          Example Uses 
+        </Typography>
+
+    <CodeBlock
+          filename="App.tsx"
+          language="txs"
+          code={`          
+           export default function App  () {            
+              return (               
+                  <Accordion data={data}  />             
+              );
+            };
+                       
+            `}
+        />
+
+        
+
+</section>
+
+
+{/*-------------------------- Props SECTION ------------------------ */}
+
+<section id="props" className="mb-16">
+       
+<Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
+           Props
+        </Typography>
+
+
+
+
+<Box className="overflow-x-auto mb-8">
+  <table className="min-w-full table-auto border border-gray-300 dark:border-gray-700">
+    <thead className="bg-gray-100 dark:bg-gray-800">
+      <tr>
+        <th className="px-4 py-2 border-b border-gray-300 dark:border-gray-700 text-left">Name / Key</th>
+        <th className="px-4 py-2 border-b border-gray-300 dark:border-gray-700 text-left">Type</th>
+        <th className="px-4 py-2 border-b border-gray-300 dark:border-gray-700 text-left">Default / Required</th>
+        <th className="px-4 py-2 border-b border-gray-300 dark:border-gray-700 text-left">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {/* Props */}
+      <tr className="bg-gray-50 dark:bg-gray-900 font-semibold">
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700" colSpan={4}>Component Props</td>
+      </tr>
+      <tr>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">data</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">AccordionItem[]</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">Required</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+          Array of accordion items containing id, title and content.
+        </td>
+      </tr>
+      <tr>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">loading</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">boolean</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">False</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+          Displays skeleton loader while content is being fetched.
+        </td>
+      </tr>
+
+      {/* AccordionItem Type Structure */}
+      <tr className="bg-gray-50 dark:bg-gray-900 font-semibold">
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700" colSpan={4}>AccordionItem Type Structure</td>
+      </tr>
+      <tr>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">id</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">number</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700"> Required</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+          Unique identifier for each accordion item.
+        </td>
+      </tr>
+      <tr>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">title</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">string</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700"> Required</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+          Text displayed inside the accordion header.
+        </td>
+      </tr>
+      <tr>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">content</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">string</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700"> Required</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">
+          Content displayed when the accordion is expanded.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</Box>
+
+
+
+
+
+
+
+</section>
+
+
+      {/* COmplete component code */}
+
+
+      <section id="accordions" className="mb-16">
+       
+
+     <Typography
+          variant="h4"
+          className="font-semibold mb-4 text-gray-800 dark:text-gray-100"
+        >
+          Complete Component Code
+        </Typography>
 
         <CodeBlock
           filename="Accordion.tsx"
@@ -188,50 +318,13 @@ export default Accordion;`}
         />
       </section>
 
- <section id=" reuse" className="mb-16">
-        <Typography
-          variant="h4"
-          className="font-semibold mb-4 text-gray-900 dark:text-gray-100"
-        >
-          As a component 
-        </Typography>
-        <Typography className="text-gray-600 dark:text-gray-100 mb-4">
-          Accordions can be reused as component  in various contexts via  managing states , such as FAQs, documentation, settings, dashboards, etc.
-        </Typography>
 
-    <CodeBlock
-          filename="App.tsx"
-          language="tsx"
-          code={`import React, { useEffect, useState } from "react";
-          import axios from "axios";
-          import Accordion from "./components/accordians";
-                   
-          const App = () => {
-            const [data, setData] = useState([]);
-            const [loading, setLoading] = useState(true);
-                    
-            useEffect(() => {
-              axios
-                .get("your api")
-                .then((res) => setData(res.data))
-                .catch(() => setData([]))
-                .finally(() => setLoading(false));
-            }, []);
-          
-            return (
-          
-              <div  className="flex flex-col items-center justify-center">
-                <h1 className="text-3xl font-bold ">Accordion</h1>
-                <Accordion data={data} loading={loading}  />
-              </div>
-            );
-          };
-          
-          export default App;
-          `}
-        />
 
- </section>
+
+
+
+
+
 
     </DocsLayout>
   );

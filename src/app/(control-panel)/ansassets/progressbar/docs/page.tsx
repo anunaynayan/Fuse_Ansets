@@ -8,7 +8,11 @@ import LinearDeterminate from "../progress/components/linearDeterminate";
 
 export default function ProgressBarDocs() {
   return (
-    <DocsLayout>
+    <DocsLayout
+    
+    
+    
+    >
       {/* ---------------------------------- INTRO ---------------------------------- */}
       <Typography className="text-gray-700 dark:text-gray-100 mb-10 leading-relaxed">
         <b>Progress Bars</b> are reusable UI components used to display task progress, loading states,

@@ -1,0 +1,18 @@
+{
+"funnel": [
+{ "name": "Visitors", "value": 5000 },
+{ "name": "Signups", "value": 3200 },
+{ "name": "Leads", "value": 2100 },
+{ "name": "Opportunities", "value": 1400 },
+{ "name": "Customers", "value": 650 }
+],
+
+
+"comparative": [
+{ "stage": "Visitors", "current": 5000, "previous": 4200 },
+{ "stage": "Signups", "current": 3200, "previous": 3000 },
+{ "stage": "Leads", "current": 2100, "previous": 1800 },
+{ "stage": "Opportunities", "current": 1400, "previous": 1000 },
+{ "stage": "Customers", "current": 650, "previous": 400 }
+]
+}

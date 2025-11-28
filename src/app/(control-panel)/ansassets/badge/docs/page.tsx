@@ -1,16 +1,22 @@
 "use client";
 
 import { Avatar, Box, Typography } from "@mui/material";
-import CodeBlock from "./codeblock";
-import DocsLayout from "./docslayout";
+
 import ResponsiveBadge from "../badge/badge";
+import DocsLayout from "@/components/documetation/DocsLayout";
+import CodeBlock from "@/components/documetation/CodeBlock";
 
 
 export default function BadgeDocs() {
 
 
   return (
-    <DocsLayout>
+    <DocsLayout
+    title="Badge Documentation  "
+      backLink="/ansassets/badge/badge"
+      backText="Back to Badge"
+    
+    >
       <Typography className="text-gray-700 dark:text-gray-100 mb-10 leading-relaxed">
        Badge component is used to display small count or status information, often overlaid on another element such as an icon or button. It provides a visual cue to users about notifications, messages, or other important information that requires their attention.
       </Typography>
@@ -47,8 +53,9 @@ export default function BadgeDocs() {
         />
       </section>
 
-      {/* ------------------------ RATING STAR SECTION ------------------------ */}
-      <section id="ratingstar" className="mb-16">
+
+      {/* ------------------------ Peview Section ------------------------ */}
+      <section id="badge" className="mb-16">
      
 
  <Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
@@ -61,7 +68,12 @@ export default function BadgeDocs() {
                        </ResponsiveBadge>
         </Box>
 
+</section>
 
+
+
+{/* ----------Example Uses Section----------- */}
+<section id="example-uses" className="mb-16">
  <Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
          Example Uses
         </Typography>
@@ -87,9 +99,13 @@ export default function BadgeDocs() {
             `}
         />
 
+        </section>
+
         {/* ----------Props Section----------- */}
 
  {/* ----------Props Section----------- */}
+
+ <section id="props" className="mb-16">
 <Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
   Props
 </Typography>
@@ -109,25 +125,25 @@ export default function BadgeDocs() {
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">label</td>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">number | string | null</td>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">null</td>
-        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">Badge me display hone wali value. Null ya 0 (agar hideZero true ho) to badge hide ho jayega.</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">Badge  display value. if value Null or  0  then badge will hide .</td>
       </tr>
       <tr>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">max</td>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">number</td>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">99</td>
-        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">Maximum number to display. Agar number max se bada ho to "max+" show karega.</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">Maximum number to display. If number will max it show "max+".</td>
       </tr>
       <tr>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">variant</td>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">"standard" | "dot"</td>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">"standard"</td>
-        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">Badge ka type. "dot" sirf ek dot show karega, "standard" number/text show karega.</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">Badge type. "dot" only one  dot show , "standard" number/text show.</td>
       </tr>
       <tr>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">position</td>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">"top-right" | "top-left" | "bottom-right" | "bottom-left"</td>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">"top-right"</td>
-        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">Badge ka position relative child element ke upar.</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">Badge  position relative child.</td>
       </tr>
       <tr>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">color</td>
@@ -145,32 +161,35 @@ export default function BadgeDocs() {
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">hideZero</td>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">boolean</td>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">true</td>
-        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">Agar true ho aur label 0 ya null ho to badge hide ho jayega.</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">If true and label 0 or  null  then  badge will be hide .</td>
       </tr>
       <tr>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">size</td>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">"small" | "medium"</td>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">"medium"</td>
-        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">Badge ka size. Small aur medium options available hain.</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">Badge  size. Small & medium options available .</td>
       </tr>
       <tr>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">children</td>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">React.ReactNode</td>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">undefined</td>
-        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">Badge ke under jo bhi component wrap karna ho (Icon, Avatar, etc.).</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">Wrapped component into badge like  (Icon, Avatar, etc.).</td>
       </tr>
     </tbody>
   </table>
 </Box>
 
 
-
+ </section>
 
 
 
         {/* COMPLETE CODE SECTION */}
 
-<Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
+
+
+ <section id="uses" className="mb-16">
+  <Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
 Complete Component Code
 </Typography>
 
@@ -287,8 +306,11 @@ export default function Badge({
 }
 `}
 />
+ </section>
 
-      </section>
+
+
+     
 
  
     </DocsLayout>

@@ -1,13 +1,18 @@
 "use client";
 
 import { Box, Typography } from "@mui/material";
-import CodeBlock from "./codeblock";
-import DocsLayout from "./docslayout";
-import BreadcrumbDemo from "../breadcrumb/page";
 
-export default function FloatingToolbarDocs() {
+import BreadcrumbDemo from "../breadcrumb/page";
+import DocsLayout from "@/components/documetation/DocsLayout";
+import CodeBlock from "@/components/documetation/CodeBlock";
+export default function BreadCrumbsDocs() {
   return (
-    <DocsLayout>
+    <DocsLayout 
+      title="Breadcrumbs Documentation"
+      backLink="/ansassets/navigation/breadcrumb/breadcrumb"
+      backText="Back to Breadcrumb Page"  
+    >
+
       <Typography className="text-gray-700 dark:text-gray-100 mb-10 leading-relaxed">
         BreadcrumbNav is a professional, customizable, and SEO‑enhanced
         breadcrumb navigation component built using Material UI (MUI) for

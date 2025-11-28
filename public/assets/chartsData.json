@@ -1,0 +1,71 @@
+{
+  "monthlyTraffic": [
+    { "month": "Jan", "home": 1200, "blog": 900, "pricing": 400, "users": 500, "sessions": 2100 },
+    { "month": "Feb", "home": 1500, "blog": 950, "pricing": 500, "users": 620, "sessions": 2450 },
+    { "month": "Mar", "home": 1800, "blog": 1100, "pricing": 650, "users": 700, "sessions": 2800 },
+    { "month": "Apr", "home": 1700, "blog": 1050, "pricing": 600, "users": 680, "sessions": 2600 },
+    { "month": "May", "home": 2000, "blog": 1250, "pricing": 720, "users": 760, "sessions": 3100 },
+    { "month": "Jun", "home": 2200, "blog": 1300, "pricing": 800, "users": 820, "sessions": 3300 },
+    { "month": "Jul", "home": 2100, "blog": 1280, "pricing": 780, "users": 810, "sessions": 3200 },
+    { "month": "Aug", "home": 2300, "blog": 1350, "pricing": 820, "users": 850, "sessions": 3450 },
+    { "month": "Sep", "home": 1850, "blog": 1150, "pricing": 700, "users": 730, "sessions": 2750 },
+    { "month": "Oct", "home": 2500, "blog": 1500, "pricing": 900, "users": 900, "sessions": 3800 },
+    { "month": "Nov", "home": 2700, "blog": 1600, "pricing": 950, "users": 950, "sessions": 4000 },
+    { "month": "Dec", "home": 3000, "blog": 1700, "pricing": 1000, "users": 1000, "sessions": 4500 }
+  ],
+
+  "trafficSources": [
+    { "name": "Direct", "value": 4200 },
+    { "name": "Organic Search", "value": 6800 },
+    { "name": "Social", "value": 2300 },
+    { "name": "Referral", "value": 1500 },
+    { "name": "Email", "value": 900 }
+  ],
+
+  "userDemographics": [
+    { "segment": "18-24", "male": 3200, "female": 2800, "other": 300 },
+    { "segment": "25-34", "male": 4500, "female": 5000, "other": 500 },
+    { "segment": "35-44", "male": 3800, "female": 4100, "other": 350 },
+    { "segment": "45-54", "male": 2200, "female": 2400, "other": 200 },
+    { "segment": "55+", "male": 1500, "female": 1700, "other": 150 }
+  ],
+
+  "campaignPerformance": [
+    { "campaign": "Email Blast", "date": "2025-10-01", "clicks": 120, "impressions": 4000, "cost": 0 },
+    { "campaign": "Email Blast", "date": "2025-10-02", "clicks": 95, "impressions": 3800, "cost": 0 },
+    { "campaign": "Email Blast", "date": "2025-10-03", "clicks": 140, "impressions": 4200, "cost": 0 },
+
+    { "campaign": "Ad Campaign", "date": "2025-10-01", "clicks": 310, "impressions": 20000, "cost": 450 },
+    { "campaign": "Ad Campaign", "date": "2025-10-02", "clicks": 270, "impressions": 19000, "cost": 410 },
+    { "campaign": "Ad Campaign", "date": "2025-10-03", "clicks": 330, "impressions": 20500, "cost": 470 },
+
+    { "campaign": "Social Push", "date": "2025-10-01", "clicks": 85, "impressions": 6000, "cost": 120 },
+    { "campaign": "Social Push", "date": "2025-10-02", "clicks": 90, "impressions": 6100, "cost": 130 },
+    { "campaign": "Social Push", "date": "2025-10-03", "clicks": 78, "impressions": 5800, "cost": 115 },
+
+    { "campaign": "Affiliate", "date": "2025-10-01", "clicks": 42, "impressions": 2200, "cost": 60 },
+    { "campaign": "Affiliate", "date": "2025-10-02", "clicks": 50, "impressions": 2300, "cost": 70 }
+  ],
+
+  "radarMetrics": [
+    { "metric": "UI", "score": 85, "benchmark": 75 },
+    { "metric": "Performance", "score": 90, "benchmark": 80 },
+    { "metric": "SEO", "score": 78, "benchmark": 70 },
+    { "metric": "Accessibility", "score": 82, "benchmark": 65 },
+    { "metric": "Security", "score": 88, "benchmark": 78 }
+  ],
+
+  "productSales": [
+    { "product": "Basic", "q1": 1200, "q2": 1500, "q3": 1600, "q4": 1900 },
+    { "product": "Standard", "q1": 1800, "q2": 2200, "q3": 2100, "q4": 2500 },
+    { "product": "Premium", "q1": 900, "q2": 1100, "q3": 1300, "q4": 1700 }
+  ],
+
+  "kpiStats": [
+    { "name": "Revenue", "value": 125000 },
+    { "name": "Active Users", "value": 8300 },
+    { "name": "New Signups", "value": 420 },
+    { "name": "Churn Rate", "value": 2.3 },
+    { "name": "Conversion Rate", "value": 4.8 }
+  ]
+}

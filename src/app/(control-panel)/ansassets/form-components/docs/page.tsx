@@ -1,36 +1,51 @@
 "use client";
 
 import { Box, Typography } from "@mui/material";
-import CodeBlock from "./codeblock";
-import DocsLayout from "./docslayout";
+
+
+import DocsLayout from "@/components/documetation/DocsLayout";
+import CodeBlock from "@/components/documetation/CodeBlock";
 import AppDatePicker from "../forms/components/date-picker";
 import { AppTimePicker } from "../forms/components/Time-Picker";
 import DateRangePickerApp from "../forms/components/date-range-picker";
 import MarkdownEditor from "../forms/components/makrdowneditor";
 import { Dropdown } from "../forms/components/dropDown";
-
-
-
+import { Toggle } from "../forms/components/toggle";
+import { useState } from "react";
+import { NumberInput } from "../forms/components/numberInput";
 
 export default function DrawerDocs() {
-  
+
+  const [isEnabled, setIsEnabled] = useState(false);
+
   return (
     <DocsLayout>
       <Typography className="text-gray-700 dark:text-gray-100 mb-10 leading-relaxed">
-         form components are essential UI elements that allow users to input, upload, and submit data. This documentation covers various form components, including Text Field, Password Field, Number Input, Text Area, Dropdown, and Rich Text Editor, detailing their implementation and usage within applications.
+        form components are essential UI elements that allow users to input,
+        upload, and submit data. This documentation covers various form
+        components, including Text Field, Password Field, Number Input, Text
+        Area, Dropdown, and Rich Text Editor, detailing their implementation and
+        usage within applications.
       </Typography>
 
       {/* ------------------------ DEPENDENCIES ------------------------ */}
       <section id="dependencies" className="mb-16">
-        <Typography variant="h4" className="font-semibold mb-4 text-gray-800 dark:text-gray-100">
+        <Typography
+          variant="h4"
+          className="font-semibold mb-4 text-gray-800 dark:text-gray-100"
+        >
           Dependencies & Technologies
         </Typography>
 
         <Typography className="text-gray-600 dark:text-gray-100 mb-4">
-          These are the necessary dependencies and technologies for the Form Components:
+          These are the necessary dependencies and technologies for the Form
+          Components:
         </Typography>
 
-        <Typography variant="h6" className="font-semibold mb-2 text-gray-800 dark:text-gray-100">
+        <Typography
+          variant="h6"
+          className="font-semibold mb-2 text-gray-800 dark:text-gray-100"
+        >
           Required Dependencies:
         </Typography>
 
@@ -41,44 +56,44 @@ export default function DrawerDocs() {
           <li>next</li>
         </ul>
 
-        <Typography variant="body1" className="mt-4 mb-4 text-gray-600 dark:text-gray-100">
-          Install:
-        </Typography>
-
-        <CodeBlock 
-          filename="Install Command"
-          language="bash"
-          code={`npm install @mui/material @mui/icons-material`}
-        />
       </section>
 
       {/* ------------------------ date picker SECTION ------------------------ */}
       <section id="datepicker" className="mb-16">
-        <Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
-        Date Picker
+        <Typography
+          variant="h4"
+          className="font-semibold mb-4 text-gray-900 dark:text-gray-100"
+        >
+          Date Picker
         </Typography>
 
         <Typography className="text-gray-600 dark:text-gray-100 mb-4">
-          The DatePicker component allows users to select a date from a calendar interface.
+          The DatePicker component allows users to select a date from a calendar
+          interface.
         </Typography>
 
-          <Typography variant="body1" className="mt-4 mb-4 text-gray-600 dark:text-gray-100">
+        <Typography
+          variant="body1"
+          className="mt-4 mb-4 text-gray-600 dark:text-gray-100"
+        >
           Install:
         </Typography>
 
-        <CodeBlock 
+        <CodeBlock
           filename="Install Command"
           language="bash"
-          code={`@mui/x-date-pickers dayjs`}
+          code={` npm install  @mui/material @mui/icons-material @mui/x-date-pickers dayjs`}
         />
 
-<Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
-       Preview 
+        <Typography
+          variant="h4"
+          className="font-semibold mb-4 text-gray-900 dark:text-gray-100"
+        >
+          Preview
         </Typography>
-        
 
         <Box className="mb-4 max-w-sm mx-auto">
-          <AppDatePicker/>
+          <AppDatePicker />
         </Box>
 
         <CodeBlock
@@ -141,36 +156,45 @@ export default function DrawerDocs() {
         />
       </section>
 
+      {/* ------------------------ time picker SECTION ------------------------ */}
 
-
-{/* ------------------------ time picker SECTION ------------------------ */}
-
-         <section id="datepicker" className="mb-16">
-        <Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
-        Time Picker
+      <section id="datepicker" className="mb-16">
+        <Typography
+          variant="h4"
+          className="font-semibold mb-4 text-gray-900 dark:text-gray-100"
+        >
+          Time Picker
         </Typography>
 
         <Typography className="text-gray-600 dark:text-gray-100 mb-4">
-          Time Picker is a versatile and user-friendly component that allows users to select times from a clock interface. It is commonly used in forms, booking systems, and scheduling applications to enhance user experience and ensure accurate time input.
+          Time Picker is a versatile and user-friendly component that allows
+          users to select times from a clock interface. It is commonly used in
+          forms, booking systems, and scheduling applications to enhance user
+          experience and ensure accurate time input.
         </Typography>
 
-          <Typography variant="body1" className="mt-4 mb-4 text-gray-600 dark:text-gray-100">
+        <Typography
+          variant="body1"
+          className="mt-4 mb-4 text-gray-600 dark:text-gray-100"
+        >
           Install:
         </Typography>
 
-        <CodeBlock 
+        <CodeBlock
           filename="Install Command"
           language="bash"
-          code={`@mui/x-date-pickers dayjs`}
+          code={`npm install  @mui/material @mui/icons-material @mui/x-date-pickers dayjs`}
         />
 
-<Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
-       Preview 
+        <Typography
+          variant="h4"
+          className="font-semibold mb-4 text-gray-900 dark:text-gray-100"
+        >
+          Preview
         </Typography>
-        
 
         <Box className="mb-4 max-w-sm mx-auto">
-          <AppTimePicker/>
+          <AppTimePicker />
         </Box>
 
         <CodeBlock
@@ -275,36 +299,45 @@ export default function DrawerDocs() {
         />
       </section>
 
+      {/* ------------------------ date range   picker SECTION ------------------------ */}
 
-{/* ------------------------ date range   picker SECTION ------------------------ */}
-
-
-  <section id="datepicker" className="mb-16">
-        <Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
-         Date Range Picker
+      <section id="datepicker" className="mb-16">
+        <Typography
+          variant="h4"
+          className="font-semibold mb-4 text-gray-900 dark:text-gray-100"
+        >
+          Date Range Picker
         </Typography>
 
         <Typography className="text-gray-600 dark:text-gray-100 mb-4">
-           Date Range Picker is a versatile and user-friendly component that allows users to select a date range from a calendar interface. It is commonly used in forms, booking systems, and scheduling applications to enhance user experience and ensure accurate date input.
+          Date Range Picker is a versatile and user-friendly component that
+          allows users to select a date range from a calendar interface. It is
+          commonly used in forms, booking systems, and scheduling applications
+          to enhance user experience and ensure accurate date input.
         </Typography>
 
-          <Typography variant="body1" className="mt-4 mb-4 text-gray-600 dark:text-gray-100">
+        <Typography
+          variant="body1"
+          className="mt-4 mb-4 text-gray-600 dark:text-gray-100"
+        >
           Install:
         </Typography>
 
-        <CodeBlock 
+        <CodeBlock
           filename="Install Command"
           language="bash"
-          code={`@mui/x-date-pickers dayjs`}
+          code={`npm install @mui/material @mui/icons-material@mui/x-date-pickers dayjs`}
         />
 
-<Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
-       Preview 
+        <Typography
+          variant="h4"
+          className="font-semibold mb-4 text-gray-900 dark:text-gray-100"
+        >
+          Preview
         </Typography>
-        
 
         <Box className="mb-4 max-w-sm mx-auto">
-         < DateRangePickerApp/>
+          <DateRangePickerApp />
         </Box>
 
         <CodeBlock
@@ -412,13 +445,9 @@ export default function DrawerDocs() {
         />
       </section>
 
-{/* ------------------------------DropDown----------------------------- */}
+      {/* ------------------------------DropDown----------------------------- */}
 
-
-
-
-
-{/* <section id="datepicker" className="mb-16">
+       {/* <section id="datepicker" className="mb-16">
         <Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
           DropDown
         </Typography>
@@ -448,49 +477,48 @@ export default function DrawerDocs() {
             
            `}
         />
-      </section>   */}
+      </section>    */}
 
 
+      {/* ------------------------ markdown editor SECTION ------------------------ */}
 
-
-
-
-
-
-
-
-
-
-
-
-       {/* ------------------------ markdown editor SECTION ------------------------ */}
-
-<section id="datepicker" className="mb-16">
-        <Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
-         Markdown Editor
+      <section id="datepicker" className="mb-16">
+        <Typography
+          variant="h4"
+          className="font-semibold mb-4 text-gray-900 dark:text-gray-100"
+        >
+          Markdown Editor
         </Typography>
 
         <Typography className="text-gray-600 dark:text-gray-100 mb-4">
-           Date Range Picker is a versatile and user-friendly component that allows users to select a date range from a calendar interface. It is commonly used in forms, booking systems, and scheduling applications to enhance user experience and ensure accurate date input.
+          Markdown Editor is a versatile and user-friendly component that allows
+          users to write and preview markdown content. It is commonly used in
+          forms, blogging platforms, and documentation generators to enhance
+          user experience and ensure accurate markdown input.
         </Typography>
 
-          <Typography variant="body1" className="mt-4 mb-4 text-gray-600 dark:text-gray-100">
+        <Typography
+          variant="body1"
+          className="mt-4 mb-4 text-gray-600 dark:text-gray-100"
+        >
           Install:
         </Typography>
 
-        <CodeBlock 
+        <CodeBlock
           filename="Install Command"
           language="bash"
-          code={`@uiw/react-md-editor  react-syntax-highlighter `}
+          code={`npm install @mui/material @mui/icons-material @uiw/react-md-editor  react-syntax-highlighter `}
         />
 
-<Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
-       Preview 
+        <Typography
+          variant="h4"
+          className="font-semibold mb-4 text-gray-900 dark:text-gray-100"
+        >
+          Preview
         </Typography>
-        
 
         <Box className="mb-4 max-w-sm mx-auto">
-         <MarkdownEditor/>
+          <MarkdownEditor />
         </Box>
 
         <CodeBlock
@@ -569,10 +597,206 @@ export default function DrawerDocs() {
         />
       </section>
 
-    {/*  */}
+
+       {/* ------------------------toggle SECTION ------------------------ */}
+
+   
+             <section id="datepicker" className="mb-16">
+        <Typography
+          variant="h4"
+          className="font-semibold mb-4 text-gray-900 dark:text-gray-100"
+        >
+          Toggle
+        </Typography>
+
+        <Typography className="text-gray-600 dark:text-gray-100 mb-4">
+          Toggle is a component that allows users to switch between two states,
+          such as on and off. It is commonly used in forms, settings, and other
+          user interfaces to provide a convenient way for users to make
+          selections.
+        </Typography>
+
+        <Typography
+          variant="body1"
+          className="mt-4 mb-4 text-gray-600 dark:text-gray-100"
+        >
+          Install:
+        </Typography>
+
+        <CodeBlock
+          filename="Install Command"
+          language="bash"
+          code={`npm install  @mui/material @mui/icons-material`}
+        />
+
+        <Typography
+          variant="h4"
+          className="font-semibold mb-4 text-gray-900 dark:text-gray-100"
+        >
+          Preview
+        </Typography>
+
+        <Box className="mb-4 max-w-sm mx-auto">
+         <Toggle
+          checked={isEnabled}
+          onChange={setIsEnabled}
+          labelOn="Enabled"
+          labelOff="Disabled"
+          showIcon
+          color="secondary"
+        />
+        </Box>
 
 
-      
+<Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
+        Complete Component Code
+  </Typography>
+
+
+
+
+        <CodeBlock
+          filename="toggle.tsx"
+          language="tsx"
+          code={`
+
+           "use client";
+
+import React, { useState } from "react";
+import { Switch, FormControlLabel } from "@mui/material";
+import CheckIcon from "@mui/icons-material/Check";
+import CloseIcon from "@mui/icons-material/Close";
+
+interface ToggleProps {
+  checked?: boolean; // Controlled
+  defaultChecked?: boolean; // Uncontrolled
+  onChange?: (checked: boolean) => void;
+  labelOn?: string;
+  labelOff?: string;
+  disabled?: boolean;
+  color?: "primary" | "secondary" | "error" | "warning" | "info" | "success";
+  size?: "small" | "medium";
+  showIcon?: boolean;
+}
+
+export function Toggle({
+  checked,
+  defaultChecked = false,
+  onChange,
+  labelOn = "On",
+  labelOff = "Off",
+  disabled = false,
+  color = "primary",
+  size = "medium",
+  showIcon = false,
+}: ToggleProps) {
+  const [internalChecked, setInternalChecked] = useState(defaultChecked);
+
+  const isControlled = checked !== undefined;
+  const currentChecked = isControlled ? checked : internalChecked;
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newChecked = event.target.checked;
+    if (!isControlled) setInternalChecked(newChecked);
+    onChange?.(newChecked);
+  };
+
+  return (
+    <FormControlLabel
+      control={
+        <Switch
+          checked={currentChecked}
+          onChange={handleChange}
+          disabled={disabled}
+          color={color}
+          size={size}
+          className="rounded-full"
+        />
+      }
+      label={
+        <div className="flex items-center gap-2">
+          {showIcon &&
+            (currentChecked ? (
+              <CheckIcon className="text-green-500" />
+            ) : (
+              <CloseIcon className="text-red-500" />
+            ))}
+          <span className="text-gray-800 dark:text-gray-200">
+            {currentChecked ? labelOn : labelOff}
+          </span>
+        </div>
+      }
+    />
+  );
+}
+
+            
+           `}
+        />
+      </section>
+
+
+{/* ------------------------Number Input SECTION ------------------------ */}
+
+           <section id="datepicker" className="mb-16">
+        <Typography
+          variant="h4"
+          className="font-semibold mb-4 text-gray-900 dark:text-gray-100"
+        >
+          Number Input
+        </Typography>
+
+        <Typography className="text-gray-600 dark:text-gray-100 mb-4">
+          Number Input is a component that allows users to enter numeric
+          values. It is commonly used in forms, settings, and other user
+          interfaces to provide a convenient way for users to input numbers.
+        </Typography>
+
+        <Typography
+          variant="body1"
+          className="mt-4 mb-4 text-gray-600 dark:text-gray-100"
+        >
+          Install:
+        </Typography>
+
+        <CodeBlock
+          filename="Install Command"
+          language="bash"
+          code={`npm install  @mui/material @mui/icons-material`}
+        />
+
+        <Typography
+          variant="h4"
+          className="font-semibold mb-4 text-gray-900 dark:text-gray-100"
+        >
+          Preview
+        </Typography>
+
+        <Box className="mb-4 max-w-sm mx-auto">
+        <NumberInput placeholder="Enter number" />
+        </Box>
+
+
+<Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
+        Complete Component Code
+  </Typography>
+
+
+
+
+        <CodeBlock
+          filename="toggle.tsx"
+          language="tsx"
+          code={`
+
+          
+            
+           `}
+        />
+      </section>
+
+
+      {/*  */}
     </DocsLayout>
   );
 }

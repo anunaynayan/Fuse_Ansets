@@ -1,141 +1,72 @@
-// "use client";
-
-// import React from "react";
-// import { SpeedDial, SpeedDialAction, SpeedDialIcon } from "@mui/material";
-
-// export type SpeedDialPosition =
-//   | "bottom-right"
-//   | "bottom-left"
-//   | "top-right"
-//   | "top-left"
-//   | "center-bottom"
-//   | "center-top";
-
-// export interface SpeedDialActionItem {
-//   key: string;
-//   icon: React.ReactNode;
-//   label?: string;
-//   onClick?: (e?: React.MouseEvent | React.KeyboardEvent) => void;
-//   disabled?: boolean;
-// }
-
-// export interface SpeedDialFloatingProps {
-//   actions: SpeedDialActionItem[];
-//   position?: SpeedDialPosition;
-//   direction?: "up" | "down" | "left" | "right";
-//   size?: "small" | "medium" | "large";
-
-//   backgroundColor?: string;   
-//   hoverColor?: string;        
-//   iconColor?: string;    
 
 
 
-//   open?: boolean;
-//   defaultOpen?: boolean;
-//   onOpen?: () => void;
-//   onClose?: () => void;
-//   ariaLabel?: string;
-//   className?: string;
-// }
 
-// const positionStyle = (position: SpeedDialPosition) => {
-//   const base: any = {  zIndex: 1400 };
+"use client";
+import React from "react";
+import { SpeedDial, SpeedDialAction, SpeedDialProps, Fab } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import { SxProps, Theme } from "@mui/system";
 
-//   switch (position) {
-//     case "bottom-right":
-//       return { ...base, bottom: 16, right: 16 };
-//     case "bottom-left":
-//       return { ...base, bottom: 16, left: 16 };
-//     case "top-right":
-//       return { ...base, top: 16, right: 16 };
-//     case "top-left":
-//       return { ...base, top: 16, left: 16 };
-//     case "center-bottom":
-//       return { ...base, bottom: 16, left: "50%", transform: "translateX(-50%)" };
-//     case "center-top":
-//       return { ...base, top: 16, left: "50%", transform: "translateX(-50%)" };
-//     default:
-//       return { ...base, bottom: 16, right: 16 };
-//   }
-// };
+ type ActionItem = {
+  icon: React.ReactNode; 
+  name: string;
+  onClick: () => void;
+  color?: string; // optional: custom color for each action
+};
 
-// export default function SpeedDialFloating({
-//   actions,
-//   position="bottom-left" ,
-//   direction  ="up",
-//   size ="medium" ,
-//   open,
-//   defaultOpen = false,
-//   onOpen,
-//   onClose,
-//   ariaLabel = "SpeedDial Actions",
-//   className = "",
-// }: SpeedDialFloatingProps) {
-//   const [internalOpen, setInternalOpen] = React.useState(defaultOpen);
-//   const controlled = typeof open === "boolean";
-//   const isOpen = controlled ? open! : internalOpen;
-
-//   const openHandler = () => {
-//     if (!controlled) setInternalOpen(true);
-//     onOpen?.();
-//   };
-
-//   const closeHandler = () => {
-//     if (!controlled) setInternalOpen(false);
-//     onClose?.();
-//   };
-
-//   // keyboard handling: ESC = close, Enter/Space = toggle
-
-//   const wrapperRef = React.useRef<HTMLDivElement>(null);
-//   React.useEffect(() => {
-//     const el = wrapperRef.current;
-//     if (!el) return;
-
-//     const handleKey = (e: KeyboardEvent) => {
-//       if (e.key === "Escape") {
-//         closeHandler();
-//       }
-//       if (e.key === "Enter" || e.key === " ") {
-//         e.preventDefault();
-//         isOpen ? closeHandler() : openHandler();
-//       }
-//     };
-
-//     el.addEventListener("keydown", handleKey);
-//     return () => el.removeEventListener("keydown", handleKey);
-//   }, [isOpen]);
+interface CustomSpeedDialProps {
+  actions: ActionItem[];
+  position?: {
+    bottom?: number;
+    right?: number;
+    left?: number;
+    top?: number;
+  };
+  mainIcon?: React.ReactNode;
+  direction?: "up" | "down" | "left" | "right";
+  fabColor?: "primary" | "secondary" | "default";
+  sx?: SxProps<Theme>;
+}
 
 
-//   return (
-//     <div ref={wrapperRef} className={className}>
-//       <SpeedDial
-//         ariaLabel={ariaLabel}
-//         sx={positionStyle(position)}
-//         icon={<SpeedDialIcon />}
-//         direction={direction}
-//         onOpen={openHandler}
-//         onClose={closeHandler}
-//         open={isOpen}
-//         FabProps={{ size: size}}
-//       >
-//         {actions.map((item) => (
-//           <SpeedDialAction 
-//             key={item.key}
-//             icon={item.icon}
-//             tooltipTitle={item.label}
-//             onClick={(e) => {
-//               item.onClick?.(e);
-//               closeHandler(); 
-//             }}
-//             disabled={item.disabled}
-//           />
-//         ))}
-//       </SpeedDial>
-//     </div>
-//   );
-// }
+const CustomSpeedDial: React.FC<CustomSpeedDialProps> = ({
+  actions,
+  position = { bottom: 20, right: 20},
+  mainIcon = <AddIcon />,
+  direction = "up",
+  fabColor = "primary",
+  sx,
+}) => {
+  return (
+    <SpeedDial
+      ariaLabel="Custom SpeedDial"
+      sx={{
+        position: "absolute",
+        ...position,
+        ...sx,
+        zIndex: 1300, // ensures it stays on top
+      }}
+      icon={mainIcon}
+      direction={direction}
+      FabProps={{ color: fabColor }}
+    >
+      {actions.map((action, index) => (
+        <SpeedDialAction
+          key={index}
+          icon={action.icon}
+          tooltipTitle={action.name}
+          onClick={action.onClick}
+          sx={{
+            bgcolor: action.color || "transparent",
+            "&:hover": {
+              bgcolor: action.color ? action.color + "80" : undefined,
+            },
+          }}
+        />
+      ))}
+    </SpeedDial>
+  );
+};
 
-
-
+export default CustomSpeedDial;

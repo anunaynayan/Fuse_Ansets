@@ -1,9 +1,10 @@
 "use client";
 
 import { Box, Typography } from "@mui/material";
-import CodeBlock from "./codeblock";
-import DocsLayout from "./docslayout";
+
 import ColorPicker from "../colorpicker/colorpicker";
+import DocsLayout from "@/components/documetation/DocsLayout";
+import CodeBlock from "@/components/documetation/CodeBlock";
 
 export default function ColorPickerDocs() {
   const colorPickerSource = `...your full colorpicker code here...`;
@@ -11,7 +12,15 @@ export default function ColorPickerDocs() {
  
 
   return (
-    <DocsLayout>
+    <DocsLayout
+      title="Color Picker Documentation  "
+      backLink="/ansassets/color-picker/colorpicker"
+      backText="Back to Color Picker"
+      
+    
+    
+    
+    >
       {/* ------------------------ DESCRIPTION ------------------------ */}
       <Typography className="text-gray-700 dark:text-gray-100 mb-10 leading-relaxed">
         ColorPicker is a customizable React color picker component built using MUI and react-color. It allows users to select colors in multiple formats (HEX, RGB, RGBA, HSL) and provides a palette of predefined colors for quick selection. The component supports alpha transparency, copy-to-clipboard functionality, and optional input fields for manual color entry.

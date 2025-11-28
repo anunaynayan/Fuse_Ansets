@@ -16,12 +16,12 @@ import {
 
 import DropdownMenu from "./dropDown";
 
-export default function App() {
+export default function DropDownDemoApp() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className=" flex items-center justify-center bg-gray-100">
       <DropdownMenu
         trigger={
-          <button className="px-4 py-2 bg-gray-500 text-black rounded-lg shadow">
+          <button className="px-4 py-2 bg-gray-500 text-black rounded-md shadow">
             Open Menu
           </button>
         }
@@ -37,8 +37,8 @@ export default function App() {
             onClick: () => alert("Copy clicked"),
           },
           {
-            
             divider: true,
+            label: ""
           },
           {
             label: "More Actions",
@@ -58,6 +58,7 @@ export default function App() {
           },
           {
             divider: true,
+            label: ""
           },
           {
             label: "Settings",

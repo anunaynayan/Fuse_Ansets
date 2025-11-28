@@ -1,5 +1,3 @@
-
-
 /* eslint-disable prettier/prettier */
 "use client";
 
@@ -33,7 +31,7 @@ export interface DrawerItem {
 
 export interface DrawerProps {
   title?: string;
-  anchor?: "bottom" | "top" | "left" | "right";   // <— UPDATED
+  anchor?: "bottom" | "top" | "left" | "right";
   items: DrawerItem[];
 }
 
@@ -44,15 +42,15 @@ const collapseVariants = {
   closed: { height: 0, opacity: 0 },
 };
 
-const DrawerComponent: React.FC<DrawerProps> = ({
+const CustomDrawer: React.FC<DrawerProps> = ({
   title = "Menu",
-  anchor = "bottom",
+  anchor = "top",
   items = [],
 }) => {
   const [open, setOpen] = React.useState(false);
-  const [expandedLevels, setExpandedLevels] = React.useState<Record<number, string | null>>(
-    {}
-  );
+  const [expandedLevels, setExpandedLevels] = React.useState<
+    Record<number, string | null>
+  >({});
 
   const theme = useTheme();
   const router = useRouter();
@@ -157,7 +155,6 @@ const DrawerComponent: React.FC<DrawerProps> = ({
     </List>
   );
 
-  // ⭐ DYNAMIC WIDTH + HEIGHT BASED ON ANCHOR
   const paperStyles = {
     background: menuBg,
     backdropFilter: "blur(14px)",
@@ -171,12 +168,13 @@ const DrawerComponent: React.FC<DrawerProps> = ({
         }
       : {}),
 
-   ...(anchor === "bottom" || anchor === "top" ?{
-    width: "100%",
-    height: "auto",
-    maxHeight: "90vh",
-   } : {
-   })
+    ...(anchor === "bottom" || anchor === "top"
+      ? {
+          width: "100%",
+          height: "auto",
+          maxHeight: "90vh",
+        }
+      : {}),
   };
 
   return (
@@ -185,7 +183,12 @@ const DrawerComponent: React.FC<DrawerProps> = ({
         <MenuIcon />
       </MotionIconButton>
 
-      <Drawer anchor={anchor} open={open} onClose={toggleDrawer(false)} PaperProps={{ sx: paperStyles }}>
+      <Drawer
+        anchor={anchor}
+        open={open}
+        onClose={toggleDrawer(false)}
+        PaperProps={{ sx: paperStyles }}
+      >
         {/* Header */}
         <Box
           sx={{
@@ -197,21 +200,25 @@ const DrawerComponent: React.FC<DrawerProps> = ({
         >
           <Typography>{title}</Typography>
 
-          <MotionIconButton whileHover={{ rotate: 90 }} onClick={toggleDrawer(false)}>
+          <MotionIconButton
+            whileHover={{ rotate: 90 }}
+            onClick={toggleDrawer(false)}
+          >
             <CloseIcon />
           </MotionIconButton>
         </Box>
 
         {/* Scroll Content */}
-       <Box
-  sx={{
-    overflowY: "auto",
-    maxHeight: anchor === "top" || anchor === "bottom"
-      ? "70vh"    // content max space
-      : "calc(100vh - 60px)", 
-    pb: 3,
-  }}
->
+        <Box
+          sx={{
+            overflowY: "auto",
+            maxHeight:
+              anchor === "top" || anchor === "bottom"
+                ? "70vh" // content max space
+                : "calc(100vh - 60px)",
+            pb: 3,
+          }}
+        >
           {renderMenu(items)}
         </Box>
       </Drawer>
@@ -219,4 +226,4 @@ const DrawerComponent: React.FC<DrawerProps> = ({
   );
 };
 
-export default DrawerComponent;
+export default CustomDrawer;

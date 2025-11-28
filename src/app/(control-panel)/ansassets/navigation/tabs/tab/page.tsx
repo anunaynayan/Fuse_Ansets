@@ -1,105 +1,76 @@
+
+
+
+
+
 "use client";
+import { Box } from "@mui/material";
+import CustomTabs from "./tab"; 
 
-import CustomTabs from "./tab";
-
-export default function App() {
-
-
- const demoTabs = [
-  {
-    label: "Overview",
-    content: (
-      <div className="space-y-2">
-        <h2 className="text-lg font-semibold">Overview</h2>
-        <p className="text-gray-600">
-          This tab shows a general summary of the product.
-        </p>
-      </div>
-    ),
-  },
-  {
-    label: "Details",
-    content: (
-      <div className="space-y-2">
-        <h2 className="text-lg font-semibold">Details</h2>
-        <p className="text-gray-600">
-          This section contains detailed specifications and analysis.
-        </p>
-      </div>
-    ),
-  },
-  {
-    label: "Settings",
-    content: (
-      <div className="space-y-2">
-        <h2 className="text-3xl font-bold">Settings</h2>
-        <p className="text-gray-600">
-          Configure and manage preferences from here.
-        </p>
-      </div>
-    ),
-  },
-];
-
-
-  return (
-      <div className="min-h-screen bg-[#e0e5ec] p-8 flex justify-center items-start">
-
-      {/* Main Neumorphic Card */}
-      <div className="
-        w-full max-w-4xl p-10 rounded-3xl
-       
-      ">
-        
-        {/* Heading */}
-        <h1 className="text-3xl font-bold text-gray-700 mb-8 text-center">
-          Tab Demo
-        </h1>
-
-        {/* Horizontal Tabs Block */}
-        <div
-          className="
-            mb-12 p-6 rounded-2xl
-            bg-[#e0e5ec]
-            shadow-[8px_8px_16px_#c3c8d1,-8px_-8px_16px_#ffffff]
-          "
-        >
-          <h2 className="text-lg font-semibold text-gray-600 mb-4">
-            Horizontal Tabs
-          </h2>
-
-          <CustomTabs
-            tabs={demoTabs}
-            orientation="horizontal"
-            lazy
-            scrollable
-            className="rounded-xl p-2 text-xl font-semibold"
-          />
-        </div>
-
-        {/* Vertical Tabs Block */}
-        <div
-          className="
-            p-6 rounded-2xl
-            bg-[#e0e5ec]
-            shadow-[8px_8px_16px_#c3c8d1,-8px_-8px_16px_#ffffff]
-          "
-        >
-          <h2 className="text-lg font-semibold text-gray-600 mb-4">
-            Vertical Tabs
-          </h2>
-
-          <div className="flex">
-            <CustomTabs
-              tabs={demoTabs}
-              orientation="vertical"
-              lazy
-              className="rounded-xl p-2"
-            />
+export default function TabDemoApp() {
+  const tabs = [
+    {
+      label: "Analytics",
+      content: (
+        <div className="space-y-4">
+          <h3 className="text-lg font-semibold">📊 Analytics Overview</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-green-100 border border-green-300 p-4 rounded-lg">
+              Total Sales: ₹84,500
+            </div>
+            <div className="bg-blue-100 border border-blue-300 p-4 rounded-lg">
+              Users: 2,349
+            </div>
+            <div className="bg-yellow-100 border border-yellow-300 p-4 rounded-lg">
+              Page Views: 34,780
+            </div>
           </div>
         </div>
+      ),
+    },
+    {
+      label: "Users",
+      content: (
+        <div>
+          <h3 className="text-lg font-semibold mb-4">👥 Users List</h3>
+          <ul className="space-y-2">
+            <li className="p-3 bg-gray-100 rounded-lg hover:bg-gray-200">Aman Sharma</li>
+            <li className="p-3 bg-gray-100 rounded-lg hover:bg-gray-200">Priya Mehta</li>
+            <li className="p-3 bg-gray-100 rounded-lg hover:bg-gray-200">Raj Patel</li>
+          </ul>
+        </div>
+      ),
+    },
+    {
+      label: "Settings",
+      content: (
+        <div>
+          <h3 className="text-lg font-semibold mb-4">⚙️ Account Settings</h3>
+          <button className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
+            Update Profile
+          </button>
+        </div>
+      ),
+    },
+  ];
 
-      </div>
-    </div>
+  return (
+    <Box className="min-h-screen bg-gray-100 p-6 flex flex-col gap-10">
+      <h1 className="text-3xl font-bold text-gray-800 text-center">
+       Tab Demo
+      </h1>
+
+      {/* ---------- Horizontal Tabs Demo ---------- */}
+      <Box className="bg-white shadow-lg rounded-xl p-6">
+        <h2 className="text-xl font-semibold mb-4">Horizontal Tabs</h2>
+        <CustomTabs tabs={tabs} orientation="horizontal" lazy scrollable />
+      </Box>
+
+      {/* ---------- Vertical Tabs Demo ---------- */}
+      <Box className="bg-white shadow-lg rounded-xl p-6">
+        <h2 className="text-xl font-semibold mb-4">Vertical Tabs</h2>
+        <CustomTabs tabs={tabs} orientation="vertical" lazy scrollable />
+      </Box>
+    </Box>
   );
 }

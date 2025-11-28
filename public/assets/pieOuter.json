@@ -1,0 +1,6 @@
+[
+  { "name": "Organic", "value": 400 },
+  { "name": "Social", "value": 300 },
+  { "name": "Paid", "value": 300 },
+  { "name": "Referral", "value": 200 }
+]

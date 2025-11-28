@@ -1,15 +1,21 @@
 "use client";
 
 import { Box, Typography } from "@mui/material";
-import CodeBlock from "./codeblock";
-import DocsLayout from "./docslayout";
+
 import { Dialog } from "../dialog/dialog";
+import DocsLayout from "@/components/documetation/DocsLayout";
+import CodeBlock from "@/components/documetation/CodeBlock";
+import DialogApp from "../dialog/page";
 
 
 
 export default function TooltipDocs() {
   return (
-    <DocsLayout>
+    <DocsLayout
+      title="Dialog Documentation"
+      backLink="/ansassets/dialog/dialog"
+      backText="Back to Dialog"   
+    >
       {/* ------------------------ DESCRIPTION ------------------------ */}
       <Typography className="text-gray-700 dark:text-gray-100 mb-10 leading-relaxed">
         The Dialog component is a reusable modal dialog built with React and Material-UI. It supports custom content, actions, and title, with smooth fade-in/out animations. It is fully responsive and includes features like closing on ESC key or clicking outside, and automatically disables background scroll while open.
@@ -61,7 +67,7 @@ It is suitable for displaying alerts, confirmations, forms, details, or any cust
         </Typography>
 
           <Box className="mb-4 max-w-sm mx-auto">
-                     <Dialog/>
+                    <DialogApp/>
         </Box>
      
       </section>

@@ -1,19 +1,36 @@
 "use client";
 
+import CodeBlock from "@/components/documetation/CodeBlock";
+import DocsLayout from "@/components/documetation/DocsLayout";
 import { Box, Typography } from "@mui/material";
-import CodeBlock from "./codeblock";
-import DocsLayout from "./docslayout";
-import BreadcrumbDemo from "../breadcrumb/page";
+import  {PaginationWrapper}  from "../pagination/pagination";
+import { useEffect, useState } from "react";
 
-export default function FloatingToolbarDocs() {
+
+
+export default function PaginationDocs() {
+
+ const [code, setCode] = useState<string>("");
+  
+    useEffect(() => {
+      fetch("/snippets/pagination.txt")
+        .then((r) => r.text())
+        .then(setCode);
+    }, []);
+  
+
+
+
   return (
-    <DocsLayout>
+    <DocsLayout
+       title="Pagination Documentation" 
+       backLink="/ansassets/navigation/pagination/pagination"
+       backText="Back to Pagination"
+    >
       <Typography className="text-gray-700 dark:text-gray-100 mb-10 leading-relaxed">
-        BreadcrumbNav is a professional, customizable, and SEO‑enhanced
-        breadcrumb navigation component built using Material UI (MUI) for
-        React/Next.js applications. It provides users with a clear understanding
-        of their current location within the application hierarchy by displaying
-        a structured navigation path.
+        PaginationWrapper is a reusable pagination utility component built using Material-UI Pagination + Select.
+It supports client-side pagination (auto-slice data) and server-side pagination (API data).
+It also allows dynamic page size options, compact mode UI, and fully custom render logic for each item.
       </Typography>
 
       {/* ------------------------ DEPENDENCIES ------------------------ */}
@@ -67,7 +84,11 @@ export default function FloatingToolbarDocs() {
         </Typography>
 
         <Box className="mb-4 max-w-sm mx-auto">
-          <BreadcrumbDemo />
+         <PaginationWrapper data={[]} page={0} itemsPerPage={0} onPageChange={function (page: number): void {
+            throw new Error("Function not implemented.");
+          } } renderItem={function (item: unknown): React.ReactNode {
+            throw new Error("Function not implemented.");
+          } }/>
         </Box>
 
         <Typography
@@ -78,26 +99,39 @@ export default function FloatingToolbarDocs() {
         </Typography>
 
         <CodeBlock
-          filename="Install Command"
-          language="bash"
+          filename="example.tsx"
+          language="tsx"
           code={`
-           
-                   import BreadcrumbNav from "@/components/BreadcrumbNav";
-            
-                  export default function App() {
-                return (
-               <BreadcrumbNav
-                 items={[
-                { label: "Home", href: "/" },
-                { label: "Dashboard", href: "/dashboard" },
-                { label: "Projects", href: "/dashboard/projects" },
-                { label: "Current Project" },
-                                         ]}
-                                            />
-                                        );
-                                      }
+           const [page, setPage] = useState(1);
+const [pageSize, setPageSize] = useState(10);
+
+<PaginationWrapper
+  data={users}
+  page={page}
+  itemsPerPage={pageSize}
+  onPageChange={(p) => setPage(p)}
+  onPageSizeChange={(size) => {
+    setPageSize(size);
+    setPage(1); // reset page
+  }}
+  renderItem={(user) => (
+    <div className="p-4 border rounded-lg">
+      <h3>{user.name}</h3>
+      <p>{user.email}</p>
+    </div>
+  )}
+/>
+
+                 
             `}
         />
+
+
+
+
+
+
+
         {/* --------------Props Sections-------------- */}
         <Typography
           variant="h4"
@@ -107,107 +141,190 @@ export default function FloatingToolbarDocs() {
         </Typography>
 
         <Box className="overflow-auto">
-          <table className="min-w-full border border-gray-300 dark:border-gray-700 text-left">
-            <thead>
-              <tr className="bg-gray-100 dark:bg-gray-800">
-                <th className="py-3 px-4 border-b border-gray-300 dark:border-gray-700 font-semibold">
-                  Name
-                </th>
-                <th className="py-3 px-4 border-b border-gray-300 dark:border-gray-700 font-semibold">
-                  Type
-                </th>
-                <th className="py-3 px-4 border-b border-gray-300 dark:border-gray-700 font-semibold">
-                  Default
-                </th>
-                <th className="py-3 px-4 border-b border-gray-300 dark:border-gray-700 font-semibold">
-                  Description
-                </th>
-              </tr>
-            </thead>
+  <table className="min-w-full border border-gray-300 dark:border-gray-700 text-left">
+    <thead>
+      <tr className="bg-gray-100 dark:bg-gray-800">
+        <th className="py-3 px-4 border-b border-gray-300 dark:border-gray-700 font-semibold">
+          Name
+        </th>
+        <th className="py-3 px-4 border-b border-gray-300 dark:border-gray-700 font-semibold">
+          Type
+        </th>
+        <th className="py-3 px-4 border-b border-gray-300 dark:border-gray-700 font-semibold">
+          Default
+        </th>
+        <th className="py-3 px-4 border-b border-gray-300 dark:border-gray-700 font-semibold">
+          Description
+        </th>
+      </tr>
+    </thead>
 
-            <tbody className="text-gray-700 dark:text-gray-200">
-              {/* items */}
-              <tr>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  items
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  CrumbItem[]
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  required
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  Array of breadcrumb items containing label and optional href.
-                </td>
-              </tr>
+    <tbody className="text-gray-700 dark:text-gray-200">
 
-              {/* separator */}
-              <tr>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  separator
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  ReactNode
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  {"<NavigateNextIcon />"}
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  Custom separator element between breadcrumb items.
-                </td>
-              </tr>
+      {/* data */}
+      <tr>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          data
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          T[]
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          required
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          Array of items to display inside pagination grid.
+        </td>
+      </tr>
 
-              {/* truncate */}
-              <tr>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  truncate
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  boolean
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  true
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  Truncates long breadcrumb labels on small screens.
-                </td>
-              </tr>
+      {/* totalItems */}
+      <tr>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          totalItems
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          number
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          0
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          Total item count returned from server (only used when serverMode is true).
+        </td>
+      </tr>
 
-              {/* schema */}
-              <tr>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  schema
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  boolean
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  true
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  Enables Schema.org BreadcrumbList for SEO.
-                </td>
-              </tr>
+      {/* page */}
+      <tr>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          page
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          number
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          required
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          Current page number (1-based indexing).
+        </td>
+      </tr>
 
-              {/* activeColor */}
-              <tr>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  activeColor
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  string
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  #e63946
-                </td>
-                <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
-                  Highlight color applied to the active breadcrumb item.
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </Box>
+      {/* itemsPerPage */}
+      <tr>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          itemsPerPage
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          number
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          required
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          Number of items displayed per page.
+        </td>
+      </tr>
+
+      {/* onPageChange */}
+      <tr>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          onPageChange
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          (page: number) ⇒ void
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          required
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          Callback fired when the page is changed.
+        </td>
+      </tr>
+
+      {/* onPageSizeChange */}
+      <tr>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          onPageSizeChange
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          (size: number) ⇒ void
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          undefined
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          Callback when rows-per-page selector changes. If provided, page resets to 1.
+        </td>
+      </tr>
+
+      {/* renderItem */}
+      <tr>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          renderItem
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          (item: T) ⇒ ReactNode
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          required
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          Rendering function for each list item inside the pagination grid.
+        </td>
+      </tr>
+
+      {/* compact */}
+      <tr>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          compact
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          boolean
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          false
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          Enables compact spacing and smaller pagination controls.
+        </td>
+      </tr>
+
+      {/* serverMode */}
+      <tr>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          serverMode
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          boolean
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          false
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          Enables server-side pagination. Component does not slice data automatically.
+        </td>
+      </tr>
+
+      {/* pageSizeOptions */}
+      <tr>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          pageSizeOptions
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          number[]
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          [5, 10, 20, 50]
+        </td>
+        <td className="py-2 px-4 border-b border-gray-300 dark:border-gray-700">
+          List of selectable values for rows per page in the dropdown.
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</Box>
+
 
         {/* -Complete code section */}
 
@@ -219,138 +336,9 @@ export default function FloatingToolbarDocs() {
         </Typography>
 
         <CodeBlock
-          filename="breadcrumb.tsx"
+          filename="pagination.tsx"
           language="tsx"
-          code= { `
-                     
-                "use client";
-           
-              import React from "react";
-               import {
-             Breadcrumbs,
-             Link,
-             Typography,
-             Box,
-             useMediaQuery,
-             useTheme,
-           } from "@mui/material";
-           import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-           import { usePathname } from "next/navigation";
-           
-           export interface CrumbItem {
-             label: string;
-             href?: string;
-           }
-           
-           interface BreadcrumbNavProps {
-             items: CrumbItem[];
-             separator?: React.ReactNode;
-             truncate?: boolean;
-             schema?: boolean;
-              activeColor?: string; 
-           }
-           
-           export default function BreadcrumbNav({
-             items,
-             separator = <NavigateNextIcon fontSize="small" />,
-             truncate = true,
-             schema = true,
-             activeColor = "#e63946",
-           }: BreadcrumbNavProps) {
-             const theme = useTheme();
-             const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
-             const currentPath = usePathname();
-           
-             // SEO Schema (JSON-LD)
-             const schemaData = schema
-               ? {
-                   "@context": "https://schema.org",
-                   "@type": "BreadcrumbList",
-                   itemListElement: items.map((item, index) => ({
-                     "@type": "ListItem",
-                     position: index + 1,
-                     name: item.label,
-                     item: item.href || undefined,
-                   })),
-                 }
-               : null;
-           
-             return (
-               <>
-                 {schema && (
-                   <script type="application/ld+json">
-                     {JSON.stringify(schemaData)}
-                   </script>
-                 )}
-           
-                 <Box
-                   sx={{
-                     width: "100%",
-                     overflowX: "auto",
-                     whiteSpace: "nowrap",
-                     py: 1,
-                   }}
-                 >
-                   <Breadcrumbs
-                     aria-label="breadcrumb navigation"
-                     separator={separator}
-                   >
-                     {items.map((item, index) => {
-                       const isLast = index === items.length - 1;
-                       const isActive=item.href=== currentPath;
-           
-                       const label = truncate
-                         ? item.label.length > 18 && isSmall
-                           ? item.label.slice(0, 15) + "..."
-                           : item.label
-                         : item.label;
-           
-                       if (!isLast && item.href) {
-                         return (
-                           <Link
-                             key={index}
-                             underline="hover"
-                             color="inherit"
-                             href={item.href}
-                             sx={{
-                               fontSize: isSmall ? "0.85rem" : "1rem",
-                               maxWidth: 150,
-                               overflow: "hidden",
-                               color: isActive ? activeColor : "inherit",
-                               textOverflow: "ellipsis",
-                               fontWeight: isActive ?"700":"400",
-                             }}
-                           >
-                             {label}
-                           </Link>
-                         );
-                       }
-           
-                       return (
-                         <Typography
-                           key={index}
-                           color="text.primary"
-                           sx={{
-                              color: activeColor, 
-                             fontSize: isSmall ? "0.9rem" : "1rem",
-                             maxWidth: 180,
-                             overflow: "hidden",
-                             textOverflow: "ellipsis",               
-                             fontWeight: isActive ? "700" : "500",
-                           }}
-                         >
-                           {label}
-                         </Typography>
-                       );
-                     })}
-                   </Breadcrumbs>
-                 </Box>
-               </>
-             );
-           }
-           
-            
-          `}
+          code= {    code     }
         />
       </section>
     </DocsLayout>
