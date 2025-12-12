@@ -59,5 +59,47 @@ href: "/ansassets/guage-meter/meters",
 },
 
 
+//  Accordians
+
+{
+  id:"accodrions",
+  name:"Accordians",
+  description:"Accordians are used to display a list of items with a title and a description.",
+  category:"UI",
+  href:"/ansassets/accordians/accordian",
+},
+
+
+// badge 
+
+{
+  id:"badge",
+  name:"Badge",
+  description:"Badge component for display small count or status information, such as an icon or button.",
+  category:"UI",
+  href:"/ansassets/badge/badge",
+},
+
+// Color Picker
+
+{
+  id:"color-picker",
+  name:"Color Picker",
+  description:"Color Picker is a customizable React color picker component built using MUI and react-color.",
+  category:"UI",
+  href:"/ansassets/color-picker/colorpicker", 
+},
+
+
+
+
+
+
+
+
+
+
+
+
 // Add more components below. Adding an object here will auto-show on the landing page.
 ];
