@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "title": "What is React and why is it used?",
+    "content": "React is a JavaScript library for building user interfaces. It helps create fast, scalable, and reusable UI components using a virtual DOM."
+  },
+  {
+    "id": 2,
+    "title": "What are React Hooks?",
+    "content": "Hooks are functions like useState, useEffect, and useContext that allow you to use React features without writing class components."
+  },
+  {
+    "id": 3,
+    "title": "What is the Virtual DOM in React?",
+    "content": "The Virtual DOM is a lightweight copy of the real DOM. React uses it to update only the necessary parts of the UI, improving performance."
+  },
+  {
+    "id": 4,
+    "title": "What is the difference between state and props?",
+    "content": "Props are read-only inputs passed to components, while state is internal data managed inside a component and can change over time."
+  },
+  {
+    "id": 5,
+    "title": "What is JSX in React?",
+    "content": "JSX is a syntax extension that allows writing HTML-like code inside JavaScript. It makes UI code more readable and easier to maintain."
+  },
+  {
+    "id": 6,
+    "title": "What is useEffect used for?",
+    "content": "useEffect lets you perform side effects such as data fetching, event listeners, subscriptions, and updating the document title."
+  },
+  {
+    "id": 7,
+    "title": "What are React components?",
+    "content": "Components are independent, reusable UI pieces. They can be functional or class-based, and they return elements describing what should appear on screen."
+  },
+  {
+    "id": 8,
+    "title": "What is React Router?",
+    "content": "React Router is a library for handling routing in React applications. It helps create single-page app navigation without page reloads."
+  },
+  {
+    "id": 9,
+    "title": "What is Redux and why is it used with React?",
+    "content": "Redux is a predictable state management library. It helps manage application-wide state in a centralized store."
+  },
+  {
+    "id": 10,
+    "title": "What is the difference between useCallback and useMemo?",
+    "content": "useCallback memoizes functions to prevent unnecessary re-renders, while useMemo memoizes values or computed results."
+  }
+]

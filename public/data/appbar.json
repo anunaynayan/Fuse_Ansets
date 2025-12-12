@@ -1,0 +1,46 @@
+{
+  
+  "companyName": "Anslation",
+  "menuItems": [
+    { "label": "Home", "path": "/" },
+    { "label": "About", "path": "/about" },
+    {
+      "label": "Projects",
+      "dropdown": [
+        { "name": "AI Dashboard", "path": "/projects/ai-dashboard" },
+        { "name": "Portfolio Website", "path": "/projects/portfolio" },
+        { "name": "E-commerce App", "path": "/projects/ecommerce" }
+      ]
+    },
+    {
+      "label":"Services", 
+      "dropdown":[
+        { "name": "Consulting", "path": "/services/consulting" },
+        { "name": "Development", "path": "/services/development" },
+        { "name": "Design", "path": "/services/design" }
+      ]
+      
+       
+       
+      
+    },
+    
+    {
+      "label": "Blog",  "path": "/blog"
+      
+    },
+    {
+      "label": "Careers", "path": "/careers"
+    },
+     { "label": "Contact us", "path": "/contact" }
+    
+   
+  ],
+  "userMenu": {
+    "avatar": "people",
+    "options": [
+     { "label": "Settings", "action": "settings", "icon": "Settings" },
+    { "label": "Logout", "action": "logout", "icon": "Logout" }
+    ]
+  }
+}
