@@ -136,6 +136,50 @@ const navigationConfig: FuseNavItemType[] = [
         type: "item",
         url: "/ansassets/guage-meter/meters",
       },
+      {
+        id: "ansassets-navComps",
+        title: "Feedback & Navigation Components",
+        type: "collapse",
+        // url: "/ansassets/guage-meter/meters",
+        children:[
+          
+            {
+            id: "snackbar",
+            title: "Snackbar",
+            type: "item",
+            url: "/ansassets/feedbackandnavcomps/snackbar",
+            end: true,
+          },
+           {
+            id: "alert",
+            title: "Alert",
+            type: "item",
+            url: "/ansassets/feedbackandnavcomps/alert",
+            end: true,
+          },
+          {
+            id: "banner",
+            title: "Banner",
+            type: "item",
+            url: "/ansassets/feedbackandnavcomps/banner",
+            end: true,
+          },
+          {
+            id: "dialog",
+            title: "Dialog",
+            type: "item",
+            url: "/ansassets/feedbackandnavcomps/dialog",
+            end: true,
+          },
+          {
+            id: "modal",
+            title: "Modal",
+            type: "item",
+            url: "/ansassets/feedbackandnavcomps/modals",
+            end: true,
+          },
+        ]
+      },
     ],
   },
 ];
