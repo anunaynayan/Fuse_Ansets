@@ -70,31 +70,34 @@ export default function DropdownMenu({
             dense: size === "dense",
 
             onKeyDown: (e: any) => {
-              const list = level.items.filter((item) => !item.divider && !item.disabled);
-              const currentIndex = list.findIndex((it, i) => {
-                const element = e.currentTarget.children[i];
-                return element === document.activeElement;
+              const focusableItems = level.items.filter((item) => !item.divider && !item.disabled);
+              const focusableElements = Array.from(e.currentTarget.children).filter((_, i) => {
+                const item = level.items[i];
+                return item && !item.divider && !item.disabled;
               });
+
+              const activeElement = document.activeElement;
+              const currentIndex = focusableElements.findIndex((el) => el === activeElement);
 
               // Custom keyboard navigation
               switch (e.key) {
                 case "ArrowDown":
                   e.preventDefault();
-                  const next = (currentIndex + 1) % list.length;
-                  e.currentTarget.children[next]?.focus();
+                  const next = (currentIndex + 1) % focusableElements.length;
+                  focusableElements[next]?.focus();
                   break;
 
                 case "ArrowUp":
                   e.preventDefault();
-                  const prev = (currentIndex - 1 + list.length) % list.length;
-                  e.currentTarget.children[prev]?.focus();
+                  const prev = (currentIndex - 1 + focusableElements.length) % focusableElements.length;
+                  focusableElements[prev]?.focus();
                   break;
 
                 case "ArrowRight":
                   e.preventDefault();
-                  const activeItem = list[currentIndex];
+                  const activeItem = focusableItems[currentIndex];
                   if (activeItem?.children) {
-                    const target = e.currentTarget.children[currentIndex];
+                    const target = focusableElements[currentIndex];
                     openMenu(target, activeItem.children, index + 1);
                   }
                   break;

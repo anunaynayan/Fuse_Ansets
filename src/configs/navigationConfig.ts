@@ -137,11 +137,11 @@ const navigationConfig: FuseNavItemType[] = [
         url: "/ansassets/guage-meter/meters",
       },
 
+      // Accordian
    {
   id: "ansassets-accordians-root",
   title: "Accordians",
   type: "collapse",
-  url: "/ansassets",
   children: [
     {
                id:"ansassets-accordians-accordian",
@@ -161,11 +161,13 @@ const navigationConfig: FuseNavItemType[] = [
     }
   ]
 },
+
+
+// Drawer
   {
   id: "ansassets-drawer-root",
   title: "Drawer  ",
   type: "collapse",
-  url: "/ansassets",
   children: [
     {
                id:"ansassets-drawer-drawer",
@@ -187,12 +189,11 @@ const navigationConfig: FuseNavItemType[] = [
 },
 
 
-
+// rating star
 {
   id: "ansassets-rating-star",
   title: "Rating Star ", 
   type: "collapse",
-  url: "/ansassets",
   children: [
     {
                id:"ansassets-rating-star-rating",
@@ -213,13 +214,12 @@ const navigationConfig: FuseNavItemType[] = [
   ]
 },
 
-
+// toast component
 
 {
   id: "ansassets-toast-root",
   title: "Toast  ",
   type: "collapse",
-  url: "/ansassets",
   children: [
     {
                id:"ansassets-toast-toast",
@@ -248,7 +248,7 @@ const navigationConfig: FuseNavItemType[] = [
   id: "ansassets-tooltip-root",
   title: "ToolTip  ",
   type: "collapse",
-  url: "/ansassets",
+  
   children: [
     {
                id:"ansassets-tooltip-tooltip",
@@ -277,7 +277,7 @@ const navigationConfig: FuseNavItemType[] = [
   id: "ansassets-loader-root",
   title: "Loader ",
   type: "collapse",
-  url: "/ansassets",
+  
   children: [
     {
                id:"ansassets-loader-loader",
@@ -303,7 +303,7 @@ const navigationConfig: FuseNavItemType[] = [
   id: "ansassets-succespage-root",
   title: "Success Page  ",
   type: "collapse",
-  url: "/ansassets",
+  
   children: [
     {
                id:"ansassets-succespage-successpage",
@@ -329,7 +329,7 @@ const navigationConfig: FuseNavItemType[] = [
   id: "ansassets-badge-root",
   title: "Badge  ",
   type: "collapse",
-  url: "/ansassets",
+ 
   children: [
     {
                id:"ansassets-badge-badge",
@@ -355,7 +355,6 @@ const navigationConfig: FuseNavItemType[] = [
   id: "ansassets-date-picker-root",
   title: "Date Picker  ",
   type: "collapse",
-  url: "/ansassets",
   children: [
     {
                id:"ansassets-date-picker-datepicker", 
@@ -382,7 +381,7 @@ const navigationConfig: FuseNavItemType[] = [
     id: "ansassets-color-picker-root",
     title:"Color Picker",
     type: "collapse",
-    url: "/ansassets",
+   
     children: [
       {
                  id:"ansassets-color-picker-colorpicker",
@@ -409,7 +408,7 @@ const navigationConfig: FuseNavItemType[] = [
     id: "ansassets-dialog-root",
     title:"Dialog",
     type: "collapse",
-    url: "/ansassets",
+    
     children: [
       {
                  id:"ansassets-dialog-dialog",
@@ -434,7 +433,7 @@ const navigationConfig: FuseNavItemType[] = [
     id: "ansassets-error-root",
     title:"Error",
     type: "collapse",
-    url: "/ansassets",
+    
     children: [
       {
                  id:"ansassets-error-error",
@@ -459,7 +458,7 @@ const navigationConfig: FuseNavItemType[] = [
   id: "ansassets-file-uploader-root",
   title:"File Uploader",
   type: "collapse",
-  url: "/ansassets",
+ 
   children: [
     {
                id:"ansassets-file-uploader-file",
@@ -484,7 +483,7 @@ const navigationConfig: FuseNavItemType[] = [
   id: "ansassets-progressbar-root",
   title:"Progressbar",
   type: "collapse",
-  url: "/ansassets",
+  
   children: [
     {
                id:"ansassets-progressbar-progress",
@@ -509,7 +508,7 @@ const navigationConfig: FuseNavItemType[] = [
     id: "ansassets-searchbar-root",
     title:"Search Bar",
     type: "collapse",
-    url: "/ansassets",
+   
     children: [
       {
                  id:"ansassets-searchbar-search",
@@ -535,7 +534,7 @@ const navigationConfig: FuseNavItemType[] = [
     id:"ansassets-form-components-root",
     title:"Form Components",
     type: "collapse",
-    url: "/ansassets",
+  
     children: [
       {
                  id:"ansassets-form-components-forms",
@@ -561,7 +560,6 @@ const navigationConfig: FuseNavItemType[] = [
     id:"ansassates-layouts-root",
     title:"Layouts",
     type:"collaspe",
-    url:"/ansassets",
     children:[
       {
         id:"ansassets-layouts-layout",
@@ -583,13 +581,12 @@ const navigationConfig: FuseNavItemType[] = [
       id:"ansassets-navigation",
       title:"Naviagtion",
       type:"collapse",
-      url:"/ansassets",
        children:[
         {
           id:"ansassets-navigation-floatingtoolbar",
           title:"Floating Toolbar",         
           type:"collapse",
-          url:"/ansassets/navigation/floatingtoolbar",
+          // url:"/ansassets/navigation/floatingtoolbar",
           end:true ,  
           children:[
             {
@@ -613,7 +610,7 @@ const navigationConfig: FuseNavItemType[] = [
           id: "ansasets-navigation-breadcrumb",
           title: "Breadcrumb",
           type: "collapse",
-          url: "/ansassets/navigation/breadcrumb",
+          // url: "/ansassets/navigation/breadcrumb",
           end: true,
           children: [
             {
@@ -637,7 +634,7 @@ const navigationConfig: FuseNavItemType[] = [
           id:"ansassets-navigation-dropdownMenu",
           title:"Dropdown Menu",
           type:"collapse",
-          url:"/ansassets/navigation/dropdownMenu",
+          // url:"/ansassets/navigation/dropdownMenu",
           end:true ,  
           children:[
             {
@@ -669,7 +666,7 @@ const navigationConfig: FuseNavItemType[] = [
           id:"ansassets-navigation-speeddial",
           title:"Speed Dial",
           type:"collapse",
-          url:"/ansassets/navigation/speeddial",
+          // url:"/ansassets/navigation/speeddial",
           end:true,
           children:[
             {
@@ -691,7 +688,7 @@ const navigationConfig: FuseNavItemType[] = [
           id:"ansssets-navigation-steper",
           title:"Steper Bar",
           type:"collapse",
-          url:"/ansassets/navigation/steper",
+          // url:"/ansassets/navigation/steper",
           children:[
             {
               id:"ansssets-navigation-steper-steperbar",
@@ -712,7 +709,7 @@ const navigationConfig: FuseNavItemType[] = [
           id:"ansassetes-navigation-pagination",
           title:"Pagination",
           type:"collapse",
-          url:"/ansassets/navigation/pagination",
+          // url:"/ansassets/navigation/pagination",
           children:[
             {
               id:"ansssets-navigation-pagination-pagination",
@@ -733,7 +730,7 @@ const navigationConfig: FuseNavItemType[] = [
     id:"ansassets-navigation-tabs",
     title:"Tabs",
     type:"collapse",
-    url:"/ansassets/navigation/tabs",
+    // url:"/ansassets/navigation/tabs",
     children:[
       {
         id:"ansssets-navigation-tabs-tab",
