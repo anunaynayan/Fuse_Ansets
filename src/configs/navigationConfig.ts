@@ -577,6 +577,7 @@ const navigationConfig: FuseNavItemType[] = [
    },
   
 // Navigation bar 
+
      {
       id:"ansassets-navigation",
       title:"Naviagtion",
