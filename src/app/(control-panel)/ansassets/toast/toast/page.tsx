@@ -4,10 +4,21 @@
 import React from "react";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { Toast } from "./toast";
+import Header from "@/components/Header";
 
 
 export default function App() {
   return (
+
+
+<div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 py-12 px-6">
+
+       <Header
+        title="Toast Component"
+        description="A toast is a small, non-intrusive notification that appears on the screen to provide feedback or information to users. It typically appears for a short duration and then disappears automatically."
+      />  
+
+    
     <Box
       sx={{
         display: "flex",
@@ -19,13 +30,7 @@ export default function App() {
         p: 3,
       }}
     >
-      <Typography variant="h4" fontWeight={700} gutterBottom>
-        Toast Component Demo
-      </Typography>
-
-      <Typography variant="subtitle1" sx={{ opacity: 0.7 }}>
-        Click any button to test the Toast System
-      </Typography>
+     
 
       {/* All Toast Buttons */}
       <Stack direction="row" spacing={2} flexWrap="wrap" justifyContent="center">
@@ -64,5 +69,6 @@ export default function App() {
 
       
     </Box>
+    </div>
   );
 }

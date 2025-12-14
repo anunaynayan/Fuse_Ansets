@@ -3,11 +3,17 @@
 import { Box, Typography } from "@mui/material";
 import CodeBlock from "@/components/documetation/CodeBlock";
 import DocsLayout from "@/components/documetation/DocsLayout";
-import DrawerPage from "../drawer/page";
+import CustomDrawer, { DrawerItem } from "../drawer/drawer";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 
 export default function DrawerDocs() {
+ const [menuItems, setMenuItems] = useState<DrawerItem[]>([]);
 
+  useEffect(() => {
+    axios.get("/data/menu.json").then((res) => setMenuItems(res.data));
+  }, []);
   
   
 
@@ -75,11 +81,13 @@ export default function DrawerDocs() {
           Preview
         </Typography>
 
-        
+        <Box className="mb-4 max-w-sm mx-auto text-center">
+ <CustomDrawer title="Main Menu" anchor="left" items={menuItems} />
 
-        <Box className=" h-80  ">
-              <DrawerPage/>
+
         </Box>
+
+       
 
         
       </section>

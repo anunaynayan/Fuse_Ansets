@@ -1,13 +1,19 @@
 "use client";
 
 import { Box, Typography } from "@mui/material";
-import CodeBlock from "./codeblock";
-import DocsLayout from "./docslayout";
+
 import SuccessBox from "../successpage/successpage";
+import DocsLayout from "@/components/documetation/DocsLayout";
+import CodeBlock from "@/components/documetation/CodeBlock";
 
 export default function TooltipDocs() {
   return (
-    <DocsLayout>
+    <DocsLayout
+      title="Success Page Component"
+        backLink="/ansassets/successpage/successpage"
+        backText="Back to Success Page"
+    
+    >
       {/* ------------------------ DESCRIPTION ------------------------ */}
       <Typography className="text-gray-700 dark:text-gray-100 mb-10 leading-relaxed">
         Successpage component is used to display a success message or confirmation to users after they have completed a specific action or process within an application. It typically includes visual cues such as icons, colors, and text to convey a positive outcome, enhancing the user experience by providing clear feedback on their actions.

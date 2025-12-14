@@ -7,7 +7,13 @@ import { Box, Typography, Zoom, useMediaQuery, useTheme, Avatar } from "@mui/mat
 export interface ResponsiveBadgeProps {
   label?: number | string | null;
   max?: number;
-  variant?: "standard" | "dot";
+  variant?: "default"
+  | "secondary"
+  | "success"
+  | "warning"
+  | "destructive"
+  | "outline"
+  | "dot";
   position?: "top-right" | "top-left" | "bottom-right" | "bottom-left";
   color?: string;
   backgroundColor?: string;
@@ -19,7 +25,7 @@ export interface ResponsiveBadgeProps {
 export default function Badge({
   label = null,
   max = 99,
-  variant = "standard",
+  variant = "default",
   position = "top-right",
   color,
   backgroundColor,
@@ -99,7 +105,7 @@ export default function Badge({
             boxShadow: "0 2px 6px rgba(0,0,0,0.25)",
           }}
         >
-          {variant === "standard" && displayLabel}
+          {variant === "default" && displayLabel}
         </Box>
       </Zoom>
     </Box>

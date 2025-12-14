@@ -23,30 +23,6 @@
     "id": 5,
     "title": "What is JSX in React?",
     "content": "JSX is a syntax extension that allows writing HTML-like code inside JavaScript. It makes UI code more readable and easier to maintain."
-  },
-  {
-    "id": 6,
-    "title": "What is useEffect used for?",
-    "content": "useEffect lets you perform side effects such as data fetching, event listeners, subscriptions, and updating the document title."
-  },
-  {
-    "id": 7,
-    "title": "What are React components?",
-    "content": "Components are independent, reusable UI pieces. They can be functional or class-based, and they return elements describing what should appear on screen."
-  },
-  {
-    "id": 8,
-    "title": "What is React Router?",
-    "content": "React Router is a library for handling routing in React applications. It helps create single-page app navigation without page reloads."
-  },
-  {
-    "id": 9,
-    "title": "What is Redux and why is it used with React?",
-    "content": "Redux is a predictable state management library. It helps manage application-wide state in a centralized store."
-  },
-  {
-    "id": 10,
-    "title": "What is the difference between useCallback and useMemo?",
-    "content": "useCallback memoizes functions to prevent unnecessary re-renders, while useMemo memoizes values or computed results."
   }
+ 
 ]

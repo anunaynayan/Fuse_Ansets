@@ -115,7 +115,10 @@ export default function AccordiansDocs() {
           code={`          
            export default function App  () {            
               return (               
-                  <Accordion data={data}  />             
+                  <Accordion variant="bordered" />
+<Accordion variant="filled" />
+<Accordion variant="minimal" />
+<Accordion variant="faq" multiple />            
               );
             };
                        

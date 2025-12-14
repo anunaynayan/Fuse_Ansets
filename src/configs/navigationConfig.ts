@@ -313,10 +313,10 @@ const navigationConfig: FuseNavItemType[] = [
                end:true,
              }, 
     {
-      id: "ansassets-successpage-docs",
+      id: "ansassets-succespage-docs",
       title: "View Docs",
       type: "item",
-      url: "/ansassets/successpage/docs",
+      url: "/ansassets/succespage/docs",
       end: true,  
     },
   ]
@@ -587,7 +587,7 @@ const navigationConfig: FuseNavItemType[] = [
           id:"ansassets-navigation-floatingtoolbar",
           title:"Floating Toolbar",         
           type:"collapse",
-          // url:"/ansassets/navigation/floatingtoolbar",
+          url:"/ansassets/navigation/floatingtoolbar",
           end:true ,  
           children:[
             {
@@ -611,7 +611,7 @@ const navigationConfig: FuseNavItemType[] = [
           id: "ansasets-navigation-breadcrumb",
           title: "Breadcrumb",
           type: "collapse",
-          // url: "/ansassets/navigation/breadcrumb",
+          url: "/ansassets/navigation/breadcrumb",
           end: true,
           children: [
             {
@@ -635,7 +635,7 @@ const navigationConfig: FuseNavItemType[] = [
           id:"ansassets-navigation-dropdownMenu",
           title:"Dropdown Menu",
           type:"collapse",
-          // url:"/ansassets/navigation/dropdownMenu",
+          url:"/ansassets/navigation/dropdownMenu",
           end:true ,  
           children:[
             {
@@ -667,7 +667,7 @@ const navigationConfig: FuseNavItemType[] = [
           id:"ansassets-navigation-speeddial",
           title:"Speed Dial",
           type:"collapse",
-          // url:"/ansassets/navigation/speeddial",
+           url:"/ansassets/navigation/speeddial",
           end:true,
           children:[
             {
@@ -689,7 +689,7 @@ const navigationConfig: FuseNavItemType[] = [
           id:"ansssets-navigation-steper",
           title:"Steper Bar",
           type:"collapse",
-          // url:"/ansassets/navigation/steper",
+           url:"/ansassets/navigation/steper",
           children:[
             {
               id:"ansssets-navigation-steper-steperbar",
@@ -710,7 +710,7 @@ const navigationConfig: FuseNavItemType[] = [
           id:"ansassetes-navigation-pagination",
           title:"Pagination",
           type:"collapse",
-          // url:"/ansassets/navigation/pagination",
+           url:"/ansassets/navigation/pagination",
           children:[
             {
               id:"ansssets-navigation-pagination-pagination",
@@ -731,7 +731,7 @@ const navigationConfig: FuseNavItemType[] = [
     id:"ansassets-navigation-tabs",
     title:"Tabs",
     type:"collapse",
-    // url:"/ansassets/navigation/tabs",
+     url:"/ansassets/navigation/tabs",
     children:[
       {
         id:"ansssets-navigation-tabs-tab",
