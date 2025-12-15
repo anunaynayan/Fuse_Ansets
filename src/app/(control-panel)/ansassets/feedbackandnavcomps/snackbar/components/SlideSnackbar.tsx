@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import BaseSnackbar from "./BaseSnackbar";
 
 export function SlideSnackbar({ onClose }: { onClose?: () => void }) {
-  // Wrap BaseSnackbar in a horizontal slide animation
   return (
     <motion.div initial={{ x: 300, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: 300, opacity: 0 }} transition={{ type: "spring", stiffness: 90 }}>
       <BaseSnackbar

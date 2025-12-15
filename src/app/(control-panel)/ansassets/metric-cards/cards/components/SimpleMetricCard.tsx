@@ -9,9 +9,9 @@ type Metric = {
   title: string;
   value: number;
   change: number;
-  unit?: string; // prefix like "$"
+  unit?: string; 
   color: string;
-  icon: string; // name from @mui/icons-material, e.g. "TrendingUp"
+  icon: string; 
 };
 
 const DEFAULT_ICON = "Insights"; // any valid icon name

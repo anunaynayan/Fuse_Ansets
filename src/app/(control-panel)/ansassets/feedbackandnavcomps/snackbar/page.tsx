@@ -7,7 +7,7 @@ import { Typography, Box } from "@mui/material";
 import { useEffect, useState } from "react";
 
 export default function SnackbarDocsPage() {
-  const [fullSource, setFullSource] = useState<string>("");
+  const [fullSource, setFullSource] = useState("");
 
   useEffect(() => {
     fetch("/snippets/snackbars-full.txt")
@@ -18,68 +18,222 @@ export default function SnackbarDocsPage() {
 
   return (
     <DocsLayout
-      title="Snackbar Documentation"
-      backLink="/ansassets/feedbackandnavcomps"
+      title="Snackbar Components"
+      backLink="/ansassets/feedbackandnavcomps/snackbar"
       backText="Back to Components"
     >
       {/* INTRO */}
-      <Typography className="text-gray-700 dark:text-gray-100 mb-10 leading-relaxed">
-        A complete suite of snackbar / toast components built using
-        <strong> Tailwind</strong>, <strong>Framer Motion</strong>, and
-        <strong> MUI Icons</strong>. Variants include basic, animated, glow,
-        pulse, floating, and sliding effects.
+      <Typography className="text-gray-700 dark:text-gray-100 mb-12 leading-relaxed">
+        A production-ready collection of snackbar / toast components built with
+        <strong> Tailwind CSS</strong>, <strong>Framer Motion</strong>, and
+        <strong> MUI Icons</strong>.
+        <br />
+        <br />
+        These snackbars are **self-contained**, require **minimal setup**, and
+        can be copied directly into any React or Next.js project.
       </Typography>
 
-      {/* DEPENDENCIES */}
+      {/* INSTALLATION */}
       <section className="mb-16">
         <Typography variant="h4" className="font-semibold mb-4">
-          Dependencies
+          Installation
         </Typography>
 
-        <Typography className="mb-2">Required:</Typography>
-        <ul className="list-disc pl-6 space-y-2">
-          <li><strong>@mui/icons-material</strong></li>
-          <li><strong>@mui/material</strong></li>
-          <li><strong>framer-motion</strong></li>
-          <li><strong>react</strong></li>
-          <li><strong>next</strong></li>
-        </ul>
+        <Typography className="mb-3">
+          Install the required dependencies:
+        </Typography>
 
         <CodeBlock
-          filename="Install"
+          filename="terminal"
           language="bash"
           code={`npm install @mui/material @mui/icons-material framer-motion`}
         />
       </section>
 
-      {/* DEMO EXAMPLES */}
-      <section className="mb-16">
+      {/* BASIC USAGE */}
+      <section className="mb-20">
         <Typography variant="h4" className="font-semibold mb-6">
-          Example Usage
+          Basic Usage Pattern
         </Typography>
 
-        <Box className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow max-w-xl mx-auto mb-6">
-          <Typography className="mb-4 font-medium">Quick Demo</Typography>
-          <DemoShowcase />
-        </Box>
+        <Typography className="mb-4 text-gray-600 dark:text-gray-300">
+          All snackbars follow the same usage pattern:
+        </Typography>
 
         <CodeBlock
-          filename="Example Usage"
+          filename="usage.tsx"
           language="tsx"
-          code={`const [open, setOpen] = useState(false);
+          code={`import { useState } from "react";
+import { SuccessSnackbar } from "./SuccessSnackbar";
 
-<button onClick={() => setOpen(true)}>Show Snackbar</button>
+export default function Example() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <button onClick={() => setOpen(true)}>
+        Show Snackbar
+      </button>
+
+      {open && (
+        <SuccessSnackbar
+          message="Operation completed successfully"
+          onClose={() => setOpen(false)}
+        />
+      )}
+    </>
+  );
+}`}
+        />
+      </section>
+
+      {/* INDIVIDUAL SNACKBARS */}
+      <section className="mb-20">
+        <Typography variant="h4" className="font-semibold mb-8">
+          Snackbar Variants
+        </Typography>
+
+        {/* SUCCESS */}
+        <Typography variant="h6" className="mb-3">
+          Success Snackbar
+        </Typography>
+        <CodeBlock
+          filename="SuccessSnackbar.tsx"
+          language="tsx"
+          code={`import { SuccessSnackbar } from "@/components/snackbars/SuccessSnackbar";
 
 {open && (
-  <SuccessSnackbar onClose={() => setOpen(false)} />
+  <SuccessSnackbar
+    message="Saved successfully"
+    onClose={() => setOpen(false)}
+  />
+)}`}
+        />
+
+        {/* ERROR */}
+        <Typography variant="h6" className="mt-10 mb-3">
+          Error Snackbar
+        </Typography>
+        <CodeBlock
+          filename="ErrorSnackbar.tsx"
+          language="tsx"
+          code={`import { ErrorSnackbar } from "@/components/snackbars/ErrorSnackbar";
+
+{open && (
+  <ErrorSnackbar
+    message="Something went wrong"
+    onClose={() => setOpen(false)}
+  />
+)}`}
+        />
+
+        {/* WARNING */}
+        <Typography variant="h6" className="mt-10 mb-3">
+          Warning Snackbar
+        </Typography>
+        <CodeBlock
+          filename="WarningSnackbar.tsx"
+          language="tsx"
+          code={`import { WarningSnackbar } from "@/components/snackbars/WarningSnackbar";
+
+{open && (
+  <WarningSnackbar
+    message="Check your inputs"
+    onClose={() => setOpen(false)}
+  />
+)}`}
+        />
+
+        {/* INFO */}
+        <Typography variant="h6" className="mt-10 mb-3">
+          Info Snackbar
+        </Typography>
+        <CodeBlock
+          filename="InfoSnackbar.tsx"
+          language="tsx"
+          code={`import { InfoSnackbar } from "@/components/snackbars/InfoSnackbar";
+
+{open && (
+  <InfoSnackbar
+    message="New update available"
+    onClose={() => setOpen(false)}
+  />
+)}`}
+        />
+
+        {/* GLOW */}
+        <Typography variant="h6" className="mt-10 mb-3">
+          Glow Snackbar
+        </Typography>
+        <CodeBlock
+          filename="GlowSnackbar.tsx"
+          language="tsx"
+          code={`import { GlowSnackbar } from "@/components/snackbars/GlowSnackbar";
+
+{open && (
+  <GlowSnackbar
+    message="Premium feature unlocked"
+    onClose={() => setOpen(false)}
+  />
+)}`}
+        />
+
+        {/* PULSE */}
+        <Typography variant="h6" className="mt-10 mb-3">
+          Border Pulse Snackbar
+        </Typography>
+        <CodeBlock
+          filename="BorderPulseSnackbar.tsx"
+          language="tsx"
+          code={`import { BorderPulseSnackbar } from "@/components/snackbars/BorderPulseSnackbar";
+
+{open && (
+  <BorderPulseSnackbar
+    message="Action required"
+    onClose={() => setOpen(false)}
+  />
+)}`}
+        />
+
+        {/* FLOATING */}
+        <Typography variant="h6" className="mt-10 mb-3">
+          Floating Snackbar
+        </Typography>
+        <CodeBlock
+          filename="FloatingSnackbar.tsx"
+          language="tsx"
+          code={`import { FloatingSnackbar } from "@/components/snackbars/FloatingSnackbar";
+
+{open && (
+  <FloatingSnackbar
+    message="Message sent"
+    onClose={() => setOpen(false)}
+  />
+)}`}
+        />
+
+        {/* SLIDE */}
+        <Typography variant="h6" className="mt-10 mb-3">
+          Slide Snackbar
+        </Typography>
+        <CodeBlock
+          filename="SlideSnackbar.tsx"
+          language="tsx"
+          code={`import { SlideSnackbar } from "@/components/snackbars/SlideSnackbar";
+
+{open && (
+  <SlideSnackbar
+    message="Logged in successfully"
+    onClose={() => setOpen(false)}
+  />
 )}`}
         />
       </section>
 
-      {/* PROPS TABLE */}
-      <section className="mb-16">
+      {/* PROPS */}
+      <section className="mb-20">
         <Typography variant="h4" className="font-semibold mb-6">
-          Base Props
+          Common Props
         </Typography>
 
         <table className="w-full border-collapse bg-gray-100 dark:bg-gray-800 text-sm rounded-xl overflow-hidden">
@@ -87,14 +241,29 @@ export default function SnackbarDocsPage() {
             <tr className="bg-gray-200 dark:bg-gray-700 text-left">
               <th className="p-3">Prop</th>
               <th className="p-3">Type</th>
-              <th className="p-3">Default</th>
+              <th className="p-3">Required</th>
               <th className="p-3">Description</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td className="p-3">onClose</td><td className="p-3"> void</td><td className="p-3">required</td><td className="p-3">Closes the snackbar</td></tr>
-            <tr><td className="p-3">message</td><td className="p-3">string</td><td className="p-3">""</td><td className="p-3">Text displayed in snackbar</td></tr>
-            <tr><td className="p-3">duration</td><td className="p-3">number</td><td className="p-3">3000</td><td className="p-3">Auto-hide timeout</td></tr>
+            <tr>
+              <td className="p-3">onClose</td>
+              <td className="p-3">() =&gt; void</td>
+              <td className="p-3">Yes</td>
+              <td className="p-3">Callback to close the snackbar</td>
+            </tr>
+            <tr>
+              <td className="p-3">message</td>
+              <td className="p-3">string</td>
+              <td className="p-3">No</td>
+              <td className="p-3">Text shown inside the snackbar</td>
+            </tr>
+            <tr>
+              <td className="p-3">duration</td>
+              <td className="p-3">number</td>
+              <td className="p-3">No</td>
+              <td className="p-3">Auto dismiss timeout (default: 3000ms)</td>
+            </tr>
           </tbody>
         </table>
       </section>
@@ -102,19 +271,18 @@ export default function SnackbarDocsPage() {
       {/* PLAYGROUND */}
       <section className="mb-20">
         <Typography variant="h4" className="font-semibold mb-6">
-          Playground
-        </Typography>
-        <Typography className="mb-4">
-          Test all variants, positions, colors, durations, and behavior.
+          Live Playground
         </Typography>
 
-        <Playground />
+        <Box className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow">
+          <Playground />
+        </Box>
       </section>
 
       {/* FULL SOURCE */}
-      <section className="mb-20">
+      <section className="mb-24">
         <Typography variant="h4" className="font-semibold mb-4">
-          Full Component Source Code
+          Full Source Code
         </Typography>
 
         <CodeBlock
@@ -124,50 +292,5 @@ export default function SnackbarDocsPage() {
         />
       </section>
     </DocsLayout>
-  );
-}
-
-/* ------------------------------------------------------------
-   Inline Demo Showcase Component
-------------------------------------------------------------- */
-
-function DemoShowcase() {
-  const [open, setOpen] = useState(false);
-  const [type, setType] = useState<string>("success");
-
-  const components: Record<string, any> = {
-    success: require("./components/SuccessSnackbar").default,
-    error: require("./components/ErrorSnackbar").default,
-    warning: require("./components/WarningSnackbar").default,
-    info: require("./components/InfoSnackbar").default,
-    glow: require("./components/GlowSnackbar").GlowSnackbar,
-    pulse: require("./components/BorderPulseSnackbar").BorderPulseSnackbar,
-    floating: require("./components/FloatingSnackbar").FloatingSnackbar,
-    slide: require("./components/SlideSnackbar").SlideSnackbar,
-  };
-
-  const ActiveComponent = components[type];
-
-  return (
-    <div className="space-y-4">
-      <div className="flex gap-2 flex-wrap">
-        {Object.keys(components).map((key) => (
-          <button
-            key={key}
-            onClick={() => {
-              setType(key);
-              setOpen(true);
-            }}
-            className="px-3 py-1 bg-neutral-800 text-white rounded text-sm capitalize"
-          >
-            {key}
-          </button>
-        ))}
-      </div>
-
-      {open && ActiveComponent && (
-        <ActiveComponent onClose={() => setOpen(false)} />
-      )}
-    </div>
   );
 }
