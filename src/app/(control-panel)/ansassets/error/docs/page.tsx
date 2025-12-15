@@ -3,7 +3,7 @@
 import { Box, Typography } from "@mui/material";
 import CodeBlock from "./codeblock";
 import DocsLayout from "./docslayout";
-import ErrorPage from "../error/error";
+import ErrorPages from "../error/error4";
 
 export default function ErrorPageDocs() {
   return (
@@ -57,7 +57,7 @@ export default function ErrorPageDocs() {
         </Typography>
 
         <Box className="mb-6 max-w-md mx-auto border rounded-xl overflow-hidden shadow-lg">
-          <ErrorPage />
+          <ErrorPages />
         </Box>
       </section>
 

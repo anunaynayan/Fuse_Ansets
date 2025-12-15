@@ -5,11 +5,16 @@ import { Box, Typography } from "@mui/material";
 import ColorPicker from "../colorpicker/colorpicker";
 import DocsLayout from "@/components/documetation/DocsLayout";
 import CodeBlock from "@/components/documetation/CodeBlock";
+import { useEffect, useState } from "react";
 
 export default function ColorPickerDocs() {
-  const colorPickerSource = `...your full colorpicker code here...`;
-
- 
+   const [code, setCode] = useState<string>("");
+    
+      useEffect(() => {
+        fetch("/snippets/colorpicker.txt")
+          .then((r) => r.text())
+          .then(setCode);
+      }, []);
 
   return (
     <DocsLayout
@@ -187,7 +192,7 @@ export default function App() {
         <CodeBlock
           filename="colorpicker.tsx"
           language="tsx"
-          code={colorPickerSource}
+          code={code}
         />
       </section>
     </DocsLayout>
