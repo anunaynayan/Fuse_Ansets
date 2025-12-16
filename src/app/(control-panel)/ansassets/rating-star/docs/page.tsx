@@ -1,16 +1,22 @@
 "use client";
 
 import { Box, Typography } from "@mui/material";
-import CodeBlock from "./codeblock";
-import DocsLayout from "./docslayout";
+
 import RatingStars from "../rating/rating";
 import { useState } from "react";
+import DocsLayout from "@/components/documetation/DocsLayout";
+import CodeBlock from "@/components/documetation/CodeBlock";
 
 export default function DrawerDocs() {
   const [rating, setRating] = useState(3.5);
 
   return (
-    <DocsLayout>
+    <DocsLayout
+
+        title="Rating Star Documentation"
+        backLink="/ansassets/rating-star/rating"
+        backText="Back to Rating Star" 
+    >
       <Typography className="text-gray-700 dark:text-gray-100 mb-10 leading-relaxed">
        Rating Star is a UI component used to visually represent user feedback or product quality using star icons. It allows users to select or view a rating on a scale . This component is often used in reviews, surveys, and e-commerce interfaces to make feedback quick, intuitive, and easy to understand.
       </Typography>
@@ -65,7 +71,71 @@ export default function DrawerDocs() {
           />
         </Box>
 
+    
+      </section>
+
+  {/* Rating Star Use Section  */}
+
+      <section id="ratingstar" className="mb-16">
+        <Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
+          Example Usage
+        </Typography>
+
+        {/* <Typography className="text-gray-600 dark:text-gray-100 mb-4">
+          The Rating Star component allows users to provide feedback using star ratings.
+        </Typography>
+
+        <Box className="mb-4 max-w-sm mx-auto">
+          <RatingStars
+            value={rating}
+            max={5}
+            size={50}
+            onChange={(val) => setRating(val)}
+          />
+        </Box> */}
+
         <CodeBlock
+          filename="App.tsx"
+          language="tsx"
+          code={`"use client";
+
+import { useState } from "react";
+import { Box, Typography } from "@mui/material";
+import RatingStars from "./rating";
+
+
+const App = () => {
+  const [rating, setRating] = useState(3.5);
+
+  return (
+    <Box p={3}> 
+      
+      <RatingStars
+        value={rating}
+        max={5}
+        size={50}
+        onChange={(val) => setRating(val)}
+      />
+      <Typography mt={2}>
+        Your rating: {rating}
+      </Typography>
+    </Box>
+  );
+};
+
+export default App;`}
+        />
+      </section>
+
+
+
+      <section id="props" className="mb-16">
+
+<Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
+        Complete Code
+        </Typography>
+        
+    <CodeBlock
           filename="Rating.tsx"
           language="tsx"
           code={`"use client";
@@ -150,60 +220,7 @@ const RatingStars: React.FC<RatingStarsProps> = ({
 
 export default RatingStars;`}
         />
-      </section>
-
-  {/* Rating Star Use Section  */}
-
-      <section id="ratingstar" className="mb-16">
-        <Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
-          Rating Star Usage
-        </Typography>
-
-        <Typography className="text-gray-600 dark:text-gray-100 mb-4">
-          The Rating Star component allows users to provide feedback using star ratings.
-        </Typography>
-
-        <Box className="mb-4 max-w-sm mx-auto">
-          <RatingStars
-            value={rating}
-            max={5}
-            size={50}
-            onChange={(val) => setRating(val)}
-          />
-        </Box>
-
-        <CodeBlock
-          filename="App.tsx"
-          language="tsx"
-          code={`"use client";
-
-import { useState } from "react";
-import { Box, Typography } from "@mui/material";
-import RatingStars from "./rating";
-
-
-const App = () => {
-  const [rating, setRating] = useState(3.5);
-
-  return (
-    <Box p={3}> 
-      
-      <RatingStars
-        value={rating}
-        max={5}
-        size={50}
-        onChange={(val) => setRating(val)}
-      />
-      <Typography mt={2}>
-        Your rating: {rating}
-      </Typography>
-    </Box>
-  );
-};
-
-export default App;`}
-        />
-      </section>
+        </section>
 
 
 

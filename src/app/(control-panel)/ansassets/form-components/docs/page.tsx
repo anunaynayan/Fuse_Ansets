@@ -11,15 +11,32 @@ import DateRangePickerApp from "../forms/components/date-range-picker";
 import MarkdownEditor from "../forms/components/makrdowneditor";
 import { Dropdown } from "../forms/components/dropDown";
 import { Toggle } from "../forms/components/toggle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NumberInput } from "../forms/components/numberInput";
+import CheckBox from "../forms/components/checkBox";
 
 export default function DrawerDocs() {
 
   const [isEnabled, setIsEnabled] = useState(false);
 
+const [code, setCode] = useState<string>("");
+  
+    useEffect(() => {
+      fetch("/snippets/numberinput.txt")
+        .then((r) => r.text())
+        .then(setCode);
+    }, []);
+  
+
+
+
+
   return (
-    <DocsLayout>
+    <DocsLayout
+     title="Form Component Documentation"
+        backLink="/ansassets/form-components/forms"
+        backText="Back to Form Components"  
+    >
       <Typography className="text-gray-700 dark:text-gray-100 mb-10 leading-relaxed">
         form components are essential UI elements that allow users to input,
         upload, and submit data. This documentation covers various form
@@ -780,20 +797,65 @@ export function Toggle({
 <Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
         Complete Component Code
   </Typography>
-
-
-
-
         <CodeBlock
-          filename="toggle.tsx"
+          filename="numberinput.tsx"
           language="tsx"
-          code={`
-
-          
-            
-           `}
+          code={code}
         />
       </section>
+
+{/* Check BOx */}
+
+
+           <section id="datepicker" className="mb-16">
+        <Typography
+          variant="h4"
+          className="font-semibold mb-4 text-gray-900 dark:text-gray-100"
+        >
+          CheckBox 
+        </Typography>
+
+        <Typography className="text-gray-600 dark:text-gray-100 mb-4">
+          A checkbox is a user interface (UI) control that allows users to select one or more options from a given list. It is commonly used in forms, settings, and preference panels.
+        </Typography>
+
+        <Typography
+          variant="body1"
+          className="mt-4 mb-4 text-gray-600 dark:text-gray-100"
+        >
+          Install:
+        </Typography>
+
+        <CodeBlock
+          filename="Install Command"
+          language="bash"
+          code={`npm install  @mui/material @mui/icons-material`}
+        />
+
+        <Typography
+          variant="h4"
+          className="font-semibold mb-4 text-gray-900 dark:text-gray-100"
+        >
+          Preview
+        </Typography>
+
+        <Box className="mb-4 max-w-sm mx-auto">
+        <CheckBox label="Accept Terms and Conditions" />
+        </Box>
+
+
+<Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
+        Complete Component Code
+  </Typography>
+        <CodeBlock
+          filename="numberinput.tsx"
+          language="tsx"
+          code={``}
+        />
+      </section>
+
+
+
 
 
       {/*  */}

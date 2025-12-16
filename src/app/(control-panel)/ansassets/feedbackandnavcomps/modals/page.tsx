@@ -1,75 +1,55 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button } from "@mui/material";
-import { GlassModal } from "./components/GlassModal";
-import { GradientModal } from "./components/GradientModal";
-import { BorderedModal } from "./components/BorderedModal";
-import { ElevatedModal } from "./components/ElevatedModal";
+
+import { SimpleModal } from "./components/SimpleModal";
 import { AnimatedModal } from "./components/AnimatedModal";
+import { SoftGradientModal } from "./components/GradientModal";
+import { BorderedModal } from "./components/BorderedModal";
+import { ImageModal } from "./components/ImageModal";
+import Header from "./components/Header";
 
-export default function ModalShowcasePage() {
-  const [modal, setModal] = useState("");
-
-  const open = (id: string) => setModal(id);
-  const close = () => setModal("");
-
-  const variants = [
-    {
-      id: "glass",
-      title: "Glass Modal",
-      desc: "Frosted translucent modal with soft edges.",
-      component: GlassModal,
-    },
-    {
-      id: "gradient",
-      title: "Gradient Modal",
-      desc: "Beautiful gradient UI for modern dashboards.",
-      component: GradientModal,
-    },
-    {
-      id: "bordered",
-      title: "Bordered Modal",
-      desc: "Clean professional borders with high contrast.",
-      component: BorderedModal,
-    },
-    {
-      id: "elevated",
-      title: "Elevated Modal",
-      desc: "Dark theme modal with aggressive shadow depth.",
-      component: ElevatedModal,
-    },
-    {
-      id: "animated",
-      title: "Animated Modal",
-      desc: "Slide-up animation using Framer Motion.",
-      component: AnimatedModal,
-    },
-  ];
+export default function ModalsShowcasePage() {
+  const [open, setOpen] = useState<string | null>(null);
 
   return (
-    <div className="p-10 ">
-      <h1 className="text-3xl font-bold mb-8">Modal Variants Showcase</h1>
+    <div className="p-10 space-y-8">
+      <Header/>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {variants.map(({ id, title, desc, component: Component }) => (
-          <div
-            key={id}
-            className="rounded-2xl p-6 shadow-xl border border-gray-800 hover:border-gray-700 transition"
-          >
-            <h2 className="text-xl font-semibold mb-2">{title}</h2>
-            <p className="text-gray-400 mb-5">{desc}</p>
+      <p className="text-gray-500 max-w-xl">
+        A collection of reusable, production-ready modal variants.
+        Each modal is independent and copy-paste friendly.
+      </p>
 
-            <Button variant="contained" onClick={() => open(id)}>
-              Preview
-            </Button>
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <Button variant="contained" onClick={() => setOpen("simple")}>
+          Simple Modal
+        </Button>
 
-            <Component open={modal === id} onClose={close} title={title}>
-              {desc}
-            </Component>
-          </div>
-        ))}
+        <Button variant="contained" onClick={() => setOpen("animated")}>
+          Animated Modal
+        </Button>
+
+        <Button variant="contained" onClick={() => setOpen("gradient")}>
+          Soft Gradient Modal
+        </Button>
+
+        <Button variant="contained" onClick={() => setOpen("bordered")}>
+          Bordered Modal
+        </Button>
+
+        <Button variant="contained" onClick={() => setOpen("image")}>
+          Image Modal
+        </Button>
       </div>
+
+      {/* Modals */}
+      <SimpleModal open={open === "simple"} onClose={() => setOpen(null)} />
+      <AnimatedModal open={open === "animated"} onClose={() => setOpen(null)} />
+      <SoftGradientModal open={open === "gradient"} onClose={() => setOpen(null)} />
+      <BorderedModal open={open === "bordered"} onClose={() => setOpen(null)} />
+      <ImageModal open={open === "image"} onClose={() => setOpen(null)} />
     </div>
   );
 }

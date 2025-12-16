@@ -13,11 +13,24 @@ import ThumbUpAltIcon from "@mui/icons-material/ThumbUp";
 
 // SuccessBox Component
 import SuccessBox from "./successpage";
+import Header from "@/components/Header";
 
 export default function AppPage() {
   return (
+
+<div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 py-12 px-6">
+
+       <Header
+        title="Success Page"
+        description="A success page is a user interface element that displays a success message or confirmation to users after they have completed a specific action or process within an application."
+      />  
+
+
+
+
+
     <Box sx={{ p: 5 }}>
-      <h1 style={{ marginBottom: 30 }}>Success Pages </h1>
+      
 
       <Box
         sx={{
@@ -80,5 +93,6 @@ export default function AppPage() {
         />
       </Box>
     </Box>
+    </div>
   );
 }

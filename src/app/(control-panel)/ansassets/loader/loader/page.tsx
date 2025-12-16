@@ -6,16 +6,28 @@ import SpinnerLoader from "./component/spinnerloader";
 import LinearLoader from "./component/linearloader";
 import DotBounceLoader from "./component/dotBounceLoader";
 import SkeletonLoader from "./component/skeletonloader";
+import Header from "@/components/Header";
 
 
 export default function App() {
 
 
   return (
+
+  <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 py-12 px-6">
+      
+      
+      <Header
+        title="Loader Components"
+        description="A loader is a user interface (UI) element that indicates a process is in progress and the system is waiting for data or an action to complete. It helps users understand that the application is working and prevents confusion or repeated actions."
+      />
+
+
+
     <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800 py-10 px-4">
-      <h1 className="text-3xl font-bold text-center mb-10 dark:text-white">
+      {/* <h1 className="text-3xl font-bold text-center mb-10 dark:text-white">
        Loader Types 
-      </h1>
+      </h1> */}
 
       {/* Grid layout with auto row heights */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-[1400px] mx-auto auto-rows-auto">
@@ -53,6 +65,7 @@ export default function App() {
 
        
       </div>
+    </div>
     </div>
   );
 }

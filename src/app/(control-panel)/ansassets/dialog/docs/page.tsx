@@ -1,15 +1,18 @@
 "use client";
 
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 
 import { Dialog } from "../dialog/dialog";
 import DocsLayout from "@/components/documetation/DocsLayout";
 import CodeBlock from "@/components/documetation/CodeBlock";
-import DialogApp from "../dialog/page";
+import { useState } from "react";
 
 
 
-export default function TooltipDocs() {
+
+export default function DialogDocs() {
+const [open, setOpen] = useState(false);
+   const [openDelete, setOpenDelete] = useState(false);
   return (
     <DocsLayout
       title="Dialog Documentation"
@@ -60,17 +63,48 @@ It is suitable for displaying alerts, confirmations, forms, details, or any cust
 
 
 <section id="dialog" className="mb-16">
-       
+      <Typography
+        variant="h4"
+        className="font-semibold mb-4 text-gray-900 dark:text-gray-100"
+      >
+        Preview
+      </Typography>
 
-<Typography variant="h4" className="font-semibold mb-4 text-gray-900 dark:text-gray-100">
-           Preview
-        </Typography>
+      <Box className="mb-4 max-w-sm mx-auto text-center">
+        {/* Preview Button */}
+        <Button variant="contained" onClick={() => setOpenDelete(true)}>
+          Open Dialog
+        </Button>
 
-          <Box className="mb-4 max-w-sm mx-auto">
-                    <DialogApp/>
-        </Box>
-     
-      </section>
+        {/* Dialog Preview */}
+         <Dialog
+        open={openDelete}
+        onClose={() => setOpenDelete(false)}
+        title="Delete Item"
+        maxWidth={400}
+        content={
+          <p className="text-red-600 font-medium">
+            Are you sure you want to delete this item? This action cannot be undone.
+          </p>
+        }
+        actions={
+          <>
+            <Button onClick={() => setOpenDelete(false)}>Cancel</Button>
+            <Button
+              variant="contained"
+              color="error"
+              onClick={() => {
+                alert("Item Deleted!");
+                setOpenDelete(false);
+              }}
+            >
+              Delete
+            </Button>
+          </>
+        }
+      />
+      </Box>
+    </section>
 
 
 {/* ------------------------ Uses SECTION ------------------------ */}

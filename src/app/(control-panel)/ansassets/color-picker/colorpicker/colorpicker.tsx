@@ -259,3 +259,258 @@ export default function ColorPicker({
     </div>
   );
 }
+
+
+
+// "use client";
+
+// import React, { useEffect, useState, useMemo } from "react";
+// import {
+//   Box,
+//   TextField,
+//   IconButton,
+//   Tooltip,
+//   Button,
+//   Popover,
+// } from "@mui/material";
+// import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+// import { ChromePicker, ColorResult } from "react-color";
+
+// /* ---------------- Utilities ---------------- */
+
+// const clamp = (v: number, a = 0, b = 255) =>
+//   Math.max(a, Math.min(b, Math.round(v)));
+
+// const clampAlpha = (a: number) => Math.max(0, Math.min(1, a));
+
+// function hexToRgb(hex: string) {
+//   if (!hex) return null;
+//   const h = hex.replace("#", "").trim();
+//   if (![3, 6].includes(h.length)) return null;
+//   const full = h.length === 3 ? h.split("").map(c => c + c).join("") : h;
+//   const num = parseInt(full, 16);
+//   return { r: (num >> 16) & 255, g: (num >> 8) & 255, b: num & 255 };
+// }
+
+// function rgbToHex({ r, g, b }: any) {
+//   return (
+//     "#" +
+//     [r, g, b]
+//       .map((n) => clamp(n).toString(16).padStart(2, "0"))
+//       .join("")
+//       .toUpperCase()
+//   );
+// }
+
+// function rgbToHsl({ r, g, b }: any) {
+//   r /= 255;
+//   g /= 255;
+//   b /= 255;
+//   const max = Math.max(r, g, b),
+//     min = Math.min(r, g, b);
+//   let h = 0,
+//     s = 0;
+//   const l = (max + min) / 2;
+
+//   if (max !== min) {
+//     const d = max - min;
+//     s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+//     switch (max) {
+//       case r:
+//         h = (g - b) / d + (g < b ? 6 : 0);
+//         break;
+//       case g:
+//         h = (b - r) / d + 2;
+//         break;
+//       case b:
+//         h = (r - g) / d + 4;
+//         break;
+//     }
+//     h /= 6;
+//   }
+//   return {
+//     h: Math.round(h * 360),
+//     s: Math.round(s * 100),
+//     l: Math.round(l * 100),
+//   };
+// }
+
+// /* ---------------- Types ---------------- */
+
+// type Variant =
+//   | "default"
+//   | "compact"
+//   | "minimal"
+//   | "popover"
+//   | "palette-only";
+
+// export interface ColorPickerProps {
+//   value?: string;
+//   onChange?: (color: any) => void;
+//   palette?: string[];
+//   showAlpha?: boolean;
+//   label?: string;
+//   disableCopy?: boolean;
+//   disableInput?: boolean;
+//   fullWidth?: boolean;
+//   size?: "small" | "medium";
+//   variant?: Variant;
+// }
+
+// const DEFAULT_PALETTE = [
+//   "#FFFFFF",
+//   "#000000",
+//   "#0099FF",
+//   "#FF6B6B",
+//   "#FFD93D",
+//   "#6BCB77",
+//   "#4D96FF",
+//   "#9D4EDD",
+// ];
+
+// /* ---------------- Component ---------------- */
+
+// export default function ColorPicker({
+//   value = "#0099FF",
+//   onChange,
+//   palette = DEFAULT_PALETTE,
+//   showAlpha = true,
+//   label = "Color",
+//   disableCopy = false,
+//   disableInput = false,
+//   fullWidth = false,
+//   size = "medium",
+//   variant = "default",
+// }: ColorPickerProps) {
+//   const initialRgb = useMemo(() => {
+//     const parsed = hexToRgb(value);
+//     return parsed ? { ...parsed, a: 1 } : { r: 0, g: 153, b: 255, a: 1 };
+//   }, []);
+
+//   const [rgb, setRgb] = useState(initialRgb);
+//   const [input, setInput] = useState(value);
+//   const [copied, setCopied] = useState(false);
+//   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+
+//   const hex = rgbToHex(rgb);
+//   const rgba = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${rgb.a})`;
+//   const hsl = rgbToHsl(rgb);
+
+//   useEffect(() => {
+//     onChange?.({
+//       hex,
+//       rgba,
+//       rgb,
+//       hsl: { ...hsl, a: rgb.a },
+//     });
+//     setInput(rgb.a === 1 ? hex : rgba);
+//   }, [rgb]);
+
+//   const handleColorChange = (c: ColorResult) => {
+//     const { r, g, b, a } = c.rgb;
+//     setRgb({ r, g, b, a: a ?? 1 });
+//   };
+
+//   const copy = () => {
+//     navigator.clipboard.writeText(input);
+//     setCopied(true);
+//     setTimeout(() => setCopied(false), 1200);
+//   };
+
+//   /* ---------------- Variants ---------------- */
+
+//   if (variant === "palette-only") {
+//     return (
+//       <div className="grid grid-cols-6 gap-2">
+//         {palette.map((p) => (
+//           <div
+//             key={p}
+//             onClick={() => setRgb({ ...hexToRgb(p)!, a: 1 })}
+//             className="w-8 h-8 rounded cursor-pointer border"
+//             style={{ background: p }}
+//           />
+//         ))}
+//       </div>
+//     );
+//   }
+
+//   if (variant === "minimal") {
+//     return (
+//       <div
+//         className="w-10 h-10 rounded-lg border cursor-pointer"
+//         style={{ background: hex }}
+//         onClick={(e) => setAnchorEl(e.currentTarget)}
+//       >
+//         <Popover
+//           open={Boolean(anchorEl)}
+//           anchorEl={anchorEl}
+//           onClose={() => setAnchorEl(null)}
+//         >
+//           <ChromePicker color={rgb} onChange={handleColorChange} />
+//         </Popover>
+//       </div>
+//     );
+//   }
+
+//   if (variant === "compact") {
+//     return (
+//       <div className="flex items-center gap-2">
+//         <div className="w-8 h-8 rounded border" style={{ background: hex }} />
+//         <TextField size="small" value={hex} />
+//         {!disableCopy && (
+//           <IconButton size="small" onClick={copy}>
+//             <ContentCopyIcon fontSize="small" />
+//           </IconButton>
+//         )}
+//       </div>
+//     );
+//   }
+
+//   /* ---------------- Default / Popover ---------------- */
+
+//   const picker = (
+//     <ChromePicker
+//       color={rgb}
+//       onChange={handleColorChange}
+//       disableAlpha={!showAlpha}
+//     />
+//   );
+
+//   return (
+//     <div
+//       className={`bg-white dark:bg-gray-800 p-4 rounded-xl shadow-md ${
+//         fullWidth ? "w-full" : "w-[400px]"
+//       }`}
+//     >
+//       <div className="flex justify-between mb-2">
+//         <span className="font-medium">{label}</span>
+//         {!disableCopy && (
+//           <Tooltip title={copied ? "Copied!" : "Copy"}>
+//             <IconButton size="small" onClick={copy}>
+//               <ContentCopyIcon fontSize="small" />
+//             </IconButton>
+//           </Tooltip>
+//         )}
+//       </div>
+
+//       {variant === "popover" ? (
+//         <>
+//           <div
+//             className="h-12 rounded border cursor-pointer"
+//             style={{ background: hex }}
+//             onClick={(e) => setAnchorEl(e.currentTarget)}
+//           />
+//           <Popover
+//             open={Boolean(anchorEl)}
+//             anchorEl={anchorEl}
+//             onClose={() => setAnchorEl(null)}
+//           >
+//             {picker}
+//           </Popover>
+//         </>
+//       ) : (
+//         picker
+//       )}
+//     </div>
+//   );
+// }

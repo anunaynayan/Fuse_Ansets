@@ -1,11 +1,16 @@
-import React from "react";
-import { BaseBanner } from "./BaseBanner";
+"use client";
 
-export const GradientBanner = (props: any) => {
+import React from "react";
+
+export default function SoftGradientBanner() {
   return (
-    <BaseBanner
-      {...props}
-      className="bg-gradient-to-r from-blue-600 to-purple-600 text-white"
-    />
+    <div className="w-full rounded-2xl bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 border border-purple-200 p-6">
+      <h3 className="text-base font-semibold text-gray-900">
+        Upgrade to Pro
+      </h3>
+      <p className="text-sm text-gray-600 mt-1">
+        Unlock advanced analytics, exports, and team collaboration.
+      </p>
+    </div>
   );
-};
+}

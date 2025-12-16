@@ -1,0 +1,161 @@
+//BaseAlerts
+"use client";
+
+import React from "react";
+
+export type AlertVariant =
+  | "success"
+  | "error"
+  | "warning"
+  | "info"
+  | "neutral";
+
+export type BaseAlertProps = {
+  message: React.ReactNode;
+  icon?: React.ReactNode;
+  className?: string;
+  showIcon?: boolean;
+  dismissible?: boolean;
+  onClose?: () => void;
+};
+
+function cn(...c: any[]) {
+  return c.filter(Boolean).join(" ");
+}
+
+export default function BaseAlert({
+  message,
+  icon,
+  className = "",
+  showIcon = true,
+  dismissible = false,
+  onClose,
+}: BaseAlertProps) {
+  return (
+    <div
+      role="alert"
+      className={cn(
+        "w-full flex items-start gap-3 p-4 rounded-xl border",
+        className
+      )}
+    >
+      {showIcon && icon && <div className="mt-0.5">{icon}</div>}
+
+      <div className="flex-1 text-sm font-medium leading-snug">
+        {message}
+      </div>
+
+      {dismissible && (
+        <button
+          onClick={onClose}
+          className="ml-2 p-1 rounded hover:bg-black/5 dark:hover:bg-white/10"
+        >
+          ✕
+        </button>
+      )}
+    </div>
+  );
+}
+
+
+//variants
+"use client";
+
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import WarningAmberOutlinedIcon from "@mui/icons-material/WarningAmberOutlined";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+
+import { createAlert } from "./createAlert";
+
+/* ---------------------------------------
+   Standard alerts
+---------------------------------------- */
+
+export const SuccessAlert = createAlert({
+  defaultMessage: "Operation successful",
+  defaultClassName:
+    "bg-emerald-50 text-emerald-800 border-emerald-200",
+  defaultIcon: <CheckCircleOutlineIcon />,
+});
+
+export const ErrorAlert = createAlert({
+  defaultMessage: "Something went wrong",
+  defaultClassName:
+    "bg-rose-50 text-rose-800 border-rose-200",
+  defaultIcon: <ErrorOutlineIcon />,
+});
+
+export const WarningAlert = createAlert({
+  defaultMessage: "Please check your inputs",
+  defaultClassName:
+    "bg-amber-50 text-amber-800 border-amber-200",
+  defaultIcon: <WarningAmberOutlinedIcon />,
+});
+
+export const InfoAlert = createAlert({
+  defaultMessage: "Informational message",
+  defaultClassName:
+    "bg-sky-50 text-sky-800 border-sky-200",
+  defaultIcon: <InfoOutlinedIcon />,
+});
+
+/* ---------------------------------------
+   Advanced / style variants
+---------------------------------------- */
+
+export const GlowAlert = createAlert({
+  defaultMessage: "Glow alert",
+  defaultClassName:
+    "bg-emerald-600 text-white border-emerald-400 shadow-[0_6px_30px_rgba(16,185,129,0.35)]",
+  defaultIcon: <CheckCircleOutlineIcon />,
+});
+
+export const OutlineAlert = createAlert({
+  defaultMessage: "Outline alert",
+  defaultClassName:
+    "bg-transparent text-gray-800 border-gray-300 dark:text-gray-200",
+});
+
+
+//createAlert
+"use client";
+
+import React from "react";
+import BaseAlert from "./BaseAlert";
+
+type AlertFactoryOptions = {
+  defaultMessage: React.ReactNode;
+  defaultClassName: string;
+  defaultIcon?: React.ReactNode;
+};
+
+type AlertProps = {
+  message?: React.ReactNode;
+  showIcon?: boolean;
+  dismissible?: boolean;
+  onClose?: () => void;
+  className?: string;
+};
+
+export function createAlert(options: AlertFactoryOptions) {
+  return function Alert({
+    message = options.defaultMessage,
+    showIcon = true,
+    dismissible = false,
+    onClose,
+    className = "",
+  }: AlertProps) {
+    return (
+      <BaseAlert
+        message={message}
+        icon={options.defaultIcon}
+        showIcon={showIcon}
+        dismissible={dismissible}
+        onClose={onClose}
+        className={`${options.defaultClassName} ${className}`}
+      />
+    );
+  };
+}
+

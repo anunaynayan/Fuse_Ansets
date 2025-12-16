@@ -5,10 +5,13 @@ import CodeBlock from "@/components/documetation/CodeBlock";
 import DocsLayout from "@/components/documetation/DocsLayout";
 
  import { useEffect, useState } from "react";
-import FileUploadPage from "../file/page";
+import FileUploader from "../file/fileuploader";
+
 
 
 export default function FileUploaderDocs() {
+  const [, setFile] = useState<File | null>(null);
+  
 
    const [code, setCode] = useState<string>("");
   
@@ -73,7 +76,7 @@ export default function FileUploaderDocs() {
       </section>
 
       {/* ------------------------ Preview SECTION ------------------------ */}
-      <section id="drawer" className="mb-16">
+      <section id="fileuploader" className="mb-16">
         <Typography
           variant="h4"
           className="font-semibold mb-4 text-gray-900 dark:text-gray-100"
@@ -81,10 +84,12 @@ export default function FileUploaderDocs() {
           Preview
         </Typography>
 
-        
-
         <Box className=" h-80  ">
-              <FileUploadPage/>
+               <FileUploader
+                          onFileUpload={(uploadedFile) => setFile(uploadedFile)}
+                          acceptType="both"
+                          label="Upload File"
+                        />
         </Box>
 
         
