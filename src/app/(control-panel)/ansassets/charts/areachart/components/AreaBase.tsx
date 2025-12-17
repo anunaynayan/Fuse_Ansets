@@ -1,6 +1,4 @@
 "use client";
-
-
 import React from "react";
 import {
 ResponsiveContainer,
@@ -12,8 +10,6 @@ CartesianGrid,
 Tooltip,
 Legend,
 } from "recharts";
-
-
 type Props = {
 data: Array<Record<string, any>>;
 dataKey?: string; // primary metric

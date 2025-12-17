@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import FunnelBase from "./components/FunnelBase";
 import { FunnelComparative } from "./components/FunnelComparative";
 import { Card, CardHeader, CardContent, Typography } from "@mui/material";
+import Header from "./components/Header";
 
 
 export default function FunnelPage() {
@@ -26,7 +27,7 @@ setLoading(false);
 
 return (
 <div className="p-6 space-y-6">
-<h1 className="text-2xl font-semibold">Funnel Charts</h1>
+<Header/>
 
 
 {loading && <p>Loading…</p>}

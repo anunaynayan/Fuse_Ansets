@@ -1,0 +1,159 @@
+//AreaBase
+"use client";
+import React from "react";
+import {
+ResponsiveContainer,
+AreaChart,
+Area,
+XAxis,
+YAxis,
+CartesianGrid,
+Tooltip,
+Legend,
+} from "recharts";
+type Props = {
+data: Array<Record<string, any>>;
+dataKey?: string; // primary metric
+nameKey?: string; // x-axis key
+height?: number;
+};
+
+
+export default function AreaBase({
+data,
+dataKey = "uv",
+nameKey = "month",
+height = 240,
+}: Props) {
+if (!data || data.length === 0) return <div className="p-4">No data</div>;
+
+
+return (
+<div style={{ width: "100%", height }}>
+<ResponsiveContainer>
+<AreaChart data={data} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
+<defs>
+<linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+<stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
+<stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+</linearGradient>
+</defs>
+<CartesianGrid strokeDasharray="3 3" />
+<XAxis dataKey={nameKey} />
+<YAxis />
+<Tooltip />
+<Legend />
+<Area type="monotone" dataKey={dataKey} stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+</AreaChart>
+</ResponsiveContainer>
+</div>
+);
+}
+
+//AreaGradient
+"use client";
+
+
+import React from "react";
+import {
+ResponsiveContainer,
+AreaChart,
+Area,
+XAxis,
+YAxis,
+CartesianGrid,
+Tooltip,
+Legend,
+} from "recharts";
+
+
+type Props = { data: any[]; nameKey?: string; height?: number };
+
+
+export function AreaGradient({ data, nameKey = "month", height = 240 }: Props) {
+if (!data || data.length === 0) return <div className="p-4">No data</div>;
+
+
+return (
+<div style={{ width: "100%", height }}>
+<ResponsiveContainer>
+<AreaChart data={data} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
+<defs>
+<linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
+<stop offset="5%" stopColor="#ffc658" stopOpacity={0.9} />
+<stop offset="95%" stopColor="#ffc658" stopOpacity={0.1} />
+</linearGradient>
+</defs>
+<CartesianGrid strokeDasharray="3 3" />
+<XAxis dataKey={nameKey} />
+<YAxis />
+<Tooltip />
+<Legend />
+<Area type="monotone" dataKey="pv" stroke="#ffc658" fillOpacity={1} fill="url(#colorPv)" />
+</AreaChart>
+</ResponsiveContainer>
+</div>
+);
+}
+
+//AreaSmooth
+"use client";
+
+
+import React from "react";
+import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
+
+
+type Props = { data: any[]; nameKey?: string; height?: number };
+
+
+export function AreaSmooth({ data, nameKey = "month", height = 220 }: Props) {
+if (!data || data.length === 0) return <div className="p-4">No data</div>;
+
+
+return (
+<div style={{ width: "100%", height }}>
+<ResponsiveContainer>
+<AreaChart data={data} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
+<CartesianGrid strokeDasharray="3 3" />
+<XAxis dataKey={nameKey} />
+<YAxis />
+<Tooltip />
+<Area type="basis" dataKey="uv" stroke="#8884d8" strokeWidth={2} fillOpacity={0.3} fill="#8884d8" />
+</AreaChart>
+</ResponsiveContainer>
+</div>
+);
+}
+
+//AreaStacked
+"use client";
+
+
+import React from "react";
+import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid, Legend } from "recharts";
+
+
+type Props = { data: any[]; keys?: string[]; nameKey?: string; height?: number };
+
+
+export function AreaStacked({ data, keys = ["uv", "pv"], nameKey = "month", height = 260 }: Props) {
+if (!data || data.length === 0) return <div className="p-4">No data</div>;
+
+
+return (
+<div style={{ width: "100%", height }}>
+<ResponsiveContainer>
+<AreaChart data={data} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
+<CartesianGrid strokeDasharray="3 3" />
+<XAxis dataKey={nameKey} />
+<YAxis />
+<Tooltip />
+<Legend />
+<Area type="monotone" dataKey={keys[0]} stackId="1" stroke="#8884d8" fill="#8884d8" />
+<Area type="monotone" dataKey={keys[1]} stackId="1" stroke="#82ca9d" fill="#82ca9d" />
+</AreaChart>
+</ResponsiveContainer>
+</div>
+);
+}
