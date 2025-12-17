@@ -1,45 +1,27 @@
 "use client";
-
 import { useRef } from "react";
-import CheckoutStepper from "./steper";
+import CheckoutStepper, { StepConfig } from "./steper";
 
-const CHECKOUT_STEPS = [
-  {
-    name: "Customer Info",
-    Component: () => (
-      <div className="p-4 bg-white shadow rounded">
-        Provide your contact details.
-      </div>
-    ),
-  },
-  {
-    name: "Shipping Info",
-    Component: () => (
-      <div className="p-4 bg-white shadow rounded">
-        Enter your shipping address.
-      </div>
-    ),
-  },
-  {
-    name: "Payment",
-    Component: () => (
-      <div className="p-4 bg-white shadow rounded">
-        Complete payment for your order.
-      </div>
-    ),
-  },
-  {
-    name: "Delivered",
-    Component: () => (
-      <div className="p-4 bg-white shadow rounded">
-        Your order has been delivered.
-      </div>
-    ),
-  },
+const CHECKOUT_STEPS: StepConfig[] = [
+  { name: "Customer Info", Component: () => <div className="p-4 bg-white shadow rounded">Provide your contact details.</div> },
+  { name: "Shipping Info", Component: () => <div className="p-4 bg-white shadow rounded">Enter your shipping address.</div> },
+  { name: "Payment", Component: () => <div className="p-4 bg-white shadow rounded">Complete payment for your order.</div> },
+  { name: "Delivered", Component: () => <div className="p-4 bg-white shadow rounded">Your order has been delivered.</div> },
 ];
 
+// Define the ref type
+interface CheckoutStepperRef {
+  next: () => void;
+  back: () => void;
+  finish: () => void;
+  goToStep: (index: number) => void;
+  activeStep: number;
+  isLastStep: boolean;
+  isFirstStep: boolean;
+}
+
 export default function SteperDemoApp() {
-  const stepperRef = useRef<any>();
+  const stepperRef = useRef<CheckoutStepperRef>(null);
 
   return (
     <div className="p-6 space-y-6">
@@ -47,16 +29,15 @@ export default function SteperDemoApp() {
 
       <CheckoutStepper ref={stepperRef} stepsConfig={CHECKOUT_STEPS} />
 
-      {/* Just Example of manual control (optional) */}
       <div className="flex gap-3 pt-2">
         <button
-          onClick={() => stepperRef.current.back()}
+          onClick={() => stepperRef.current?.back()}
           className="px-4 py-2 rounded bg-gray-300"
         >
           Back
         </button>
         <button
-          onClick={() => stepperRef.current.next()}
+          onClick={() => stepperRef.current?.next()}
           className="px-4 py-2 rounded bg-blue-600 text-white"
         >
           Next

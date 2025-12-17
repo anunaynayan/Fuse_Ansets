@@ -22,9 +22,10 @@ export const animations = {
     initial: { y: -10, opacity: 0 },
     animate: { y: 0, opacity: 1 },
     exit: { y: -10, opacity: 0 },
-    transition: { type: "spring", stiffness: 300 },
+    transition: { type: "spring" as const, stiffness: 300 }, // ✅ cast type as literal
   },
 };
+
 
 export function Animated({
   variant,

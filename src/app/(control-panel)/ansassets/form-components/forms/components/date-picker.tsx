@@ -8,9 +8,9 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import  { Dayjs } from 'dayjs';
 
 interface AppDatePickerProps extends Omit<TextFieldProps, 'onChange' | 'value'> {
-  label: string;
-  value: Dayjs | null;
-  onChange: (date: Dayjs | null) => void;
+  label?: string;
+  value?: Dayjs | null;
+  onChange?: (date: Dayjs | null) => void;
   error?: boolean;
   helperText?: string;
   minDate?: Dayjs;

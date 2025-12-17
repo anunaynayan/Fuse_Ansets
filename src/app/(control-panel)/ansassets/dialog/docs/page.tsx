@@ -202,7 +202,7 @@ export default function App() {
       </tr>
       <tr>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">onClose</td>
-        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">() => void</td>
+        <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">() = void</td>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">required</td>
         <td className="px-4 py-2 border-b border-gray-300 dark:border-gray-700">Function called when the dialog is closed (via close button, ESC key, or backdrop click).</td>
       </tr>

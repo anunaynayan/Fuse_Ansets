@@ -57,7 +57,10 @@ export default function ErrorPageDocs() {
         </Typography>
 
         <Box className="mb-6 max-w-md mx-auto border rounded-xl overflow-hidden shadow-lg">
-          <ErrorPages />
+          <ErrorPages onButtonClick={() => {
+    console.log("Button clicked!");
+    // Or navigate programmatically using router.push("/somepath")
+  }}/>
         </Box>
       </section>
 

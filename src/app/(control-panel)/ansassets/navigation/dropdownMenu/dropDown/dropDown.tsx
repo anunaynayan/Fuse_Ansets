@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import React, { useState } from "react";
@@ -13,7 +11,7 @@ import {
 } from "@mui/material";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 
- export interface MenuItemType {
+export interface MenuItemType {
   label: string;
   icon?: React.ReactNode;
   onClick?: () => void;
@@ -28,72 +26,75 @@ interface DropdownMenuProps {
   size?: "normal" | "dense";
 }
 
+interface OpenMenu {
+  anchorEl: HTMLElement;
+  items: MenuItemType[];
+  level: number;
+}
+
 export default function DropdownMenu({
   trigger,
   items,
   size = "normal",
 }: DropdownMenuProps) {
-  const [menus, setMenus] = useState<
-    { anchorEl: HTMLElement; items: MenuItemType[]; level: number }[]
-  >([]);
+  const [menus, setMenus] = useState<OpenMenu[]>([]);
 
   const openMenu = (anchor: HTMLElement, newItems: MenuItemType[], level: number) => {
     setMenus((prev) => [...prev.slice(0, level), { anchorEl: anchor, items: newItems, level }]);
   };
 
   const closeAll = () => setMenus([]);
-
-  const closeLevel = (level: number) => {
-    setMenus((prev) => prev.slice(0, level));
-  };
+  const closeLevel = (level: number) => setMenus((prev) => prev.slice(0, level));
 
   return (
     <div className="inline-block">
       <span
-        onClick={(e) =>
-          openMenu(e.currentTarget as HTMLElement, items, 0)
-        }
+        onClick={(e) => openMenu(e.currentTarget as HTMLElement, items, 0)}
         style={{ cursor: "pointer" }}
       >
         {trigger}
       </span>
 
-      {menus.map((level, index) => (
+      {menus.map((menuLevel, index) => (
         <Menu
           key={index}
           open
-          anchorEl={level.anchorEl}
+          anchorEl={menuLevel.anchorEl}
           onClose={closeAll}
           anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
           transformOrigin={{ vertical: "top", horizontal: "left" }}
           MenuListProps={{
             dense: size === "dense",
+            onKeyDown: (e: React.KeyboardEvent<HTMLUListElement>) => {
+              const focusableItems = menuLevel.items.filter(
+                (item) => !item.divider && !item.disabled
+              );
 
-            onKeyDown: (e: any) => {
-              const focusableItems = level.items.filter((item) => !item.divider && !item.disabled);
-              const focusableElements = Array.from(e.currentTarget.children).filter((_, i) => {
-                const item = level.items[i];
-                return item && !item.divider && !item.disabled;
-              });
+              const focusableElements: HTMLElement[] = Array.from(
+                e.currentTarget.children
+              )
+                .filter((_, i) => focusableItems[i] !== undefined)
+                .map((el) => el as HTMLElement);
 
-              const activeElement = document.activeElement;
+              const activeElement = document.activeElement as HTMLElement;
               const currentIndex = focusableElements.findIndex((el) => el === activeElement);
 
-              // Custom keyboard navigation
               switch (e.key) {
-                case "ArrowDown":
+                case "ArrowDown": {
                   e.preventDefault();
                   const next = (currentIndex + 1) % focusableElements.length;
                   focusableElements[next]?.focus();
                   break;
+                }
 
-                case "ArrowUp":
+                case "ArrowUp": {
                   e.preventDefault();
                   const prev = (currentIndex - 1 + focusableElements.length) % focusableElements.length;
                   focusableElements[prev]?.focus();
                   break;
+                }
 
-                case "ArrowRight":
+                case "ArrowRight": {
                   e.preventDefault();
                   const activeItem = focusableItems[currentIndex];
                   if (activeItem?.children) {
@@ -101,17 +102,19 @@ export default function DropdownMenu({
                     openMenu(target, activeItem.children, index + 1);
                   }
                   break;
+                }
 
-                case "ArrowLeft":
+                case "ArrowLeft": {
                   e.preventDefault();
                   if (index > 0) closeLevel(index);
                   break;
+                }
 
-                case "Escape":
+                case "Escape": {
                   e.preventDefault();
-                  if (index === 0) closeAll();
-                  else closeLevel(index);
+                  index === 0 ? closeAll() : closeLevel(index);
                   break;
+                }
               }
             },
             sx: {
@@ -122,7 +125,7 @@ export default function DropdownMenu({
           }}
         >
           <MenuList>
-            {level.items.map((item, i) =>
+            {menuLevel.items.map((item, i) =>
               item.divider ? (
                 <Divider key={i} />
               ) : (
@@ -138,11 +141,7 @@ export default function DropdownMenu({
                     }
                   }}
                 >
-                  {item.icon && (
-                    <ListItemIcon sx={{ minWidth: 32 }}>
-                      {item.icon}
-                    </ListItemIcon>
-                  )}
+                  {item.icon && <ListItemIcon sx={{ minWidth: 32 }}>{item.icon}</ListItemIcon>}
 
                   <ListItemText>{item.label}</ListItemText>
 

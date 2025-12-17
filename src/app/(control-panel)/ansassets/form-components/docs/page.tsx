@@ -18,6 +18,7 @@ import CheckBox from "../forms/components/checkBox";
 export default function DrawerDocs() {
 
   const [isEnabled, setIsEnabled] = useState(false);
+  const [number, setNumber] = useState<number | "">("");
 
 const [code, setCode] = useState<string>("");
   
@@ -27,10 +28,6 @@ const [code, setCode] = useState<string>("");
         .then(setCode);
     }, []);
   
-
-
-
-
   return (
     <DocsLayout
      title="Form Component Documentation"
@@ -790,7 +787,14 @@ export function Toggle({
         </Typography>
 
         <Box className="mb-4 max-w-sm mx-auto">
-        <NumberInput placeholder="Enter number" />
+        <NumberInput label="Enter Number"
+      value={number}
+      onChange={setNumber}
+      min={0}
+      max={100}
+      step={1}
+      className="w-full"
+      placeholder="Enter number"/>
         </Box>
 
 

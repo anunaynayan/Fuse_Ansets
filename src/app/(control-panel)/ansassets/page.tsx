@@ -8,7 +8,6 @@ import {
   TextField,
   MenuItem,
   Container,
-  Grid,
   Card,
   CardContent,
   CardActions,
@@ -17,6 +16,8 @@ import {
   Box,
   Divider,
 } from "@mui/material";
+import Grid from "@mui/material/GridLegacy";
+
 
 export default function AnsetsLanding() {
   const [search, setSearch] = useState("");
@@ -68,7 +69,7 @@ export default function AnsetsLanding() {
       <Container maxWidth="lg" className="py-14">
         <Grid container spacing={6} alignItems="flex-start">
           {/* LEFT */}
-          <Grid item xs={12} md={7}>
+          <Grid xs={12} md={7}>
             <motion.div
               initial={{ opacity: 0, x: -25 }}
               animate={{ opacity: 1, x: 0 }}
@@ -98,7 +99,7 @@ export default function AnsetsLanding() {
           </Grid>
 
           {/* RIGHT - FILTERS */}
-          <Grid item xs={12} md={5}>
+          <Grid xs={12} md={5}>
             <motion.div
               initial={{ opacity: 0, x: 25 }}
               animate={{ opacity: 1, x: 0 }}
@@ -153,7 +154,7 @@ export default function AnsetsLanding() {
 
         <Grid container spacing={4}>
           {filtered.map((item: ComponentItem, i: number) => (
-            <Grid item xs={12} sm={6} md={4} key={item.id}>
+            <Grid xs={12} sm={6} md={4} key={item.id}>
               <motion.div
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}

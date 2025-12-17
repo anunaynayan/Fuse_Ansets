@@ -603,28 +603,6 @@ const navigationConfig: FuseNavItemType[] = [
     ]
   },
 
-
-  // Layouts
-
-   {
-    id:"ansassates-layouts-root",
-    title:"Layouts",
-    type:"collaspe",
-    children:[
-      {
-        id:"ansassets-layouts-layout",
-        title:"Layout Com",
-        type:"item",
-        url:"/ansassets/layouts/layout",
-      },
-      {
-        id:"ansassets-layouts-docs",
-        title:"View Docs",
-        type:"item",
-        url:"/ansassets/layouts/docs",  
-      }
-    ],
-   },
   
 // Navigation bar 
 

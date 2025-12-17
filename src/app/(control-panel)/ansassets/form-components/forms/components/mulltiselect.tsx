@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useMemo } from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
@@ -5,44 +7,57 @@ import Chip from "@mui/material/Chip";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Checkbox from "@mui/material/Checkbox";
-import Popper from "@mui/material/Popper";
-import ClearIcon from "@mui/icons-material/Clear";
+import Popper, { PopperProps } from "@mui/material/Popper";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import { SxProps } from "@mui/system";
+import { VirtualElement } from "@popperjs/core";
 
 export type Option = {
   value: string;
   label: string;
   group?: string;
   disabled?: boolean;
-  
   [k: string]: any;
 };
 
 export type MultiSelectProps = {
   id?: string;
   options: Option[];
-  value?: Option[]; 
-  defaultValue?: Option[]; 
+  value?: Option[];
+  defaultValue?: Option[];
   onChange?: (selected: Option[]) => void;
   placeholder?: string;
   label?: string;
   disabled?: boolean;
-  creatable?: boolean; 
+  creatable?: boolean;
   clearable?: boolean;
-  maxTags?: number | "auto"; 
+  maxTags?: number | "auto";
   renderOption?: (option: Option, selected: boolean) => React.ReactNode;
   optionToString?: (o: Option) => string;
   fullWidth?: boolean;
   size?: "small" | "medium";
   sx?: SxProps;
-  className?: string; 
+  className?: string;
 };
 
 const CheckBoxIconEmpty = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const CheckBoxIconChecked = <CheckBoxIcon fontSize="small" />;
 
+// Type-safe Popper component
+const MultiSelectPopper = (props: PopperProps) => {
+  const { anchorEl, ...rest } = props;
+
+  const resolvedAnchor =
+    typeof anchorEl === "function" ? anchorEl() : anchorEl;
+
+  const width =
+    resolvedAnchor && "clientWidth" in resolvedAnchor
+      ? resolvedAnchor.clientWidth
+      : undefined;
+
+  return <Popper {...rest} anchorEl={resolvedAnchor as HTMLElement | null} placement="bottom-start" style={{ width }} />;
+};
 
 export default function MultiSelect({
   id = "multi-select",
@@ -63,9 +78,7 @@ export default function MultiSelect({
   sx,
   className = "",
 }: MultiSelectProps) {
-  
   const grouped = useMemo(() => {
-    
     const hasGroup = options.some((o) => !!o.group);
     return { hasGroup };
   }, [options]);
@@ -77,7 +90,6 @@ export default function MultiSelect({
     onChange?.(selected ?? []);
   };
 
- 
   const defaultRenderOption = (opt: Option, selected: boolean) => (
     <Box className="flex items-center gap-2">
       <Checkbox
@@ -93,17 +105,14 @@ export default function MultiSelect({
         <Typography component="span" className="text-sm">
           {opt.label}
         </Typography>
-        {opt?.group ? (
+        {opt?.group && (
           <Typography component="small" className="text-xs text-gray-400">
             {opt.group}
           </Typography>
-        ) : null}
+        )}
       </Box>
     </Box>
   );
-
-  
-  const freeSolo = creatable;
 
   return (
     <div
@@ -118,16 +127,13 @@ export default function MultiSelect({
         value={value}
         defaultValue={defaultValue}
         onChange={handleChange}
-        freeSolo={freeSolo}
+        freeSolo={creatable}
         disableClearable={!clearable}
         isOptionEqualToValue={isOptionEqualToValue}
         getOptionLabel={(opt) => optionToString(opt as Option)}
         groupBy={grouped.hasGroup ? (opt: Option) => opt.group ?? "" : undefined}
         renderOption={(props, opt, { selected }) => {
-          
-          const rendered = renderOption
-            ? renderOption(opt as Option, selected)
-            : defaultRenderOption(opt as Option, selected);
+          const rendered = renderOption ? renderOption(opt as Option, selected) : defaultRenderOption(opt as Option, selected);
           return (
             <li {...props} key={opt.value ?? opt.label}>
               {rendered}
@@ -160,14 +166,9 @@ export default function MultiSelect({
             variant="outlined"
             InputProps={{
               ...params.InputProps,
-              endAdornment: (
-                <div className="flex items-center gap-2">
-                  {params.InputProps.endAdornment}
-                </div>
-              ),
+              endAdornment: <div className="flex items-center gap-2">{params.InputProps.endAdornment}</div>,
             }}
             sx={{
-              
               "& .MuiOutlinedInput-root": {
                 paddingRight: 0,
               },
@@ -176,26 +177,16 @@ export default function MultiSelect({
             className="bg-white dark:bg-slate-800"
           />
         )}
-        PopperComponent={(popperProps) => (
-          
-          <Popper
-            {...(popperProps as any)}
-            placement="bottom-start"
-            style={{ width: popperProps.anchorEl ? popperProps.anchorEl.clientWidth : undefined }}
-            className="z-50"
-          />
-        )}
+        PopperComponent={MultiSelectPopper}
         size={size}
         disablePortal={false}
       />
       <style jsx>{`
-        
         .multi-select-root .MuiAutocomplete-listbox {
           max-height: 280px;
           overflow: auto;
         }
         @media (max-width: 640px) {
-         
           .multi-select-root .MuiPopper-root {
             width: 100% !important;
             left: 0 !important;

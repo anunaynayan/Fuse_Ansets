@@ -15,8 +15,6 @@ export default function DrawerDocs() {
     axios.get("/data/menu.json").then((res) => setMenuItems(res.data));
   }, []);
   
-  
-
   return (
     <DocsLayout
         title="Drawer Documentation"
