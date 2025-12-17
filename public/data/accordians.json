@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "title": "What is React and why is it used?",
+    "content": "React is a JavaScript library for building user interfaces. It helps create fast, scalable, and reusable UI components using a virtual DOM."
+  },
+  {
+    "id": 2,
+    "title": "What are React Hooks?",
+    "content": "Hooks are functions like useState, useEffect, and useContext that allow you to use React features without writing class components."
+  },
+  {
+    "id": 3,
+    "title": "What is the Virtual DOM in React?",
+    "content": "The Virtual DOM is a lightweight copy of the real DOM. React uses it to update only the necessary parts of the UI, improving performance."
+  },
+  {
+    "id": 4,
+    "title": "What is the difference between state and props?",
+    "content": "Props are read-only inputs passed to components, while state is internal data managed inside a component and can change over time."
+  },
+  {
+    "id": 5,
+    "title": "What is JSX in React?",
+    "content": "JSX is a syntax extension that allows writing HTML-like code inside JavaScript. It makes UI code more readable and easier to maintain."
+  }
+ 
+]

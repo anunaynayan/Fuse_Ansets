@@ -1,0 +1,44 @@
+{
+  "brand": {
+    "name": "MyCompany",
+    "description": "We build awesome web apps and components.",
+    "year": 2025
+  },
+  "socialLinks": [
+    { "icon": "X", "url": "https://twitter.com" },
+    { "icon": "Instagram", "url": "https://instagram.com" },
+    { "icon": "LinkedIn", "url": "https://linkedin.com" },
+    { "icon": "GitHub", "url": "https://github.com" }
+  ],
+  "sections": [
+    {
+      "title": "Products",
+      "links": [
+        { "label": "App", "url": "/app" },
+        { "label": "Analytics", "url": "/analytics" },
+        { "label": "Integrations", "url": "/integrations" }
+      ]
+    },
+    {
+      "title": "Company",
+      "links": [
+        { "label": "About", "url": "/about" },
+        { "label": "Careers", "url": "/careers" },
+        { "label": "Blog", "url": "/blog" }
+      ]
+    },
+    {
+      "title": "Support",
+      "links": [
+        { "label": "Help Center", "url": "/help" },
+        { "label": "Contact", "url": "/contact" },
+        { "label": "Privacy Policy", "url": "/privacy" }
+      ]
+    }
+  ],
+  "policies": [
+    { "label": "Terms of Service", "url": "/terms" },
+    { "label": "Privacy Policy", "url": "/privacy" },
+    { "label": "Cookies", "url": "/cookies" }
+  ]
+}

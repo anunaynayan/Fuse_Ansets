@@ -1,0 +1,409 @@
+// BaseSnackbar.tsx
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Portal from "./Portal";
+
+export type Position =
+  | "top-left"
+  | "top-right"
+  | "top-center"
+  | "bottom-left"
+  | "bottom-right"
+  | "bottom-center";
+
+export type BaseSnackbarProps = {
+  message: React.ReactNode;
+  icon?: React.ReactNode;
+  className?: string;
+  duration?: number;
+  onClose?: () => void;
+  position?: Position;
+  showClose?: boolean;
+  progress?: boolean;
+  visible?: boolean;
+};
+
+function cn(...c: any[]) {
+  return c.filter(Boolean).join(" ");
+}
+
+const POS_CLASSES: Record<Position, string> = {
+  "top-left": "top-8 left-8",
+  "top-right": "top-8 right-8",
+  "top-center": "top-8 left-1/2 -translate-x-1/2",
+  "bottom-left": "bottom-8 left-8",
+  "bottom-right": "bottom-8 right-8",
+  "bottom-center": "bottom-8 left-1/2 -translate-x-1/2",
+};
+
+export default function BaseSnackbar({
+  message,
+  icon,
+  className = "",
+  duration = 3000,
+  onClose,
+  position = "top-right",
+  showClose = true,
+  progress = false,
+  visible = true,
+}: BaseSnackbarProps) {
+  const [show, setShow] = useState(visible);
+
+  useEffect(() => {
+    setShow(visible);
+  }, [visible]);
+
+  useEffect(() => {
+    if (!show || !duration || duration <= 0) return;
+    const t = setTimeout(() => {
+      setShow(false);
+      onClose?.();
+    }, duration);
+    return () => clearTimeout(t);
+  }, [show, duration, onClose]);
+
+  const anim = {
+    initial: { opacity: 0, y: -12, scale: 0.98 },
+    animate: { opacity: 1, y: 0, scale: 1 },
+    exit: { opacity: 0, y: -12, scale: 0.98, transition: { duration: 0.18 } },
+  };
+
+  return (
+    <Portal>
+      <AnimatePresence>
+        {show && (
+          <motion.div
+            {...anim}
+            className={cn(
+              "fixed z-[9999] pointer-events-auto max-w-sm w-full",
+              POS_CLASSES[position]
+            )}
+          >
+            <div
+              className={cn(
+                "flex items-start gap-3 p-4 rounded-2xl shadow-2xl backdrop-blur-sm border border-white/8",
+                className
+              )}
+              role="status"
+              aria-live="polite"
+            >
+              {icon && <div className="mt-0.5 ml-0">{icon}</div>}
+
+              <div className="flex-1 min-w-0">
+                <div className="text-sm font-medium leading-snug text-white">{message}</div>
+                {progress && (
+                  <div className="mt-3 h-2 w-full bg-white/10 rounded overflow-hidden">
+                    <div
+                      className="h-full bg-white/40 animate-progress"
+                      style={{ width: "100%" }}
+                    />
+                  </div>
+                )}
+              </div>
+
+              {showClose && (
+                <button
+                  onClick={() => {
+                    setShow(false);
+                    onClose?.();
+                  }}
+                  className="ml-2 p-1 rounded hover:bg-white/6 transition"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                  >
+                    <path
+                      d="M4.64645 4.64645L11.3536 11.3536"
+                      stroke="currentColor"
+                      strokeWidth="1.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M11.3536 4.64645L4.64645 11.3536"
+                      stroke="currentColor"
+                      strokeWidth="1.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+              )}
+            </div>
+
+            <style jsx>{`
+              @keyframes progress {
+                from {
+                  transform: translateX(-100%);
+                }
+                to {
+                  transform: translateX(0%);
+                }
+              }
+              .animate-progress {
+                animation: progress ${duration}ms linear forwards;
+              }
+            `}</style>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </Portal>
+  );
+}
+
+// createSnackbar.tsx
+"use client";
+
+import BaseSnackbar, { Position } from "./BaseSnackbar";
+import React from "react";
+
+export type VariantOptions = {
+  defaultMessage: React.ReactNode;
+  defaultClassName: string;
+  defaultIcon?: React.ReactNode;
+  defaultDuration?: number;
+  defaultProgress?: boolean;
+};
+
+export type SnackbarCommonProps = {
+  visible?: boolean;
+  onClose?: () => void;
+  position?: Position;
+  duration?: number;
+  showIcon?: boolean;
+  showClose?: boolean;
+  message?: React.ReactNode;
+  progress?: boolean;
+  className?: string;
+};
+
+export function createSnackbar(options: VariantOptions) {
+  return function Snackbar({
+    visible = false,
+    onClose,
+    position = "top-right",
+    duration = options.defaultDuration ?? 3000,
+    showIcon = true,
+    showClose = true,
+    message = options.defaultMessage,
+    progress = options.defaultProgress ?? false,
+    className = "",
+  }: SnackbarCommonProps) {
+    return (
+      <BaseSnackbar
+        visible={visible}
+        onClose={onClose}
+        position={position}
+        duration={duration}
+        message={message}
+        progress={progress}
+        showClose={showClose}
+        icon={showIcon ? options.defaultIcon : null}
+        className={options.defaultClassName + " " + className}
+      />
+    );
+  };
+}
+
+
+//SuccessSnabar.tsx
+"use client";
+
+import BaseSnackbar from "./BaseSnackbar";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import React from "react";
+
+export default function SuccessSnackbar({ onClose }: { onClose?: () => void }) {
+  return (
+    <BaseSnackbar
+      message={<span>Saved successfully</span>}
+      icon={<CheckCircleOutlineIcon />}
+      className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white"
+      duration={3000}
+      onClose={onClose}
+      position="top-right"
+    />
+  );
+}
+
+
+//WarningSnackbar.tsx
+"use client";
+
+import BaseSnackbar from "./BaseSnackbar";
+import WarningAmberOutlinedIcon from "@mui/icons-material/WarningAmberOutlined";
+import React from "react";
+
+export default function WarningSnackbar({ onClose }: { onClose?: () => void }) {
+  return (
+    <BaseSnackbar
+      message={<span>Warning: Check your inputs</span>}
+      icon={<WarningAmberOutlinedIcon />}
+      className="bg-gradient-to-r from-amber-500 to-amber-600 text-black"
+      duration={3000}
+      onClose={onClose}
+      position="top-center"
+    />
+  );
+}
+
+//ErrorSabar.tsx
+"use client";
+
+import BaseSnackbar from "./BaseSnackbar";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import React from "react";
+
+export default function ErrorSnackbar({ onClose }: { onClose?: () => void }) {
+  return (
+    <BaseSnackbar
+      message={<span>Failed to save changes</span>}
+      icon={<ErrorOutlineIcon />}
+      className="bg-gradient-to-r from-rose-600 to-rose-500 text-white"
+      duration={3500}
+      onClose={onClose}
+      position="bottom-right"
+    />
+  );
+}
+
+
+//BorderPulseSnackbar.tsx
+"use client";
+
+import BaseSnackbar from "./BaseSnackbar";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import React from "react";
+
+export function BorderPulseSnackbar({ onClose }: { onClose?: () => void }) {
+  return (
+    <BaseSnackbar
+      message={<span>Border pulse — attention</span>}
+      icon={<InfoOutlinedIcon />}
+      className="bg-slate-900 text-white border-2 border-white/6 relative overflow-visible"
+      duration={3500}
+      onClose={onClose}
+      position="bottom-left"
+    />
+  );
+}
+
+
+//FloatingSnackbar.tsx
+"use client";
+
+import React from "react";
+import BaseSnackbar from "./BaseSnackbar";
+
+export function FloatingSnackbar({ onClose }: { onClose?: () => void }) {
+  return (
+    <BaseSnackbar
+      message={<span>Floating — subtle shadow</span>}
+      className="bg-gradient-to-r from-slate-700 to-slate-800 text-white transform-gpu hover:-translate-y-0.5 transition"
+      duration={3000}
+      onClose={onClose}
+      position="bottom-center"
+    />
+  );
+}
+
+
+//GlowSnackbar.tsx
+"use client";
+
+import BaseSnackbar from "./BaseSnackbar";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import React from "react";
+
+export function GlowSnackbar({ onClose }: { onClose?: () => void }) {
+  return (
+    <BaseSnackbar
+      message={<span>Glow — operation successful</span>}
+      icon={<CheckCircleOutlineIcon />}
+      className="bg-emerald-600 text-white shadow-[0_6px_30px_rgba(16,185,129,0.45)] border border-emerald-400/30"
+      duration={3000}
+      onClose={onClose}
+      position="top-right"
+    />
+  );
+}
+
+
+//InfoSnackbar.tsx
+"use client";
+
+import BaseSnackbar from "./BaseSnackbar";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import React from "react";
+
+export default function InfoSnackbar({ onClose }: { onClose?: () => void }) {
+  return (
+    <BaseSnackbar
+      message={<span>Info: New update available</span>}
+      icon={<InfoOutlinedIcon />}
+      className="bg-gradient-to-r from-sky-500 to-sky-600 text-white"
+      duration={2800}
+      onClose={onClose}
+      position="bottom-center"
+    />
+  );
+}
+
+
+//ProgressSnackbar.tsx
+"use client";
+
+import BaseSnackbar from "./BaseSnackbar";
+import React, { useEffect, useState } from "react";
+
+export default function ProgressSnackbar({ onClose }: { onClose?: () => void }) {
+  const [progressDone, setProgressDone] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setProgressDone(true), 3800);
+    const t2 = setTimeout(() => onClose?.(), 4200);
+    return () => {
+      clearTimeout(t);
+      clearTimeout(t2);
+    };
+  }, [onClose]);
+
+  return (
+    <BaseSnackbar
+      message={<span>Uploading files...</span>}
+      icon={<div className="w-4 h-4 border-2 border-white rounded-full animate-spin" />}
+      className="bg-slate-800 text-white"
+      duration={0}
+      onClose={onClose}
+      position="top-left"
+      progress={!progressDone}
+    />
+  );
+}
+
+
+//SlideSnackbar.tsx
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
+import BaseSnackbar from "./BaseSnackbar";
+
+export function SlideSnackbar({ onClose }: { onClose?: () => void }) {
+  return (
+    <motion.div initial={{ x: 300, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: 300, opacity: 0 }} transition={{ type: "spring", stiffness: 90 }}>
+      <BaseSnackbar
+        message={<span>Slide-in notification</span>}
+        className="bg-indigo-600 text-white"
+        duration={3000}
+        onClose={onClose}
+        position="top-right"
+      />
+    </motion.div>
+  );
+}

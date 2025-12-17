@@ -1,0 +1,67 @@
+//AnimatedDialog
+"use client";
+
+import React from "react";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  IconButton,
+} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import { motion } from "framer-motion";
+
+export interface AnimatedDialogProps {
+  open: boolean;
+  onClose: () => void;
+  title: string;
+  children: React.ReactNode;
+  actions?: React.ReactNode;
+  showClose?: boolean;
+}
+
+export const AnimatedDialog = ({
+  open,
+  onClose,
+  title,
+  children,
+  actions,
+  showClose = true,
+}: AnimatedDialogProps) => {
+  return (
+    <Dialog
+      open={open}
+      onClose={onClose}
+      fullWidth
+      maxWidth="sm"
+      PaperProps={{
+        component: motion.div,
+        initial: { opacity: 0, scale: 0.9, y: 20 },
+        animate: { opacity: 1, scale: 1, y: 0 },
+        exit: { opacity: 0, scale: 0.95, y: 10 },
+        transition: { duration: 0.25 },
+        className: "bg-white rounded-2xl p-2 shadow-xl",
+      }}
+    >
+      <div className="relative">
+        <DialogTitle className="text-xl font-semibold pr-10">
+          {title}
+        </DialogTitle>
+
+        {showClose && (
+          <IconButton
+            onClick={onClose}
+            className="!absolute right-3 top-3 text-gray-500"
+          >
+            <CloseIcon />
+          </IconButton>
+        )}
+      </div>
+
+      <DialogContent>{children}</DialogContent>
+
+      {actions && <DialogActions className="p-4">{actions}</DialogActions>}
+    </Dialog>
+  );
+};

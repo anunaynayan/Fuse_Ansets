@@ -16,7 +16,7 @@ function FooterLayout1(props: FooterLayout1Props) {
 		<FooterTheme>
 			<AppBar
 				id="fuse-footer"
-				className={clsx('relative z-20 border-t', className)}
+				className={clsx('relative z-20 border-t items-center', className)}
 				color="default"
 				sx={(theme) => ({
 					backgroundColor: theme.vars.palette.background.default,
@@ -24,8 +24,8 @@ function FooterLayout1(props: FooterLayout1Props) {
 				})}
 				elevation={0}
 			>
-				<Toolbar className="flex min-h-12 items-center overflow-x-auto px-2 py-0 sm:px-3 md:min-h-16">
-					Footer
+				<Toolbar className="flex min-h-12 items-center px-2 py-0 sm:px-3 md:min-h-16">
+					© {new Date().getFullYear()} Anslation — Ansets component library.
 				</Toolbar>
 			</AppBar>
 		</FooterTheme>
