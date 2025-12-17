@@ -7,10 +7,9 @@ import { atomOneLight, atomOneDark } from "react-syntax-highlighter/dist/esm/sty
 import { useTheme } from "@mui/material/styles";
 
 export default function MarkdownEditor() {
-  const [value, setValue] = useState<string>(""); // markdown content
-  const { theme } = useTheme(); // 'light' or 'dark'
+  const [value, setValue] = useState<string>(""); 
+  const theme = useTheme(); // full theme object
 
-  // Custom keyboard shortcuts
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
       if (e.ctrlKey) {
@@ -41,19 +40,20 @@ export default function MarkdownEditor() {
         }}
         previewOptions={{
           components: {
-            code({ inline, className, children, ...props }) {
+            code: (props: any) => { // use 'any' to avoid type issues
+              const { inline, className, children, ...rest } = props;
               const match = /language-(\w+)/.exec(className || "");
               return !inline && match ? (
                 <SyntaxHighlighter
-                  style={theme === "dark" ? atomOneDark : atomOneLight}
+                  style={theme.palette.mode === "dark" ? atomOneDark : atomOneLight}
                   language={match[1]}
                   PreTag="div"
-                  {...props}
+                  {...rest}
                 >
                   {String(children).replace(/\n$/, "")}
                 </SyntaxHighlighter>
               ) : (
-                <code className={className} {...props}>
+                <code className={className} {...rest}>
                   {children}
                 </code>
               );

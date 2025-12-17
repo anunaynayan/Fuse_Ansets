@@ -167,18 +167,18 @@ export function SearchBar<T>({
           }}
         >
           <List>
-            {results.map((item, i) => (
-              <ListItem
-                key={itemKey(item)}
-                disablePadding
-                selected={highlightIndex === i}
-              >
-                <ListItemButton onClick={() => handleSelect(item)}>
-                  <ListItemText primary={itemLabel(item)} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
+  {results.map((item, i) => (
+    <ListItem key={itemKey(item)} disablePadding>
+      <ListItemButton
+        selected={highlightIndex === i}  // ✅ move here
+        onClick={() => handleSelect(item)}
+      >
+        <ListItemText primary={itemLabel(item)} />
+      </ListItemButton>
+    </ListItem>
+  ))}
+</List>
+
         </Paper>
       )}
     </Box>

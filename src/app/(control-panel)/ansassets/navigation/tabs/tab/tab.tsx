@@ -112,7 +112,7 @@ export default function CustomTabs({
             id={`tab-${index}`}
             aria-selected={active === index}
             aria-controls={`panel-${index}`}
-            ref={(el) => (tabRefs.current[index] = el)}
+            ref={(el) => { if (el) tabRefs.current[index] = el; }}
             tabIndex={active === index ? 0 : -1}
             onKeyDown={(e) => handleKeyDown(e, index)}
             onClick={() => setActive(index)}

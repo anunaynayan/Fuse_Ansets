@@ -9,7 +9,6 @@ export default function ColumnExample() {
       <Header />
 
       <div className="grid grid-cols-1 md:grid-cols-1 gap-6 p-6">
-
         {/* Column Chart */}
         <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-sm border p-6">
           <h2 className="text-lg font-semibold mb-4">
@@ -24,12 +23,12 @@ export default function ColumnExample() {
               { name: "Blog", dataKey: "blog", color: "#ef5350" },
               { name: "Pricing", dataKey: "pricing", color: "#66bb6a" },
             ]}
-            stacked={false} 
+            stacked={false}
             barSize={35}
             showGrid
+            showLabels={false}
           />
         </div>
-
       </div>
     </div>
   );

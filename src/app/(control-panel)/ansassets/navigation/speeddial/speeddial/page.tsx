@@ -8,6 +8,13 @@ import ShareIcon from "@mui/icons-material/Share";
 import FileCopyIcon from "@mui/icons-material/FileCopy";
 import CustomSpeedDial from "./speeddail";
 import { Box } from "@mui/system";
+// Add this at the top of your file
+type ActionItem = {
+  icon: React.ReactNode;
+  name: string;
+  onClick: () => void;
+  color?: string;
+};
 
 export default function App() {
   const actions: ActionItem[] = [

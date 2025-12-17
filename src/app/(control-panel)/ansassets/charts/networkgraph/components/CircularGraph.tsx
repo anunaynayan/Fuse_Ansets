@@ -31,7 +31,14 @@ export default function CircularGraph({ data }: Props) {
     netRef.current = new Network(ref.current, { nodes, edges }, {
       physics: false,
       nodes: { shape: "dot", size: 14, font: { size: 13 } },
-      edges: { smooth: { enabled: true, type: "curvedCW" }, color: "#4b5563" },
+      edges: {
+  smooth: {
+    enabled: true,
+    type: "curvedCW",
+    roundness: 0.3, // REQUIRED
+  },
+  color: "#4b5563",
+},
       interaction: { hover: true },
     });
 

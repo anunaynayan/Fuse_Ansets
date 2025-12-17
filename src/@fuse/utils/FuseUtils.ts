@@ -1,5 +1,23 @@
 import _ from 'lodash';
-import * as colors from '@mui/material/colors';
+import {
+  red,
+  pink,
+  purple,
+  deepPurple,
+  indigo,
+  blue,
+  lightBlue,
+  cyan,
+  teal,
+  green,
+  lightGreen,
+  lime,
+  yellow,
+  amber,
+  orange,
+  deepOrange
+} from '@mui/material/colors';
+
 import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
 import { User } from '@auth/user';
 import { DeepPartial } from 'react-hook-form';
@@ -77,6 +95,25 @@ type Color = {
 	A700?: string;
 	[key: string]: string | undefined;
 };
+const materialColors: Record<string, Color> = {
+  red,
+  pink,
+  purple,
+  deepPurple,
+  indigo,
+  blue,
+  lightBlue,
+  cyan,
+  teal,
+  green,
+  lightGreen,
+  lime,
+  yellow,
+  amber,
+  orange,
+  deepOrange
+};
+
 
 /**
  * The FuseUtils class provides utility functions for the Fuse project.
@@ -308,29 +345,12 @@ class FuseUtils {
 	 * The randomMatColor function generates a random material color.
 	 */
 	static randomMatColor(hue: hueTypes = '400') {
-		const mainColors = [
-			'red',
-			'pink',
-			'purple',
-			'deepPurple',
-			'indigo',
-			'blue',
-			'lightBlue',
-			'cyan',
-			'teal',
-			'green',
-			'lightGreen',
-			'lime',
-			'yellow',
-			'amber',
-			'orange',
-			'deepOrange'
-		];
+  const mainColors = Object.keys(materialColors);
+  const randomColor = mainColors[Math.floor(Math.random() * mainColors.length)];
 
-		const randomColor = mainColors[Math.floor(Math.random() * mainColors.length)];
+  return materialColors[randomColor][hue];
+}
 
-		return (colors as Record<string, Color>)[randomColor][hue];
-	}
 
 	/**
 	 * The findNavItemById function finds a navigation item by its id.

@@ -22,18 +22,16 @@ export function AppTimePicker({
   helperText = "",
   disabled = false,
 }: ReusableTimePickerProps) {
-  const theme = useTheme(); // Access current MUI theme
+  const theme = useTheme();
   const [selectedTime, setSelectedTime] = useState<Date | null>(value);
   const [ampm, setAmpm] = useState(true); // true = 12h, false = 24h
 
   const handleTimeChange = (newValue: Date | null) => {
     setSelectedTime(newValue);
-    if (onChange) onChange(newValue);
+    onChange?.(newValue);
   };
 
-  const toggleFormat = () => {
-    setAmpm(!ampm);
-  };
+  const toggleFormat = () => setAmpm(!ampm);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -43,45 +41,40 @@ export function AppTimePicker({
           value={selectedTime}
           onChange={handleTimeChange}
           disabled={disabled}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label={label}
-              error={error}
-              helperText={helperText}
-              className="w-full"
-              size="small"
-              sx={{
-                // Theme-aware styling
-                '& .MuiInputBase-root': {
+          slots={{
+            textField: TextField, // <-- replaced renderInput
+          }}
+          slotProps={{
+            textField: {
+              label,
+              error,
+              helperText,
+              size: "small",
+              className: "w-full",
+              sx: {
+                "& .MuiInputBase-root": {
                   color: theme.palette.text.primary,
-                  backgroundColor: theme.palette.mode === 'dark' ? '#1f2937' : '#fff',
+                  backgroundColor: theme.palette.mode === "dark" ? "#1f2937" : "#fff",
                   borderRadius: theme.shape.borderRadius,
                 },
-                '& .MuiFormHelperText-root': {
+                "& .MuiFormHelperText-root": {
                   color: theme.palette.error.main,
                 },
-                '& .MuiOutlinedInput-notchedOutline': {
+                "& .MuiOutlinedInput-notchedOutline": {
                   borderColor: theme.palette.divider,
                 },
-              }}
-            />
-          )}
+              },
+            },
+          }}
         />
 
         <FormControlLabel
-          control={
-            <Switch
-              checked={!ampm}
-              onChange={toggleFormat}
-              color="primary"
-            />
-          }
+          control={<Switch checked={!ampm} onChange={toggleFormat} color="primary" />}
           label={ampm ? "12h Format" : "24h Format"}
           sx={{
             color: theme.palette.text.primary,
-            '.MuiSwitch-track': {
-              backgroundColor: theme.palette.mode === 'dark' ? '#4b5563' : '#d1d5db',
+            ".MuiSwitch-track": {
+              backgroundColor: theme.palette.mode === "dark" ? "#4b5563" : "#d1d5db",
             },
           }}
         />

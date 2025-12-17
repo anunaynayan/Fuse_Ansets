@@ -19,7 +19,11 @@ export default function HierarchicalTree({ data, direction = "UD" }: Props) {
 
     netRef.current = new Network(ref.current, { nodes, edges }, {
       layout: { hierarchical: { enabled: true, direction, sortMethod: "directed" } },
-      nodes: { shape: "box", margin: 10, font: { size: 14 } },
+      nodes: {
+  shape: "box",
+  margin: { top: 10, right: 10, bottom: 10, left: 10 },
+  font: { size: 14 },
+},
       edges: { arrows: { to: { enabled: true } }, smooth: false },
       physics: { hierarchicalRepulsion: { nodeDistance: 120 } },
       interaction: { hover: true, multiselect: false }

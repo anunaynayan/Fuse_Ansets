@@ -76,7 +76,7 @@ export default function AppPage() {
           title="Account Created"
           message="Welcome! Your account is ready to use."
           icon={<ThumbUpAltIcon />}
-          variant="primary"
+          variant="success"
           autoClose={3000}
           confirmLabel="Start"
           onConfirm={() => console.log("Auto closed")}

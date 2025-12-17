@@ -99,6 +99,7 @@ export default function ColumnChartDocs() {
             stacked={false}
             barSize={35}
             showGrid
+            showLabels={false}
           />
         </Box>
 

@@ -79,13 +79,17 @@ export default function DateRangePickerApp({
             label="Start"
             value={startDate}
             onChange={handleStartChange}
-            renderInput={(params) => <TextField {...params} className="flex-1" />}
+            slotProps={{
+    textField: { className: "flex-1" },
+  }}
           />
           <DatePicker
             label="End"
             value={endDate}
             onChange={handleEndChange}
-            renderInput={(params) => <TextField {...params} className="flex-1" />}
+            slotProps={{
+    textField: { className: "flex-1" },
+  }}
           />
         </Box>
       </Box>

@@ -5,6 +5,14 @@ import DocsLayout from "@/components/documetation/DocsLayout";
 import { Box, Typography } from "@mui/material";
 import CustomSpeedDial from "../speeddial/speeddail";
 import EditIcon from "@mui/icons-material/Edit";
+// Add this at the top of your file
+type ActionItem = {
+  icon: React.ReactNode;
+  name: string;
+  onClick: () => void;
+  color?: string;
+};
+
 
 export default function SpeedDialDocs() {
 
