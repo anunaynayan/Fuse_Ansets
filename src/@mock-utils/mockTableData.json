@@ -1,0 +1,154 @@
+{
+    "tableData":[
+      {
+        "id": "1",
+        "title": "My first project",
+        "domain": "drkusumlata.in",
+        "pageVisits": 6000,
+        "uniqueVisitors": 2368,
+        "type": "direct",
+        "status": "Active",
+        "createdAt": "2025-09-16T17:56:26Z"
+      },
+      {
+        "id": "2",
+        "title": "Ecom",
+        "domain": "www.zomato.com",
+        "pageVisits": 0,
+        "uniqueVisitors": 0,
+        "type": "organic",
+        "status": "Paused",
+        "createdAt": "2025-09-22T15:31:21Z"
+      },
+      {
+        "id": "3",
+        "title": "Marketing Site",
+        "domain": "example.com",
+        "pageVisits": 15420,
+        "uniqueVisitors": 8900,
+        "type": "social",
+        "status": "Active",
+        "createdAt": "2025-09-20T10:30:15Z"
+      },
+      {
+        "id": "4",
+        "title": "Blog Platform",
+        "domain": "myblog.dev",
+        "pageVisits": 3200,
+        "uniqueVisitors": 1850,
+        "type": "referral",
+        "status": "Active",
+        "createdAt": "2025-09-18T14:22:33Z"
+      },
+      {
+        "id": "5",
+        "title": "Portfolio Website",
+        "domain": "johndoe.portfolio.com",
+        "pageVisits": 12500,
+        "uniqueVisitors": 4200,
+        "type": "direct",
+        "status": "Active",
+        "createdAt": "2025-09-10T09:15:42Z"
+      },
+      {
+        "id": "6",
+        "title": "Tech Startup",
+        "domain": "innovatech.io",
+        "pageVisits": 8750,
+        "uniqueVisitors": 3100,
+        "type": "organic",
+        "status": "Active",
+        "createdAt": "2025-09-05T11:30:18Z"
+      },
+      {
+        "id": "7",
+        "title": "Recipe App",
+        "domain": "deliciousbites.app",
+        "pageVisits": 2890,
+        "uniqueVisitors": 1200,
+        "type": "social",
+        "status": "Paused",
+        "createdAt": "2025-09-12T16:45:29Z"
+      },
+      {
+        "id": "8",
+        "title": "Finance Dashboard",
+        "domain": "moneytracker.finance",
+        "pageVisits": 18900,
+        "uniqueVisitors": 6700,
+        "type": "referral",
+        "status": "Active",
+        "createdAt": "2025-09-08T13:20:55Z"
+      },
+      {
+        "id": "9",
+        "title": "Gaming Community",
+        "domain": "gamershub.gg",
+        "pageVisits": 45600,
+        "uniqueVisitors": 12300,
+        "type": "social",
+        "status": "Active",
+        "createdAt": "2025-09-03T19:10:37Z"
+      },
+      {
+        "id": "10",
+        "title": "Online Course Platform",
+        "domain": "learnfast.edu",
+        "pageVisits": 7250,
+        "uniqueVisitors": 2800,
+        "type": "organic",
+        "status": "Active",
+        "createdAt": "2025-09-14T08:25:11Z"
+      },
+      {
+        "id": "11",
+        "title": "Fashion Store",
+        "domain": "trendywear.shop",
+        "pageVisits": 9840,
+        "uniqueVisitors": 3450,
+        "type": "direct",
+        "status": "Paused",
+        "createdAt": "2025-09-07T14:55:43Z"
+      },
+      {
+        "id": "12",
+        "title": "News Portal",
+        "domain": "dailynews.today",
+        "pageVisits": 32100,
+        "uniqueVisitors": 11200,
+        "type": "organic",
+        "status": "Active",
+        "createdAt": "2025-09-01T10:40:22Z"
+      },
+      {
+        "id": "13",
+        "title": "Health & Wellness",
+        "domain": "wellnessfirst.health",
+        "pageVisits": 5670,
+        "uniqueVisitors": 2100,
+        "type": "referral",
+        "status": "Active",
+        "createdAt": "2025-09-11T12:15:08Z"
+      },
+      {
+        "id": "14",
+        "title": "Travel Guide",
+        "domain": "wanderlust.travel",
+        "pageVisits": 14200,
+        "uniqueVisitors": 5800,
+        "type": "social",
+        "status": "Paused",
+        "createdAt": "2025-09-09T15:30:17Z"
+      },
+      {
+        "id": "15",
+        "title": "Real Estate Platform",
+        "domain": "propertydeals.realty",
+        "pageVisits": 22400,
+        "uniqueVisitors": 8900,
+        "type": "direct",
+        "status": "Active",
+        "createdAt": "2025-09-06T11:05:51Z"
+      }
+    ]
+  }

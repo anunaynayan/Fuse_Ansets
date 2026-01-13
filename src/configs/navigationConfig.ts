@@ -106,12 +106,18 @@ const navigationConfig: FuseNavItemType[] = [
       }
         ],
       },
-      // {
-      //   id: "ansassets-tables",
-      //   title: "Tables",
-      //   type: "item",
-      //   url: "/ansassets/tables",
-      // },
+      {
+        id: "ansassets-tables",
+        title: "Tables",
+        type: "collapse",
+        url: "/ansassets/tables",
+        // children: [
+        //   {id: "ansassets-tables",
+        // title: "Heat Maps",
+        // type: "item",
+        // url: "/ansassets/tables",}
+        // ]
+      },
       // {
       //   id: "ansassets-forms",
       //   title: "Forms",
@@ -237,6 +243,10 @@ const navigationConfig: FuseNavItemType[] = [
     }
   ]
 },
+
+//
+
+
 
 
 // rating star
